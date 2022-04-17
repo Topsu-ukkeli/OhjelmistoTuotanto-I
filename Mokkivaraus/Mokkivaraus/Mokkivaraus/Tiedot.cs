@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Mokkivaraus
 {
-    public partial class Form1 : Form
+    public partial class frmTiedot : Form
     {
-        public Form1()
+        public frmTiedot()
         {
             InitializeComponent();
         }
