@@ -112,14 +112,14 @@
             // 
             // dtpSaapumis
             // 
-            this.dtpSaapumis.Location = new System.Drawing.Point(716, 62);
+            this.dtpSaapumis.Location = new System.Drawing.Point(534, 62);
             this.dtpSaapumis.Name = "dtpSaapumis";
             this.dtpSaapumis.Size = new System.Drawing.Size(222, 20);
             this.dtpSaapumis.TabIndex = 8;
             // 
             // dtpPoistumis
             // 
-            this.dtpPoistumis.Location = new System.Drawing.Point(716, 104);
+            this.dtpPoistumis.Location = new System.Drawing.Point(534, 104);
             this.dtpPoistumis.Name = "dtpPoistumis";
             this.dtpPoistumis.Size = new System.Drawing.Size(222, 20);
             this.dtpPoistumis.TabIndex = 9;
@@ -199,7 +199,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(619, 68);
+            this.label9.Location = new System.Drawing.Point(437, 68);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 13);
             this.label9.TabIndex = 18;
@@ -208,7 +208,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(619, 111);
+            this.label10.Location = new System.Drawing.Point(437, 111);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 13);
             this.label10.TabIndex = 19;
@@ -236,7 +236,7 @@
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(830, 402);
+            this.btnVarauksiin.Location = new System.Drawing.Point(648, 387);
             this.btnVarauksiin.Name = "btnVarauksiin";
             this.btnVarauksiin.Size = new System.Drawing.Size(108, 46);
             this.btnVarauksiin.TabIndex = 22;
@@ -248,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 536);
+            this.ClientSize = new System.Drawing.Size(846, 488);
             this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.chkYritys);
             this.Controls.Add(this.chkYksityinen);

@@ -28,33 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dgwAsiakas = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwAsiakas)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgwAsiakas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(996, 255);
-            this.dataGridView1.TabIndex = 0;
+            this.dgwAsiakas.AllowUserToAddRows = false;
+            this.dgwAsiakas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwAsiakas.Location = new System.Drawing.Point(12, 12);
+            this.dgwAsiakas.Name = "dgwAsiakas";
+            this.dgwAsiakas.Size = new System.Drawing.Size(996, 255);
+            this.dgwAsiakas.TabIndex = 0;
             // 
             // frmTiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1045, 452);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwAsiakas);
             this.Name = "frmTiedot";
             this.Text = "Tiedot";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmTiedot_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwAsiakas)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwAsiakas;
     }
 }

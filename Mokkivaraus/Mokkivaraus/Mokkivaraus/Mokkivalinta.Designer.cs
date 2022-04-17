@@ -32,11 +32,13 @@
             this.chkPaikanP = new System.Windows.Forms.CheckBox();
             this.chkLasku = new System.Windows.Forms.CheckBox();
             this.btnVaraaM = new System.Windows.Forms.Button();
+            this.btnAsiakkaisiin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwMokkivalinta
             // 
+            this.dgwMokkivalinta.AllowUserToAddRows = false;
             this.dgwMokkivalinta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMokkivalinta.Location = new System.Drawing.Point(12, 12);
             this.dgwMokkivalinta.Name = "dgwMokkivalinta";
@@ -52,6 +54,7 @@
             this.chkPaikanP.TabIndex = 1;
             this.chkPaikanP.Text = "maksa paikanpäällä";
             this.chkPaikanP.UseVisualStyleBackColor = true;
+            this.chkPaikanP.CheckedChanged += new System.EventHandler(this.chkPaikanP_CheckedChanged);
             // 
             // chkLasku
             // 
@@ -62,10 +65,11 @@
             this.chkLasku.TabIndex = 2;
             this.chkLasku.Text = "maksa laskulla";
             this.chkLasku.UseVisualStyleBackColor = true;
+            this.chkLasku.CheckedChanged += new System.EventHandler(this.chkLasku_CheckedChanged);
             // 
             // btnVaraaM
             // 
-            this.btnVaraaM.Location = new System.Drawing.Point(12, 313);
+            this.btnVaraaM.Location = new System.Drawing.Point(12, 301);
             this.btnVaraaM.Name = "btnVaraaM";
             this.btnVaraaM.Size = new System.Drawing.Size(91, 34);
             this.btnVaraaM.TabIndex = 3;
@@ -73,11 +77,22 @@
             this.btnVaraaM.UseVisualStyleBackColor = true;
             this.btnVaraaM.Click += new System.EventHandler(this.btnVaraaM_Click);
             // 
+            // btnAsiakkaisiin
+            // 
+            this.btnAsiakkaisiin.Location = new System.Drawing.Point(138, 301);
+            this.btnAsiakkaisiin.Name = "btnAsiakkaisiin";
+            this.btnAsiakkaisiin.Size = new System.Drawing.Size(91, 34);
+            this.btnAsiakkaisiin.TabIndex = 4;
+            this.btnAsiakkaisiin.Text = "Tarkasta asiakkaita";
+            this.btnAsiakkaisiin.UseVisualStyleBackColor = true;
+            this.btnAsiakkaisiin.Click += new System.EventHandler(this.btnAsiakkaisiin_Click);
+            // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 482);
+            this.Controls.Add(this.btnAsiakkaisiin);
             this.Controls.Add(this.btnVaraaM);
             this.Controls.Add(this.chkLasku);
             this.Controls.Add(this.chkPaikanP);
@@ -97,5 +112,6 @@
         private System.Windows.Forms.CheckBox chkPaikanP;
         private System.Windows.Forms.CheckBox chkLasku;
         private System.Windows.Forms.Button btnVaraaM;
+        private System.Windows.Forms.Button btnAsiakkaisiin;
     }
 }

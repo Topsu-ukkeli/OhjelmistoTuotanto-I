@@ -60,5 +60,27 @@ namespace Mokkivaraus
             }
             populateDGV();
         }
+
+        private void btnAsiakkaisiin_Click(object sender, EventArgs e)
+        {
+            frmTiedot at = new frmTiedot();
+            at.Show();
+        }
+
+        private void chkPaikanP_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkPaikanP.Checked == true)
+            {
+                chkLasku.Checked = false;
+            }
+        }
+
+        private void chkLasku_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkLasku.Checked == true)
+            {
+                chkPaikanP.Checked = false;
+            }
+        }
     }
 }
