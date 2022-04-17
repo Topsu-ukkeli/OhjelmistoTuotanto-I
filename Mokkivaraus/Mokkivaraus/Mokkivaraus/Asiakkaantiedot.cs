@@ -52,7 +52,7 @@ namespace Mokkivaraus
             string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
             ExecuteMyQuery(insertQuery2);
 
-            string insertQuery = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('3','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+            string insertQuery = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('"+i+"','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
             ExecuteMyQuery(insertQuery);
         }
         public void ExecuteMyQuery(string query)
