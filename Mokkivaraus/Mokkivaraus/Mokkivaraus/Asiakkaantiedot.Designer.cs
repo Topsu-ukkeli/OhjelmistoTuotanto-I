@@ -37,7 +37,6 @@
             this.txtPostiP = new System.Windows.Forms.TextBox();
             this.dtpSyntyma = new System.Windows.Forms.DateTimePicker();
             this.dtpSaapumis = new System.Windows.Forms.DateTimePicker();
-            this.dtpPoistumis = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,6 +50,9 @@
             this.chkYksityinen = new System.Windows.Forms.CheckBox();
             this.chkYritys = new System.Windows.Forms.CheckBox();
             this.btnVarauksiin = new System.Windows.Forms.Button();
+            this.dgwTest = new System.Windows.Forms.DataGridView();
+            this.dtpPoistumis = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEtu
@@ -116,13 +118,6 @@
             this.dtpSaapumis.Name = "dtpSaapumis";
             this.dtpSaapumis.Size = new System.Drawing.Size(222, 20);
             this.dtpSaapumis.TabIndex = 8;
-            // 
-            // dtpPoistumis
-            // 
-            this.dtpPoistumis.Location = new System.Drawing.Point(534, 104);
-            this.dtpPoistumis.Name = "dtpPoistumis";
-            this.dtpPoistumis.Size = new System.Drawing.Size(222, 20);
-            this.dtpPoistumis.TabIndex = 9;
             // 
             // label1
             // 
@@ -244,11 +239,29 @@
             this.btnVarauksiin.UseVisualStyleBackColor = true;
             this.btnVarauksiin.Click += new System.EventHandler(this.btnVarauksiin_Click);
             // 
+            // dgwTest
+            // 
+            this.dgwTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwTest.Location = new System.Drawing.Point(703, 111);
+            this.dgwTest.Name = "dgwTest";
+            this.dgwTest.Size = new System.Drawing.Size(10, 10);
+            this.dgwTest.TabIndex = 23;
+            this.dgwTest.Visible = false;
+            // 
+            // dtpPoistumis
+            // 
+            this.dtpPoistumis.Location = new System.Drawing.Point(534, 105);
+            this.dtpPoistumis.Name = "dtpPoistumis";
+            this.dtpPoistumis.Size = new System.Drawing.Size(222, 20);
+            this.dtpPoistumis.TabIndex = 24;
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 488);
+            this.Controls.Add(this.dtpPoistumis);
+            this.Controls.Add(this.dgwTest);
             this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.chkYritys);
             this.Controls.Add(this.chkYksityinen);
@@ -262,7 +275,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpPoistumis);
             this.Controls.Add(this.dtpSaapumis);
             this.Controls.Add(this.dtpSyntyma);
             this.Controls.Add(this.txtPuhelin);
@@ -275,6 +287,7 @@
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.Load += new System.EventHandler(this.frmAsiakastiedot_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +304,6 @@
         private System.Windows.Forms.TextBox txtPostiP;
         private System.Windows.Forms.DateTimePicker dtpSyntyma;
         private System.Windows.Forms.DateTimePicker dtpSaapumis;
-        private System.Windows.Forms.DateTimePicker dtpPoistumis;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -305,6 +317,8 @@
         private System.Windows.Forms.CheckBox chkYksityinen;
         private System.Windows.Forms.CheckBox chkYritys;
         private System.Windows.Forms.Button btnVarauksiin;
+        private System.Windows.Forms.DataGridView dgwTest;
+        private System.Windows.Forms.DateTimePicker dtpPoistumis;
     }
 }
 

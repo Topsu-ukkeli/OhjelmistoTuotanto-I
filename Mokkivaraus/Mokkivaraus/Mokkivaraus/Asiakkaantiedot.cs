@@ -19,6 +19,7 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
+        int i = 4;
         public frmAsiakastiedot()
         {
             InitializeComponent();
@@ -46,14 +47,19 @@ namespace Mokkivaraus
 
         private void btnVarauksiin_Click(object sender, EventArgs e)
         {
-            int i = 1;
+            populateDGV();
             frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
             valinnat.Show();
             string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
             ExecuteMyQuery(insertQuery2);
-
-            string insertQuery = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('"+i+"','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+            string insertQuery = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + i + "','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
             ExecuteMyQuery(insertQuery);
+            //do
+            //{
+            //    i++;
+            //    string insertQuery3 = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + i + "','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+            //    ExecuteMyQuery(insertQuery3);
+            //} while (cmd.ExecuteNonQuery() == 1);
         }
         public void ExecuteMyQuery(string query)
         {
@@ -94,6 +100,14 @@ namespace Mokkivaraus
             {
                 connection.Close();
             }
+        }
+        public void populateDGV()
+        {
+            string query = "SELECT * FROM asiakas";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+            adapter.Fill(table);
+            dgwTest.DataSource = table;
         }
     }
 }

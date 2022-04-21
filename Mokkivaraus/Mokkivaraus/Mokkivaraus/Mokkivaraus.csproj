@@ -56,6 +56,12 @@
     <Compile Include="Asiakkaantiedot.Designer.cs">
       <DependentUpon>Asiakkaantiedot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kirjautuminen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kirjautuminen.Designer.cs">
+      <DependentUpon>Kirjautuminen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mokkivalinta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +78,9 @@
     </Compile>
     <EmbeddedResource Include="Asiakkaantiedot.resx">
       <DependentUpon>Asiakkaantiedot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kirjautuminen.resx">
+      <DependentUpon>Kirjautuminen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mokkivalinta.resx">
       <DependentUpon>Mokkivalinta.cs</DependentUpon>

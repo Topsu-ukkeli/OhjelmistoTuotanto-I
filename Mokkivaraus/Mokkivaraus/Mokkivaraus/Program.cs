@@ -16,7 +16,7 @@ namespace Mokkivaraus
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmAsiakastiedot());
+            Application.Run(new Kirjautuminen());
         }
     }
 }
