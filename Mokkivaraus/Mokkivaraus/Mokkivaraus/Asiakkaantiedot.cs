@@ -109,5 +109,27 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgwTest.DataSource = table;
         }
+
+        private void btnAsiakkaat_Click(object sender, EventArgs e)
+        {
+            frmTiedot asiakkaat = new frmTiedot();
+            asiakkaat.Show();
+        }
+
+        private void chkYksityinen_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkYksityinen.Checked == true)
+            {
+                chkYritys.Checked = false;
+            }
+        }
+
+        private void chkYritys_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkYritys.Checked == true)
+            {
+                chkYksityinen.Checked = false;
+            }
+        }
     }
 }

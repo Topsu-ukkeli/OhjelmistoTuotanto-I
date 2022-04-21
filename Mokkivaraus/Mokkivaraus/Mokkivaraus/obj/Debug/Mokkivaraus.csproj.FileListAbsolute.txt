@@ -25,3 +25,4 @@ G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokki
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.exe
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.pdb
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Kirjautuminen.resources
+G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Lasku.resources

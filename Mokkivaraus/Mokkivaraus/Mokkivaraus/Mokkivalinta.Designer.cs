@@ -79,7 +79,7 @@
             // 
             // btnAsiakkaisiin
             // 
-            this.btnAsiakkaisiin.Location = new System.Drawing.Point(138, 301);
+            this.btnAsiakkaisiin.Location = new System.Drawing.Point(119, 301);
             this.btnAsiakkaisiin.Name = "btnAsiakkaisiin";
             this.btnAsiakkaisiin.Size = new System.Drawing.Size(91, 34);
             this.btnAsiakkaisiin.TabIndex = 4;

@@ -62,6 +62,12 @@
     <Compile Include="Kirjautuminen.Designer.cs">
       <DependentUpon>Kirjautuminen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lasku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lasku.Designer.cs">
+      <DependentUpon>Lasku.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mokkivalinta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kirjautuminen.resx">
       <DependentUpon>Kirjautuminen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lasku.resx">
+      <DependentUpon>Lasku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mokkivalinta.resx">
       <DependentUpon>Mokkivalinta.cs</DependentUpon>

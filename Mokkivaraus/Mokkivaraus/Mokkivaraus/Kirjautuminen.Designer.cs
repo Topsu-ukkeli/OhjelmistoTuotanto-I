@@ -47,6 +47,7 @@
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(155, 20);
             this.txtIP.TabIndex = 0;
+            this.txtIP.Text = "127.0.0.1";
             // 
             // txtPort
             // 
@@ -54,6 +55,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(155, 20);
             this.txtPort.TabIndex = 1;
+            this.txtPort.Text = "3307";
             // 
             // txtPass
             // 
@@ -61,6 +63,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(155, 20);
             this.txtPass.TabIndex = 4;
+            this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
             // 
             // txtID
             // 
@@ -68,6 +71,7 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(155, 20);
             this.txtID.TabIndex = 3;
+            this.txtID.Text = "root";
             // 
             // label1
             // 
@@ -121,6 +125,7 @@
             this.txtTietonimi.Name = "txtTietonimi";
             this.txtTietonimi.Size = new System.Drawing.Size(155, 20);
             this.txtTietonimi.TabIndex = 2;
+            this.txtTietonimi.Text = "Mokkivalinta";
             // 
             // label5
             // 

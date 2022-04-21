@@ -21,6 +21,7 @@ namespace Mokkivaraus
         public frmTiedot()
         {
             InitializeComponent();
+
         }
 
         private void frmTiedot_Load(object sender, EventArgs e)
@@ -50,6 +51,18 @@ namespace Mokkivaraus
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
             dgwAsiakas.DataSource = table;
+        }
+
+        private void btnAsiakkaat_Click(object sender, EventArgs e)
+        {
+            frmAsiakastiedot a = new frmAsiakastiedot();
+            a.Show();
+        }
+
+        private void btnMokki_Click(object sender, EventArgs e)
+        {
+            frmMokkivalinta mokki = new frmMokkivalinta();
+            mokki.Show();
         }
     }
 }

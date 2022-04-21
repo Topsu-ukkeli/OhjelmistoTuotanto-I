@@ -32,12 +32,17 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-            string insertquery = "INSERT INTO posti(postinro, toimipaikka) VALUES('70780','Kuopio')";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(insertquery, connection);
-            adapter.Fill(table);
-            dgwMokkivalinta.DataSource = table;
+            //string insertquery = "INSERT INTO posti(postinro, toimipaikka) VALUES('70780','Kuopio')";
+            //DataTable table = new DataTable();
+            //MySqlDataAdapter adapter = new MySqlDataAdapter(insertquery, connection);
+            //adapter.Fill(table);
+            //dgwMokkivalinta.DataSource = table;
             populateDGV();
+            if (chkLasku.Checked)
+            {
+                Lasku lasku = new Lasku();
+                lasku.Show();
+            }
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
@@ -46,7 +51,7 @@ namespace Mokkivaraus
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
                 builder.Server = "127.0.0.1";
-                builder.Port = 3306;
+                builder.Port = 3307;
                 builder.UserID = "root";
                 builder.Password = "Ruutti";
                 builder.Database = "Mokkivaraus";
