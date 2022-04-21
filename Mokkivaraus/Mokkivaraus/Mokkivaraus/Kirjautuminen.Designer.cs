@@ -43,36 +43,36 @@
             // 
             // txtIP
             // 
-            this.txtIP.Location = new System.Drawing.Point(171, 87);
+            this.txtIP.Location = new System.Drawing.Point(116, 21);
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(155, 20);
             this.txtIP.TabIndex = 0;
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(171, 122);
+            this.txtPort.Location = new System.Drawing.Point(116, 56);
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(155, 20);
             this.txtPort.TabIndex = 1;
             // 
             // txtPass
             // 
-            this.txtPass.Location = new System.Drawing.Point(171, 238);
+            this.txtPass.Location = new System.Drawing.Point(116, 172);
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(155, 20);
-            this.txtPass.TabIndex = 3;
+            this.txtPass.TabIndex = 4;
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(171, 203);
+            this.txtID.Location = new System.Drawing.Point(116, 137);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(155, 20);
-            this.txtID.TabIndex = 2;
+            this.txtID.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(73, 94);
+            this.label1.Location = new System.Drawing.Point(18, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 6;
@@ -81,7 +81,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 129);
+            this.label2.Location = new System.Drawing.Point(18, 63);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 7;
@@ -90,7 +90,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(73, 210);
+            this.label3.Location = new System.Drawing.Point(18, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 9;
@@ -99,43 +99,43 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(73, 245);
+            this.label4.Location = new System.Drawing.Point(18, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 10;
             this.label4.Text = "Salasana:";
             // 
             // btnKirjaudu
             // 
-            this.btnKirjaudu.Location = new System.Drawing.Point(171, 276);
+            this.btnKirjaudu.Location = new System.Drawing.Point(116, 210);
             this.btnKirjaudu.Name = "btnKirjaudu";
             this.btnKirjaudu.Size = new System.Drawing.Size(155, 29);
-            this.btnKirjaudu.TabIndex = 11;
+            this.btnKirjaudu.TabIndex = 5;
             this.btnKirjaudu.Text = "Kirjaudu";
             this.btnKirjaudu.UseVisualStyleBackColor = true;
             this.btnKirjaudu.Click += new System.EventHandler(this.btnKirjaudu_Click);
             // 
             // txtTietonimi
             // 
-            this.txtTietonimi.Location = new System.Drawing.Point(171, 163);
+            this.txtTietonimi.Location = new System.Drawing.Point(116, 97);
             this.txtTietonimi.Name = "txtTietonimi";
             this.txtTietonimi.Size = new System.Drawing.Size(155, 20);
-            this.txtTietonimi.TabIndex = 4;
+            this.txtTietonimi.TabIndex = 2;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(73, 170);
+            this.label5.Location = new System.Drawing.Point(18, 104);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 13);
-            this.label5.TabIndex = 10;
+            this.label5.TabIndex = 8;
             this.label5.Text = "Tietokannan nimi:";
             // 
             // Kirjautuminen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(363, 272);
             this.Controls.Add(this.btnKirjaudu);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);

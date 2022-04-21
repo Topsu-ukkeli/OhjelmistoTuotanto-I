@@ -35,7 +35,7 @@ namespace Mokkivaraus
             //dgwasiakas.datasource = table;
         }
 
-        private void btnKirjaudu_Click(object sender, EventArgs e)
+        private void btnKirjaudu_Click(object sender, EventArgs e)//Tietokantaan kirjautuminen testaus
         {
             uint portti;
             portti = uint.Parse(txtPort.Text);
@@ -50,8 +50,8 @@ namespace Mokkivaraus
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
                 MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
-                frmTiedot t = new frmTiedot();
-                t.Show();
+                frmMokkivalinta m = new frmMokkivalinta();
+                m.Show();
             }
             catch (Exception ex)
             {

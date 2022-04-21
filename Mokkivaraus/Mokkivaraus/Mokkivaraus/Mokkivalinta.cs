@@ -46,7 +46,7 @@ namespace Mokkivaraus
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
                 builder.Server = "127.0.0.1";
-                builder.Port = 3307;
+                builder.Port = 3306;
                 builder.UserID = "root";
                 builder.Password = "Ruutti";
                 builder.Database = "Mokkivaraus";

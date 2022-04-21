@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 452);
+            this.ClientSize = new System.Drawing.Size(1169, 466);
             this.Controls.Add(this.dgwAsiakas);
             this.Name = "frmTiedot";
             this.Text = "Tiedot";
