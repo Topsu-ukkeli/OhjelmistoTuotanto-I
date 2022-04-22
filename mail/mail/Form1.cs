@@ -28,18 +28,18 @@ namespace mail
         {
             string from = "NootWare@gmail.com";
             string to = "topi.leinonen@edu.savonia.fi";
-            string subject = "Tärkeää postia, olkaa hyvä";
+            string subject = "Vaatmusmäärittely is done";
             try
             {
                 string Text = tbMessage.Text;
-                string pass = "Noottiware"; //onetime password from google
+                string pass = "pofierqtrudvxeje"; //onetime password from google
                 SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
                 mailClient.EnableSsl = true;
                 mailClient.Port = 587;
                 mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
                 MailMessage msgMail = new MailMessage(from, to, subject, Text);
                 mailClient.Send(msgMail);
-                MessageBox.Show("Your Mail is sended");
+                MessageBox.Show("Your Mail was sent");
 
             }
             catch (Exception ex)

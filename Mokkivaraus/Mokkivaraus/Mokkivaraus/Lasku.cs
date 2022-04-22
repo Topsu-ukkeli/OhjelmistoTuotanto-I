@@ -16,5 +16,10 @@ namespace Mokkivaraus
         {
             InitializeComponent();
         }
+
+        private void Lasku_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

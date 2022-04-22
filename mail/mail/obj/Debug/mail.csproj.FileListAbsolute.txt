@@ -8,3 +8,13 @@ C:\Users\Njekk\Desktop\ohjelm1\mail\mail\obj\Debug\mail.csproj.GenerateResource.
 C:\Users\Njekk\Desktop\ohjelm1\mail\mail\obj\Debug\mail.csproj.CoreCompileInputs.cache
 C:\Users\Njekk\Desktop\ohjelm1\mail\mail\obj\Debug\mail.exe
 C:\Users\Njekk\Desktop\ohjelm1\mail\mail\obj\Debug\mail.pdb
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\bin\Debug\mail.exe.config
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\bin\Debug\mail.exe
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\bin\Debug\mail.pdb
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.csproj.AssemblyReference.cache
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.Form1.resources
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.Properties.Resources.resources
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.csproj.GenerateResource.cache
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.csproj.CoreCompileInputs.cache
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.exe
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\mail\mail\obj\Debug\mail.pdb
