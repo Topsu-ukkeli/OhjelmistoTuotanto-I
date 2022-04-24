@@ -39,6 +39,7 @@
             this.btnKirjaudu = new System.Windows.Forms.Button();
             this.txtTietonimi = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbTiedot = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtIP
@@ -47,7 +48,6 @@
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(155, 20);
             this.txtIP.TabIndex = 0;
-            this.txtIP.Text = "127.0.0.1";
             // 
             // txtPort
             // 
@@ -55,7 +55,6 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(155, 20);
             this.txtPort.TabIndex = 1;
-            this.txtPort.Text = "3307";
             // 
             // txtPass
             // 
@@ -71,7 +70,6 @@
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(155, 20);
             this.txtID.TabIndex = 3;
-            this.txtID.Text = "root";
             // 
             // label1
             // 
@@ -125,7 +123,6 @@
             this.txtTietonimi.Name = "txtTietonimi";
             this.txtTietonimi.Size = new System.Drawing.Size(155, 20);
             this.txtTietonimi.TabIndex = 2;
-            this.txtTietonimi.Text = "Mokkivalinta";
             // 
             // label5
             // 
@@ -136,11 +133,23 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Tietokannan nimi:";
             // 
+            // cbTiedot
+            // 
+            this.cbTiedot.AutoSize = true;
+            this.cbTiedot.Location = new System.Drawing.Point(12, 222);
+            this.cbTiedot.Name = "cbTiedot";
+            this.cbTiedot.Size = new System.Drawing.Size(96, 17);
+            this.cbTiedot.TabIndex = 11;
+            this.cbTiedot.Text = "Tallenna tiedot";
+            this.cbTiedot.UseVisualStyleBackColor = true;
+            this.cbTiedot.CheckedChanged += new System.EventHandler(this.cbTiedot_CheckedChanged);
+            // 
             // Kirjautuminen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 272);
+            this.Controls.Add(this.cbTiedot);
             this.Controls.Add(this.btnKirjaudu);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
@@ -154,6 +163,7 @@
             this.Controls.Add(this.txtIP);
             this.Name = "Kirjautuminen";
             this.Text = "Kirjautuminen";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Kirjautuminen_FormClosing);
             this.Load += new System.EventHandler(this.Kirjautuminen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,5 +183,6 @@
         private System.Windows.Forms.Button btnKirjaudu;
         private System.Windows.Forms.TextBox txtTietonimi;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cbTiedot;
     }
 }

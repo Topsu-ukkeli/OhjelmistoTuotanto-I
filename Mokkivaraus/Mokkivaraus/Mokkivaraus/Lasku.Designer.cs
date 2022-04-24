@@ -34,10 +34,10 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("MV Boli", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(38, 26);
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(702, 395);
+            this.textBox1.Size = new System.Drawing.Size(776, 426);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "\r\n\r\nTähän tulloo sit tiedot mikä mökki on varattu ja milloin";
             // 

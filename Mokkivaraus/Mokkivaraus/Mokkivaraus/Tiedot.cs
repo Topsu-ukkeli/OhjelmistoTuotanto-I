@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Mokkivaraus
 {
@@ -18,10 +19,18 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
+        public string IP, Tietonimi, ID;
+        public uint Port;
         public frmTiedot()
         {
             InitializeComponent();
-
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                IP = read.ReadLine();
+                Port = uint.Parse(read.ReadLine());
+                Tietonimi = read.ReadLine();
+                ID = read.ReadLine();
+            }
         }
 
         private void frmTiedot_Load(object sender, EventArgs e)
@@ -29,14 +38,14 @@ namespace Mokkivaraus
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-                builder.Server = "127.0.0.1";
-                builder.Port = 3307;
-                builder.UserID = "root";
+                builder.Server = IP;
+                builder.Port = Port;
+                builder.UserID = ID;
                 builder.Password = "Ruutti";
-                builder.Database = "Mokkivaraus";
+                builder.Database = Tietonimi;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
-                MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
+                //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {

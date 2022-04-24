@@ -35,8 +35,6 @@
             this.txtPuhelin = new System.Windows.Forms.TextBox();
             this.txtSahko = new System.Windows.Forms.TextBox();
             this.txtPostiP = new System.Windows.Forms.TextBox();
-            this.dtpSyntyma = new System.Windows.Forms.DateTimePicker();
-            this.dtpSaapumis = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,16 +42,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.chkYksityinen = new System.Windows.Forms.CheckBox();
             this.chkYritys = new System.Windows.Forms.CheckBox();
             this.btnVarauksiin = new System.Windows.Forms.Button();
             this.dgwTest = new System.Windows.Forms.DataGridView();
-            this.dtpPoistumis = new System.Windows.Forms.DateTimePicker();
             this.btnAsiakkaat = new System.Windows.Forms.Button();
+            this.btnLissee = new System.Windows.Forms.Button();
+            this.btnPoista = new System.Windows.Forms.Button();
+            this.dgvAsiakkaat = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEtu
@@ -105,20 +103,6 @@
             this.txtPostiP.Name = "txtPostiP";
             this.txtPostiP.Size = new System.Drawing.Size(222, 20);
             this.txtPostiP.TabIndex = 4;
-            // 
-            // dtpSyntyma
-            // 
-            this.dtpSyntyma.Location = new System.Drawing.Point(155, 413);
-            this.dtpSyntyma.Name = "dtpSyntyma";
-            this.dtpSyntyma.Size = new System.Drawing.Size(222, 20);
-            this.dtpSyntyma.TabIndex = 7;
-            // 
-            // dtpSaapumis
-            // 
-            this.dtpSaapumis.Location = new System.Drawing.Point(534, 62);
-            this.dtpSaapumis.Name = "dtpSaapumis";
-            this.dtpSaapumis.Size = new System.Drawing.Size(222, 20);
-            this.dtpSaapumis.TabIndex = 8;
             // 
             // label1
             // 
@@ -183,36 +167,11 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Puhelinnumero";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(63, 420);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Syntymäaika";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(437, 68);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(79, 13);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Saapumispäivä";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(437, 111);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 13);
-            this.label10.TabIndex = 23;
-            this.label10.Text = "Poistumispäivä";
-            // 
             // chkYksityinen
             // 
             this.chkYksityinen.AutoSize = true;
+            this.chkYksityinen.Checked = true;
+            this.chkYksityinen.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkYksityinen.Location = new System.Drawing.Point(155, 28);
             this.chkYksityinen.Name = "chkYksityinen";
             this.chkYksityinen.Size = new System.Drawing.Size(74, 17);
@@ -234,9 +193,9 @@
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(440, 387);
+            this.btnVarauksiin.Location = new System.Drawing.Point(68, 415);
             this.btnVarauksiin.Name = "btnVarauksiin";
-            this.btnVarauksiin.Size = new System.Drawing.Size(108, 46);
+            this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
             this.btnVarauksiin.TabIndex = 10;
             this.btnVarauksiin.Text = "Siirry mökin valintaan";
             this.btnVarauksiin.UseVisualStyleBackColor = true;
@@ -245,43 +204,64 @@
             // dgwTest
             // 
             this.dgwTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwTest.Location = new System.Drawing.Point(703, 111);
+            this.dgwTest.Location = new System.Drawing.Point(1041, 463);
             this.dgwTest.Name = "dgwTest";
             this.dgwTest.Size = new System.Drawing.Size(10, 10);
             this.dgwTest.TabIndex = 23;
             this.dgwTest.Visible = false;
             // 
-            // dtpPoistumis
-            // 
-            this.dtpPoistumis.Location = new System.Drawing.Point(534, 105);
-            this.dtpPoistumis.Name = "dtpPoistumis";
-            this.dtpPoistumis.Size = new System.Drawing.Size(222, 20);
-            this.dtpPoistumis.TabIndex = 9;
-            // 
             // btnAsiakkaat
             // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(554, 387);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(182, 415);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
-            this.btnAsiakkaat.Size = new System.Drawing.Size(108, 46);
+            this.btnAsiakkaat.Size = new System.Drawing.Size(108, 64);
             this.btnAsiakkaat.TabIndex = 11;
             this.btnAsiakkaat.Text = "Tarkasta asiakkaiden tiedot";
             this.btnAsiakkaat.UseVisualStyleBackColor = true;
             this.btnAsiakkaat.Click += new System.EventHandler(this.btnAsiakkaat_Click);
             // 
+            // btnLissee
+            // 
+            this.btnLissee.Location = new System.Drawing.Point(296, 449);
+            this.btnLissee.Name = "btnLissee";
+            this.btnLissee.Size = new System.Drawing.Size(104, 30);
+            this.btnLissee.TabIndex = 24;
+            this.btnLissee.Text = "Lisää";
+            this.btnLissee.UseVisualStyleBackColor = true;
+            this.btnLissee.Click += new System.EventHandler(this.btnLissee_Click);
+            // 
+            // btnPoista
+            // 
+            this.btnPoista.Location = new System.Drawing.Point(296, 415);
+            this.btnPoista.Name = "btnPoista";
+            this.btnPoista.Size = new System.Drawing.Size(104, 28);
+            this.btnPoista.TabIndex = 25;
+            this.btnPoista.Text = "Poista";
+            this.btnPoista.UseVisualStyleBackColor = true;
+            this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
+            // 
+            // dgvAsiakkaat
+            // 
+            this.dgvAsiakkaat.AllowUserToAddRows = false;
+            this.dgvAsiakkaat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAsiakkaat.Location = new System.Drawing.Point(413, 12);
+            this.dgvAsiakkaat.Name = "dgvAsiakkaat";
+            this.dgvAsiakkaat.Size = new System.Drawing.Size(471, 205);
+            this.dgvAsiakkaat.TabIndex = 26;
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 488);
+            this.ClientSize = new System.Drawing.Size(913, 491);
+            this.Controls.Add(this.dgvAsiakkaat);
+            this.Controls.Add(this.btnPoista);
+            this.Controls.Add(this.btnLissee);
             this.Controls.Add(this.btnAsiakkaat);
-            this.Controls.Add(this.dtpPoistumis);
             this.Controls.Add(this.dgwTest);
             this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.chkYritys);
             this.Controls.Add(this.chkYksityinen);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -289,8 +269,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpSaapumis);
-            this.Controls.Add(this.dtpSyntyma);
             this.Controls.Add(this.txtPuhelin);
             this.Controls.Add(this.txtSahko);
             this.Controls.Add(this.txtPostiP);
@@ -300,8 +278,10 @@
             this.Controls.Add(this.txtEtu);
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);
             this.Load += new System.EventHandler(this.frmAsiakastiedot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,8 +296,6 @@
         private System.Windows.Forms.TextBox txtPuhelin;
         private System.Windows.Forms.TextBox txtSahko;
         private System.Windows.Forms.TextBox txtPostiP;
-        private System.Windows.Forms.DateTimePicker dtpSyntyma;
-        private System.Windows.Forms.DateTimePicker dtpSaapumis;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -325,15 +303,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkYksityinen;
         private System.Windows.Forms.CheckBox chkYritys;
         private System.Windows.Forms.Button btnVarauksiin;
         private System.Windows.Forms.DataGridView dgwTest;
-        private System.Windows.Forms.DateTimePicker dtpPoistumis;
         private System.Windows.Forms.Button btnAsiakkaat;
+        private System.Windows.Forms.Button btnLissee;
+        private System.Windows.Forms.Button btnPoista;
+        private System.Windows.Forms.DataGridView dgvAsiakkaat;
     }
 }
 
