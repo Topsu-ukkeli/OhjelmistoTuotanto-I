@@ -27,11 +27,11 @@ namespace mail
         private void button1_Click(object sender, EventArgs e)
         {
             string from = "NootWare@gmail.com";
-            string to = "topi.leinonen@edu.savonia.fi";
-            string subject = "Vaatmusmäärittely is done";
+            string to = textBox1.Text;
+            string subject = "Lasku";
             try
             {
-                string Text = tbMessage.Text;
+                string Text = "Tuote: "+ textBox2.Text+ "\nMäärä: "+ textBox3.Text+ "\nSumma: "+  textBox4.Text+ "\n Haluatko hienomman laskun?";
                 string pass = "pofierqtrudvxeje"; //onetime password from google
                 SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
                 mailClient.EnableSsl = true;
