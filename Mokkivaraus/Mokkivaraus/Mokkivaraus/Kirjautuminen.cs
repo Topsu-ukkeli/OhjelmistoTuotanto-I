@@ -22,12 +22,30 @@ namespace Mokkivaraus
         public Kirjautuminen()
         {
             InitializeComponent();
+            FileInfo tf = new FileInfo("C:\\Temp\\Asiakastiedot.txt");
+            if (tf.Exists != true)
+            {
+                using (FileStream fs = tf.Create())
+                {
+                }
+            }
+            cbTiedot.Checked = true;
+            if (cbTiedot.Checked)
+            {
+                using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+                {
+                    txtIP.Text = read.ReadLine();
+                    txtPort.Text = read.ReadLine();
+                    txtTietonimi.Text = read.ReadLine();
+                    txtID.Text = read.ReadLine();
+                }
+            }
         }
 
         private void Kirjautuminen_Load(object sender, EventArgs e)
         {
-            if (txtIP.Text != "" && txtPort.Text != "" && txtTietonimi.Text != "" && txtID.Text != "")
-            {
+            if (txtIP.Text != "" && txtPort.Text != "" && txtTietonimi.Text != "" && txtID.Text != "")//tarkistaa onko kaikki tiedot täytetty valmiiksi
+            {//vaatii vain salasanan silloin
                 this.ActiveControl = txtPass;
             }
             else
@@ -60,21 +78,41 @@ namespace Mokkivaraus
                     builder.Database = txtTietonimi.Text;
                     builder.SslMode = MySqlSslMode.None;
                     connection = new MySqlConnection(builder.ToString());
-                    MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
+                    //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
                     frmAsiakastiedot asikkaat = new frmAsiakastiedot();
                     asikkaat.Show();
-                    kirjaus.Hide();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("connection failed" + ex);
                 }
-                populateDGV();     
+                populateDGV();
+            using (StreamWriter writeasiakkaat = new StreamWriter("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                writeasiakkaat.WriteLine(txtIP.Text);
+                writeasiakkaat.WriteLine(txtPort.Text);
+                writeasiakkaat.WriteLine(txtTietonimi.Text);
+                writeasiakkaat.WriteLine(txtID.Text);
+            }
+            this.Hide();
         }
 
         private void txtPass_TextChanged(object sender, EventArgs e)
         {
             txtPass.UseSystemPasswordChar = true;
+        }
+
+        private void cbTiedot_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Kirjautuminen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cbTiedot.Checked != true)
+            {
+                FileInfo tf = new FileInfo("C:\\Temp\\Asiakastiedot.txt");
+                tf.Delete();
+            }
         }
     }
 }

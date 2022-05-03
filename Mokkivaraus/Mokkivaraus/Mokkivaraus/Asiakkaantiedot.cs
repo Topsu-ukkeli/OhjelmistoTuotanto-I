@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 
 namespace Mokkivaraus
@@ -19,47 +20,57 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
+        public string IP, Tietonimi, ID, Port;
         int i = 4;
         public frmAsiakastiedot()
         {
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                IP = read.ReadLine();
+                Port = read.ReadLine();
+                Tietonimi = read.ReadLine();
+                ID = read.ReadLine();
+            }
             InitializeComponent();
         }
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
         {
+            uint portparsed;
+            portparsed = uint.Parse(Port);
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-                builder.Server = "127.0.0.1";
-                builder.Port = 3307;
-                builder.UserID = "root";
+                builder.Server = IP;
+                builder.Port = portparsed;
+                builder.UserID = ID;
                 builder.Password = "Ruutti";
-                builder.Database = "Mokkivaraus";
+                builder.Database = Tietonimi;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
-                MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
+                //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("connection failed" + ex);
             }
+            populateDGV();
         }
-
+        private void poisto()
+        {
+            txtEtu.Clear();
+            txtSuku.Clear();
+            txtPostiO.Clear();
+            cbPostiN.Text = "";
+            txtPostiP.Clear();
+            txtSahko.Clear();
+            txtPuhelin.Clear();
+        }
         private void btnVarauksiin_Click(object sender, EventArgs e)
         {
             populateDGV();
             frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
             valinnat.Show();
-            string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
-            ExecuteMyQuery(insertQuery2);
-            string insertQuery = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + i + "','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
-            ExecuteMyQuery(insertQuery);
-            //do
-            //{
-            //    i++;
-            //    string insertQuery3 = "INSERT INTO asiakas(asiakas_id,etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + i + "','" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
-            //    ExecuteMyQuery(insertQuery3);
-            //} while (cmd.ExecuteNonQuery() == 1);
         }
         public void ExecuteMyQuery(string query)
         {
@@ -70,13 +81,12 @@ namespace Mokkivaraus
                 cmd = new MySqlCommand(query, connection);
                 if (cmd.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Kysely suoritettu");
+                    //MessageBox.Show("Kysely suoritettu");
                 }
                 else
                 {
                     MessageBox.Show("Kyselyä ei suoritettu");
                 }
-
             }
             catch (Exception e)
             {
@@ -107,7 +117,7 @@ namespace Mokkivaraus
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
-            dgwTest.DataSource = table;
+            dgvAsiakkaat.DataSource = table;
         }
 
         private void btnAsiakkaat_Click(object sender, EventArgs e)
@@ -130,6 +140,34 @@ namespace Mokkivaraus
             {
                 chkYksityinen.Checked = false;
             }
+        }
+
+        private void frmAsiakastiedot_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("Haluatko poistua ilman tietojen tallennusta?", "Olet poistumassa tallentamatta!", MessageBoxButtons.YesNo);
+            if (Result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (Result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void btnLissee_Click(object sender, EventArgs e)
+        {
+            string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
+            ExecuteMyQuery(insertQuery2);
+            string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+            ExecuteMyQuery(insertQuery);
+            populateDGV();
+            poisto();
+        }
+
+        private void btnPoista_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

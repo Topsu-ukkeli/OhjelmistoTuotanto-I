@@ -33,6 +33,10 @@
             this.chkLasku = new System.Windows.Forms.CheckBox();
             this.btnVaraaM = new System.Windows.Forms.Button();
             this.btnAsiakkaisiin = new System.Windows.Forms.Button();
+            this.dtpPoistumis = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dtpSaapumis = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,11 +91,47 @@
             this.btnAsiakkaisiin.UseVisualStyleBackColor = true;
             this.btnAsiakkaisiin.Click += new System.EventHandler(this.btnAsiakkaisiin_Click);
             // 
+            // dtpPoistumis
+            // 
+            this.dtpPoistumis.Location = new System.Drawing.Point(119, 401);
+            this.dtpPoistumis.Name = "dtpPoistumis";
+            this.dtpPoistumis.Size = new System.Drawing.Size(222, 20);
+            this.dtpPoistumis.TabIndex = 25;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(22, 407);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(77, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Poistumispäivä";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(22, 364);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(79, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Saapumispäivä";
+            // 
+            // dtpSaapumis
+            // 
+            this.dtpSaapumis.Location = new System.Drawing.Point(119, 358);
+            this.dtpSaapumis.Name = "dtpSaapumis";
+            this.dtpSaapumis.Size = new System.Drawing.Size(222, 20);
+            this.dtpSaapumis.TabIndex = 24;
+            // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 482);
+            this.Controls.Add(this.dtpPoistumis);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dtpSaapumis);
             this.Controls.Add(this.btnAsiakkaisiin);
             this.Controls.Add(this.btnVaraaM);
             this.Controls.Add(this.chkLasku);
@@ -113,5 +153,9 @@
         private System.Windows.Forms.CheckBox chkLasku;
         private System.Windows.Forms.Button btnVaraaM;
         private System.Windows.Forms.Button btnAsiakkaisiin;
+        private System.Windows.Forms.DateTimePicker dtpPoistumis;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dtpSaapumis;
     }
 }
