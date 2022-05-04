@@ -74,6 +74,7 @@ namespace Mokkivaraus
                 MessageBox.Show("connection failed" + ex);
             }
             populateDGV();
+            MessageBox.Show("");
         }
 
         private void btnAsiakkaisiin_Click(object sender, EventArgs e)
