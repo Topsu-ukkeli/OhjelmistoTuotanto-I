@@ -85,7 +85,7 @@ namespace Mokkivaraus
                 }
                 else
                 {
-                    MessageBox.Show("Kyselyä ei suoritettu");
+                    //MessageBox.Show("Kyselyä ei suoritettu");
                 }
             }
             catch (Exception e)
@@ -140,6 +140,16 @@ namespace Mokkivaraus
             {
                 chkYksityinen.Checked = false;
             }
+        }
+
+        private void btnhae_Click(object sender, EventArgs e)
+        {
+            string getQuery = "SELECT asiakas_id FROM asiakas WHERE sukunimi = '" + txtSuku.Text + "'";
+            ExecuteMyQuery(getQuery);
+            DataTable table2 = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(getQuery, connection);
+            adapter.Fill(table2);
+            dataGridView1.DataSource = table2;
         }
 
         private void frmAsiakastiedot_FormClosing(object sender, FormClosingEventArgs e)
