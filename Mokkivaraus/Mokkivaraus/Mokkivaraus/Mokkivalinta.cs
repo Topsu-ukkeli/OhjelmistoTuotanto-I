@@ -50,7 +50,7 @@ namespace Mokkivaraus
             populateDGV();
             if (chkLasku.Checked)
             {
-                Lasku lasku = new Lasku();
+                frmVaraus lasku = new frmVaraus();
                 lasku.Show();
             }
         }
