@@ -27,9 +27,9 @@ namespace Mokkivaraus
                 Tietonimi = read.ReadLine();
                 ID = read.ReadLine();
             }
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
             {
-                pass = read.ReadToEnd();
+                pass = read.ReadLine();
             }
             InitializeComponent();
         }
@@ -95,8 +95,6 @@ namespace Mokkivaraus
 
         private void frmVaraus_Load(object sender, EventArgs e)
         {
-            string pass;
-            
             uint portparsed;
             portparsed = uint.Parse(Port);
             try

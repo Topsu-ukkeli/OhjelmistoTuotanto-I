@@ -31,7 +31,7 @@ namespace Mokkivaraus
                 Tietonimi = read.ReadLine();
                 ID = read.ReadLine();
             }
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
             {
                 pass = read.ReadLine();
             }
