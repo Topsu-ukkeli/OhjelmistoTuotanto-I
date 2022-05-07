@@ -35,13 +35,18 @@ namespace Mokkivaraus
 
         private void frmTiedot_Load(object sender, EventArgs e)
         {
+            string pass;
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadToEnd();
+            }
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
                 builder.Server = IP;
                 builder.Port = Port;
                 builder.UserID = ID;
-                builder.Password = "Ruutti";
+                builder.Password = pass;
                 builder.Database = Tietonimi;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());

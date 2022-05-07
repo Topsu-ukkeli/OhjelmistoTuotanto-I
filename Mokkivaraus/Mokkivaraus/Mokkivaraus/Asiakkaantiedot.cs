@@ -37,6 +37,11 @@ namespace Mokkivaraus
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
         {
+            string pass;
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadToEnd();
+            }
             uint portparsed;
             portparsed = uint.Parse(Port);
             try
@@ -45,7 +50,7 @@ namespace Mokkivaraus
                 builder.Server = IP;
                 builder.Port = portparsed;
                 builder.UserID = ID;
-                builder.Password = "Ruutti";
+                builder.Password = pass;
                 builder.Database = Tietonimi;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());

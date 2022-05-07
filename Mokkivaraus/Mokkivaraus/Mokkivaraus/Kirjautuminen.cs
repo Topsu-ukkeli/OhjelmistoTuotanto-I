@@ -22,6 +22,12 @@ namespace Mokkivaraus
         public Kirjautuminen()
         {
             InitializeComponent();
+            DirectoryInfo di = new DirectoryInfo("C:\\Temp"); //Luodaan temp-kansio väliaikas
+            if(di.Exists != true)
+            {
+                di.Create();
+            }
+
             FileInfo tf = new FileInfo("C:\\Temp\\Asiakastiedot.txt");
             if (tf.Exists != true)
             {
@@ -30,6 +36,15 @@ namespace Mokkivaraus
                 }
             }
             cbTiedot.Checked = true;
+
+            FileInfo pass = new FileInfo("C:\\Temp\\Access.txt");
+            if (pass.Exists != true)
+            {
+                using (FileStream fa = pass.Create())
+                {
+                }
+            }
+
             if (cbTiedot.Checked)
             {
                 using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
@@ -94,6 +109,10 @@ namespace Mokkivaraus
                 writeasiakkaat.WriteLine(txtTietonimi.Text);
                 writeasiakkaat.WriteLine(txtID.Text);
             }
+            using (StreamWriter writepass = new StreamWriter("C:\\Temp\\Access.txt")) //kirjoitetaan salasana väliaikaiseen tiedostoon lukemisen helpottamiseksi
+            {
+                writepass.WriteLine(txtPass.Text);
+            }
             this.Hide();
         }
 
@@ -113,6 +132,8 @@ namespace Mokkivaraus
                 FileInfo tf = new FileInfo("C:\\Temp\\Asiakastiedot.txt");
                 tf.Delete();
             }
+            FileInfo pass = new FileInfo("C:\\Temp\\Access.txt");
+            pass.Delete();
         }
     }
 }
