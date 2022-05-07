@@ -10,13 +10,11 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
-using Mokkivaraus.Model;
 
 namespace Mokkivaraus
 {
     public partial class frmMokkivalinta : Form
     {
-        List<Tiedot> mokintiedot = new List<Tiedot>();
         private static MySqlConnection connection;
         private static MySqlCommand cmd = null;
         private static DataTable dt;
@@ -50,8 +48,11 @@ namespace Mokkivaraus
             //adapter.Fill(table);
             //dgwMokkivalinta.DataSource = table;
             populateDGV();
-                Lasku lasku = new Lasku();
+            if (chkLasku.Checked)
+            {
+                frmVaraus lasku = new frmVaraus();
                 lasku.Show();
+            }
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
@@ -81,62 +82,20 @@ namespace Mokkivaraus
             at.Show();
         }
 
-        private void dgwMokkivalinta_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            tbMokinnimi.Text = dgwMokkivalinta.CurrentRow.Cells[1].Value.ToString();
-            tbKatuosoite.Text = dgwMokkivalinta.CurrentRow.Cells[2].Value.ToString();
-            tbHinta.Text = dgwMokkivalinta.CurrentRow.Cells[3].Value.ToString();
-            tbKuvaus.Text = dgwMokkivalinta.CurrentRow.Cells[4].Value.ToString();
-            tbMax.Text = dgwMokkivalinta.CurrentRow.Cells[5].Value.ToString();
-            tbVarustelu.Text = dgwMokkivalinta.CurrentRow.Cells[6].Value.ToString();
-            tbPostiN.Text = dgwMokkivalinta.CurrentRow.Cells[7].Value.ToString();
-        }
-
-        private void dgwMokkivalinta_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void tbMokinnimi_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbKatuosoite_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbHinta_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbKuvaus_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbPostiN_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbVarustelu_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbMax_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void chkPaikanP_CheckedChanged(object sender, EventArgs e)
         {
+            if(chkPaikanP.Checked == true)
+            {
+                chkLasku.Checked = false;
+            }
         }
 
         private void chkLasku_CheckedChanged(object sender, EventArgs e)
         {
+            if (chkLasku.Checked == true)
+            {
+                chkPaikanP.Checked = false;
+            }
         }
     }
 }
