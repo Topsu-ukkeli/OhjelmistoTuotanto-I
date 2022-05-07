@@ -17,6 +17,7 @@ namespace Mokkivaraus
     {
         private static MySqlConnection connection;
         public string IP, Tietonimi, ID, Port;
+
         public frmVaraus()
         {
             using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
@@ -28,11 +29,65 @@ namespace Mokkivaraus
             }
             InitializeComponent();
         }
-
-        private void Lasku_Load(object sender, EventArgs e)
+        private void cbPaperilasku_CheckedChanged(object sender, EventArgs e)
         {
+            bool visible;
+            if (cbSpostilasku.Checked == true)
+            {
+                cbSpostilasku.Checked = false;
+            }
+            if (cbLaskutusosoite.Visible == false)
+            {
+                cbLaskutusosoite.Visible = true;
+                visible = true;
+                laskutusVisible(visible);
+            }
+
 
         }
+
+        private void cbSpostilasku_CheckedChanged(object sender, EventArgs e)
+        {
+            bool visible;
+            if (cbPaperilasku.Checked == true)
+            {
+                cbPaperilasku.Checked = false;
+            }
+            if (cbLaskutusosoite.Visible == true)
+            {
+                cbLaskutusosoite.Visible = false;
+                visible = false;
+                laskutusVisible(visible);
+            }
+
+        }
+
+        private void cbLaskutusosoite_CheckedChanged(object sender, EventArgs e)
+        {
+            bool visible;
+            if (cbLaskutusosoite.Checked == false)
+            {
+                visible = true;
+                laskutusVisible(visible);
+            }
+            if (cbLaskutusosoite.Checked == true)
+            {
+                visible = false;
+                laskutusVisible(visible); 
+            }
+
+        }
+
+        private void laskutusVisible(bool visible)
+        {
+            lblOsoite.Visible = visible;
+            lblPostinumero.Visible = visible;
+            lblPostitoimipaikka.Visible = visible;
+            tbLosoite.Visible = visible;
+            tbPostinum.Visible = visible;
+            tbPostitoim.Visible = visible;
+        }
+        
 
         private void frmVaraus_Load(object sender, EventArgs e)
         {
@@ -58,7 +113,7 @@ namespace Mokkivaraus
         }
         public void populateDGV()
         {
-            string query = "SELECT * FROM varaus";
+            string query = "SELECT MAX(varaus_id) FROM varaus";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
