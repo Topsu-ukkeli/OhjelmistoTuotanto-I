@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
+using Mokkivaraus.Model;
 
 
 namespace Mokkivaraus
@@ -144,12 +145,23 @@ namespace Mokkivaraus
 
         private void btnhae_Click(object sender, EventArgs e)
         {
-            string getQuery = "SELECT asiakas_id FROM asiakas WHERE sukunimi = '" + txtSuku.Text + "'";
-            ExecuteMyQuery(getQuery);
+        }
+
+        private void dgvAsiakkaat_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtEtu.Text = dgvAsiakkaat.CurrentRow.Cells[1].Value.ToString();
+            txtSuku.Text = dgvAsiakkaat.CurrentRow.Cells[2].Value.ToString();
+            txtPostiO.Text = dgvAsiakkaat.CurrentRow.Cells[3].Value.ToString();
+            txtSahko.Text = dgvAsiakkaat.CurrentRow.Cells[4].Value.ToString();
+            txtPuhelin.Text = dgvAsiakkaat.CurrentRow.Cells[5].Value.ToString();
+            cbPostiN.Text = dgvAsiakkaat.CurrentRow.Cells[6].Value.ToString();
+            string Query = "SELECT toimipaikka FROM posti WHERE postinro = '"+cbPostiN.Text+"' ";
+            ExecuteMyQuery(Query);
             DataTable table2 = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(getQuery, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
             adapter.Fill(table2);
-            dataGridView1.DataSource = table2;
+            dgwVali.DataSource = table2;
+            txtPostiP.Text = dgwVali.CurrentRow.Cells[0].Value.ToString();
         }
 
         private void frmAsiakastiedot_FormClosing(object sender, FormClosingEventArgs e)

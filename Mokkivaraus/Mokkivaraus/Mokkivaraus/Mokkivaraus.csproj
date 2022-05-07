@@ -68,6 +68,7 @@
     <Compile Include="Lasku.Designer.cs">
       <DependentUpon>Lasku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Tiedot.cs" />
     <Compile Include="Mokkivalinta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,5 +120,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

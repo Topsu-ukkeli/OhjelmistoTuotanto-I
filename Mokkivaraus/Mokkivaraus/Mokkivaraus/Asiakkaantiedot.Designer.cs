@@ -50,11 +50,10 @@
             this.btnLissee = new System.Windows.Forms.Button();
             this.btnPoista = new System.Windows.Forms.Button();
             this.dgvAsiakkaat = new System.Windows.Forms.DataGridView();
-            this.btnhae = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwVali = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEtu
@@ -225,7 +224,7 @@
             // 
             // btnLissee
             // 
-            this.btnLissee.Location = new System.Drawing.Point(296, 449);
+            this.btnLissee.Location = new System.Drawing.Point(297, 449);
             this.btnLissee.Name = "btnLissee";
             this.btnLissee.Size = new System.Drawing.Size(104, 30);
             this.btnLissee.TabIndex = 24;
@@ -247,37 +246,27 @@
             // 
             this.dgvAsiakkaat.AllowUserToAddRows = false;
             this.dgvAsiakkaat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsiakkaat.Location = new System.Drawing.Point(413, 12);
+            this.dgvAsiakkaat.Location = new System.Drawing.Point(406, 28);
             this.dgvAsiakkaat.Name = "dgvAsiakkaat";
             this.dgvAsiakkaat.Size = new System.Drawing.Size(471, 205);
             this.dgvAsiakkaat.TabIndex = 26;
+            this.dgvAsiakkaat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsiakkaat_CellClick);
             // 
-            // btnhae
+            // dgwVali
             // 
-            this.btnhae.Location = new System.Drawing.Point(448, 451);
-            this.btnhae.Name = "btnhae";
-            this.btnhae.Size = new System.Drawing.Size(104, 28);
-            this.btnhae.TabIndex = 27;
-            this.btnhae.Text = "Hae";
-            this.btnhae.UseVisualStyleBackColor = true;
-            this.btnhae.Click += new System.EventHandler(this.btnhae_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(413, 238);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(471, 205);
-            this.dataGridView1.TabIndex = 28;
+            this.dgwVali.AllowUserToAddRows = false;
+            this.dgwVali.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwVali.Location = new System.Drawing.Point(2000, 2000);
+            this.dgwVali.Name = "dgwVali";
+            this.dgwVali.Size = new System.Drawing.Size(10, 10);
+            this.dgwVali.TabIndex = 27;
             // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 491);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnhae);
+            this.Controls.Add(this.dgwVali);
             this.Controls.Add(this.dgvAsiakkaat);
             this.Controls.Add(this.btnPoista);
             this.Controls.Add(this.btnLissee);
@@ -306,7 +295,7 @@
             this.Load += new System.EventHandler(this.frmAsiakastiedot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,8 +325,7 @@
         private System.Windows.Forms.Button btnLissee;
         private System.Windows.Forms.Button btnPoista;
         private System.Windows.Forms.DataGridView dgvAsiakkaat;
-        private System.Windows.Forms.Button btnhae;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwVali;
     }
 }
 
