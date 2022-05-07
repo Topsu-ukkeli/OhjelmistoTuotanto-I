@@ -25,7 +25,6 @@ G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokki
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.exe
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.pdb
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Kirjautuminen.resources
-G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Lasku.resources
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\bin\Debug\Mokkivaraus.exe.config
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\bin\Debug\Mokkivaraus.exe
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\bin\Debug\Mokkivaraus.pdb
@@ -53,3 +52,4 @@ C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokki
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.csproj.CopyComplete
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.exe
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.pdb
+G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.frmVaraus.resources

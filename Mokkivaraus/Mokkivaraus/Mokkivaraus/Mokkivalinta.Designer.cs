@@ -62,7 +62,6 @@
             this.dgwMokkivalinta.Size = new System.Drawing.Size(1009, 223);
             this.dgwMokkivalinta.TabIndex = 0;
             this.dgwMokkivalinta.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwMokkivalinta_CellClick);
-            this.dgwMokkivalinta.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwMokkivalinta_CellEnter);
             // 
             // btnVaraaM
             // 
@@ -128,7 +127,6 @@
             this.tbMokinnimi.Name = "tbMokinnimi";
             this.tbMokinnimi.Size = new System.Drawing.Size(192, 22);
             this.tbMokinnimi.TabIndex = 28;
-            this.tbMokinnimi.TextChanged += new System.EventHandler(this.tbMokinnimi_TextChanged);
             // 
             // tbKatuosoite
             // 
@@ -138,7 +136,6 @@
             this.tbKatuosoite.Name = "tbKatuosoite";
             this.tbKatuosoite.Size = new System.Drawing.Size(192, 22);
             this.tbKatuosoite.TabIndex = 29;
-            this.tbKatuosoite.TextChanged += new System.EventHandler(this.tbKatuosoite_TextChanged);
             // 
             // tbHinta
             // 
@@ -148,7 +145,6 @@
             this.tbHinta.Name = "tbHinta";
             this.tbHinta.Size = new System.Drawing.Size(192, 22);
             this.tbHinta.TabIndex = 30;
-            this.tbHinta.TextChanged += new System.EventHandler(this.tbHinta_TextChanged);
             // 
             // tbKuvaus
             // 
@@ -159,7 +155,6 @@
             this.tbKuvaus.Name = "tbKuvaus";
             this.tbKuvaus.Size = new System.Drawing.Size(192, 74);
             this.tbKuvaus.TabIndex = 31;
-            this.tbKuvaus.TextChanged += new System.EventHandler(this.tbKuvaus_TextChanged);
             // 
             // tbPostiN
             // 
@@ -169,7 +164,6 @@
             this.tbPostiN.Name = "tbPostiN";
             this.tbPostiN.Size = new System.Drawing.Size(192, 22);
             this.tbPostiN.TabIndex = 34;
-            this.tbPostiN.TextChanged += new System.EventHandler(this.tbPostiN_TextChanged);
             // 
             // tbVarustelu
             // 
@@ -179,7 +173,6 @@
             this.tbVarustelu.Name = "tbVarustelu";
             this.tbVarustelu.Size = new System.Drawing.Size(192, 22);
             this.tbVarustelu.TabIndex = 33;
-            this.tbVarustelu.TextChanged += new System.EventHandler(this.tbVarustelu_TextChanged);
             // 
             // tbMax
             // 
@@ -189,7 +182,6 @@
             this.tbMax.Name = "tbMax";
             this.tbMax.Size = new System.Drawing.Size(192, 22);
             this.tbMax.TabIndex = 32;
-            this.tbMax.TextChanged += new System.EventHandler(this.tbMax_TextChanged);
             // 
             // label1
             // 
