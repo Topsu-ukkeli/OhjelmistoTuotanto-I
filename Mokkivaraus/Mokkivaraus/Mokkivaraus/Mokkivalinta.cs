@@ -82,6 +82,14 @@ namespace Mokkivaraus
             at.Show();
         }
 
+        private void dgwMokkivalinta_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+                if (e.RowIndex >= 0)
+                {
+                    lbVaraus.Items.Add("Vittu mulla menee hermot :D");
+                }
+        }
+
         private void chkPaikanP_CheckedChanged(object sender, EventArgs e)
         {
             if(chkPaikanP.Checked == true)
