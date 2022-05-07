@@ -19,11 +19,15 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
-        public string IP, Tietonimi, ID;
+        public string IP, Tietonimi, ID, pass;
         public uint Port;
         public frmTiedot()
         {
             InitializeComponent();
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadLine();
+            }
             using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
             {
                 IP = read.ReadLine();
@@ -35,11 +39,6 @@ namespace Mokkivaraus
 
         private void frmTiedot_Load(object sender, EventArgs e)
         {
-            string pass;
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                pass = read.ReadToEnd();
-            }
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

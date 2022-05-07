@@ -94,8 +94,8 @@ namespace Mokkivaraus
                     builder.SslMode = MySqlSslMode.None;
                     connection = new MySqlConnection(builder.ToString());
                     //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
-                    frmAsiakastiedot asikkaat = new frmAsiakastiedot();
-                    asikkaat.Show();
+                    frmAsiakastiedot asiakkaat = new frmAsiakastiedot();
+                    asiakkaat.Show();
                 }
                 catch (Exception ex)
                 {
@@ -133,7 +133,7 @@ namespace Mokkivaraus
                 tf.Delete();
             }
             FileInfo pass = new FileInfo("C:\\Temp\\Access.txt");
-            pass.Delete();
+            //pass.Delete();
         }
     }
 }

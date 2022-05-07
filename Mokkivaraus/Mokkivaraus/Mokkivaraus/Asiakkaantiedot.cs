@@ -21,7 +21,7 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
-        public string IP, Tietonimi, ID, Port;
+        public string IP, Tietonimi, ID, Port, pass;
         int i = 4;
         public frmAsiakastiedot()
         {
@@ -32,16 +32,16 @@ namespace Mokkivaraus
                 Tietonimi = read.ReadLine();
                 ID = read.ReadLine();
             }
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadToEnd();
+            }
             InitializeComponent();
         }
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
         {
-            string pass;
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                pass = read.ReadToEnd();
-            }
+            
             uint portparsed;
             portparsed = uint.Parse(Port);
             try

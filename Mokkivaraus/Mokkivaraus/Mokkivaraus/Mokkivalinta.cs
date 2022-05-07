@@ -19,7 +19,7 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
-        public string IP, Tietonimi, ID;
+        public string IP, Tietonimi, ID, pass;
         public uint Port;
         public frmMokkivalinta()
         {
@@ -30,6 +30,10 @@ namespace Mokkivaraus
                 Port = uint.Parse(read.ReadLine());
                 Tietonimi = read.ReadLine();
                 ID = read.ReadLine();
+            }
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadLine();
             }
         }
         public void populateDGV()
@@ -54,11 +58,6 @@ namespace Mokkivaraus
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
         {
-            string pass;
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                pass = read.ReadToEnd();
-            }
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

@@ -16,7 +16,7 @@ namespace Mokkivaraus
     public partial class frmVaraus : Form
     {
         private static MySqlConnection connection;
-        public string IP, Tietonimi, ID, Port;
+        public string IP, Tietonimi, ID, Port, pass;
 
         public frmVaraus()
         {
@@ -26,6 +26,10 @@ namespace Mokkivaraus
                 Port = read.ReadLine();
                 Tietonimi = read.ReadLine();
                 ID = read.ReadLine();
+            }
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                pass = read.ReadToEnd();
             }
             InitializeComponent();
         }
@@ -92,10 +96,7 @@ namespace Mokkivaraus
         private void frmVaraus_Load(object sender, EventArgs e)
         {
             string pass;
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                pass = read.ReadToEnd();
-            }
+            
             uint portparsed;
             portparsed = uint.Parse(Port);
             try
