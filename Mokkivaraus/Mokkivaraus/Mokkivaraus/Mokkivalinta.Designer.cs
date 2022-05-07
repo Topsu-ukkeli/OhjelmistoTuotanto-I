@@ -58,9 +58,9 @@
             this.chkPaikanP.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPaikanP.Location = new System.Drawing.Point(12, 254);
             this.chkPaikanP.Name = "chkPaikanP";
-            this.chkPaikanP.Size = new System.Drawing.Size(120, 17);
+            this.chkPaikanP.Size = new System.Drawing.Size(81, 17);
             this.chkPaikanP.TabIndex = 1;
-            this.chkPaikanP.Text = "maksa paikanpäällä";
+            this.chkPaikanP.Text = "Paperilasku";
             this.chkPaikanP.UseVisualStyleBackColor = true;
             this.chkPaikanP.CheckedChanged += new System.EventHandler(this.chkPaikanP_CheckedChanged);
             // 
@@ -69,9 +69,9 @@
             this.chkLasku.AutoSize = true;
             this.chkLasku.Location = new System.Drawing.Point(138, 254);
             this.chkLasku.Name = "chkLasku";
-            this.chkLasku.Size = new System.Drawing.Size(95, 17);
+            this.chkLasku.Size = new System.Drawing.Size(104, 17);
             this.chkLasku.TabIndex = 2;
-            this.chkLasku.Text = "maksa laskulla";
+            this.chkLasku.Text = "Sähköpostilasku";
             this.chkLasku.UseVisualStyleBackColor = true;
             this.chkLasku.CheckedChanged += new System.EventHandler(this.chkLasku_CheckedChanged);
             // 

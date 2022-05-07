@@ -27,19 +27,19 @@ namespace mail
         private void button1_Click(object sender, EventArgs e)
         {
             string from = "NootWare@gmail.com";
-            string to = "topi.leinonen@edu.savonia.fi";
-            string subject = "Tärkeää postia, olkaa hyvä";
+            string to = textBox1.Text;
+            string subject = "Lasku";
             try
             {
-                string Text = tbMessage.Text;
-                string pass = "Noottiware"; //onetime password from google
+                string Text = "Tuote: "+ textBox2.Text+ "\nMäärä: "+ textBox3.Text+ "\nSumma: "+  textBox4.Text+ "\n Haluatko hienomman laskun?";
+                string pass = "pofierqtrudvxeje"; //onetime password from google
                 SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
                 mailClient.EnableSsl = true;
                 mailClient.Port = 587;
                 mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
                 MailMessage msgMail = new MailMessage(from, to, subject, Text);
                 mailClient.Send(msgMail);
-                MessageBox.Show("Your Mail is sended");
+                MessageBox.Show("Your Mail was sent");
 
             }
             catch (Exception ex)
