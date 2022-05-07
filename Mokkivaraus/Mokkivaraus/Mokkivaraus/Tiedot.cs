@@ -24,11 +24,11 @@ namespace Mokkivaraus
         public frmTiedot()
         {
             InitializeComponent();
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
             {
                 pass = read.ReadLine();
             }
-            using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
             {
                 IP = read.ReadLine();
                 Port = uint.Parse(read.ReadLine());

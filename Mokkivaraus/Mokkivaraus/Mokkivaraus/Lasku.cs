@@ -63,6 +63,67 @@ namespace Mokkivaraus
                 visible = false;
                 laskutusVisible(visible);
             }
+            if (cbSpostilasku.Checked == true)
+            {
+                lblSposlasku.Visible = true;
+                tbLsposti.Visible = true;
+                cbSpostilasku.Visible = true;
+            }
+
+        }
+
+        private void btnVahvista_Click(object sender, EventArgs e)
+        {
+            string from = "NootWare@gmail.com";
+            string pass = "pofierqtrudvxeje"; //onetime password from google
+            //SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
+            //mailClient.EnableSsl = true;
+            //mailClient.Port = 587;
+            //mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
+
+            if (cbSpostilasku.Checked = true)
+            {
+                cbLaskutusosoite.Checked = false;
+                
+                string to;
+                if (cbVahvistasposti.Checked == true)
+                {
+                    to = tbLsposti.Text;
+                }
+                else
+                {
+                    to = "???";
+                }
+                string subject = "Village Newbies -lasku";
+                try
+                {
+                    //string Text = "Tuote: " + textBox2.Text + "\nMäärä: " +  + "\nSumma: " + textBox4.Text + "\n Haluatko hienomman laskun?";
+                    
+                    //MailMessage msgMail = new MailMessage(from, to, subject, Text);
+                    //mailClient.Send(msgMail);
+                    MessageBox.Show("Your Mail was sent");
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+
+            }
+            
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
         }
 
@@ -71,12 +132,12 @@ namespace Mokkivaraus
             bool visible;
             if (cbLaskutusosoite.Checked == false)
             {
-                visible = true;
+                visible = false;
                 laskutusVisible(visible);
             }
             if (cbLaskutusosoite.Checked == true)
             {
-                visible = false;
+                visible = true;
                 laskutusVisible(visible); 
             }
 
@@ -92,7 +153,6 @@ namespace Mokkivaraus
             tbPostitoim.Visible = visible;
         }
         
-
         private void frmVaraus_Load(object sender, EventArgs e)
         {
             uint portparsed;

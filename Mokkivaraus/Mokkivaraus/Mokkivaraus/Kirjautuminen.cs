@@ -96,7 +96,8 @@ namespace Mokkivaraus
                     //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
                     frmAsiakastiedot asiakkaat = new frmAsiakastiedot();
                     asiakkaat.Show();
-                }
+                
+            }
                 catch (Exception ex)
                 {
                     MessageBox.Show("connection failed" + ex);
@@ -132,8 +133,6 @@ namespace Mokkivaraus
                 FileInfo tf = new FileInfo("C:\\Temp\\Asiakastiedot.txt");
                 tf.Delete();
             }
-            FileInfo pass = new FileInfo("C:\\Temp\\Access.txt");
-            //pass.Delete();
         }
     }
 }

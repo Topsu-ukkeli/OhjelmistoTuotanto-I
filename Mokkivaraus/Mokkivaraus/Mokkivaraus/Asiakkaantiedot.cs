@@ -21,34 +21,31 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
-        public string IP, Tietonimi, ID, Port, pass;
-        int i = 4;
+        public string IP, Tietonimi, ID, pass;
+        public uint Port;
         public frmAsiakastiedot()
         {
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                IP = read.ReadLine();
-                Port = read.ReadLine();
-                Tietonimi = read.ReadLine();
-                ID = read.ReadLine();
-            }
+            InitializeComponent();
             using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
             {
                 pass = read.ReadLine();
             }
-            InitializeComponent();
+            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
+            {
+                IP = read.ReadLine();
+                Port = uint.Parse(read.ReadLine());
+                Tietonimi = read.ReadLine();
+                ID = read.ReadLine();
+            }
         }
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
         {
-            
-            uint portparsed;
-            portparsed = uint.Parse(Port);
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
                 builder.Server = IP;
-                builder.Port = portparsed;
+                builder.Port = Port;
                 builder.UserID = ID;
                 builder.Password = pass;
                 builder.Database = Tietonimi;
