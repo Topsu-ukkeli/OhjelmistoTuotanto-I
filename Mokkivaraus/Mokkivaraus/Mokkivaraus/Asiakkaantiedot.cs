@@ -17,6 +17,7 @@ namespace Mokkivaraus
 {
     public partial class frmAsiakastiedot : Form
     {
+        List<Tiedot> tiedot = new List<Tiedot>();
         private static MySqlConnection connection;
         private static MySqlCommand cmd = null;
         private static DataTable dt;
@@ -58,8 +59,18 @@ namespace Mokkivaraus
         }
         private void btnVarauksiin_Click(object sender, EventArgs e)
         {
+            int id;
+            Tiedot t = new Tiedot();
             populateDGV();
-            frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
+            string Query = "SELECT asiakas_id FROM asiakas WHERE etunimi = '" + txtEtu.Text + "' ";
+            ExecuteMyQuery(Query);
+            DataTable table2 = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
+            adapter.Fill(table2);
+            dgwVali.DataSource = table2;
+            t.id = (int)dgwVali.CurrentRow.Cells[0].Value;
+            id = t.id;
+            frmMokkivalinta valinnat = new frmMokkivalinta(id); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
             valinnat.Show();
         }
         public void ExecuteMyQuery(string query)

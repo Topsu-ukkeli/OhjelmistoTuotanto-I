@@ -9,7 +9,7 @@ namespace Mokkivaraus.Model
     class Tiedot
     {
         public int id { get; set; }
-        public string Mokinnimi { get; set; }
+        public int mokkiID { get; set; }
         public string Katuosoite { get; set; }
         public string Hinta { get; set; }
         public string Kuvaus { get; set; }

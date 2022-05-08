@@ -16,14 +16,18 @@ namespace Mokkivaraus
 {
     public partial class frmMokkivalinta : Form
     {
+        Tiedot t = new Tiedot();
+        int ID;
+        List<Tiedot> tiedot = new List<Tiedot>();
         private static MySqlConnection connection;
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
 
-        public frmMokkivalinta()
+        public frmMokkivalinta(int id)
         {
             InitializeComponent();
+            ID = id;
         }
         public void populateDGV()
         {
@@ -35,7 +39,13 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-            //string insertquery = "INSERT INTO posti(postinro, toimipaikka) VALUES('70780','Kuopio')";
+            string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
+            string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
+            string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
+            Tiedot t = new Tiedot();
+            t.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
+            string insertquery = "INSERT INTO varaus(varattu_pvm ,varattu_alkupvm,varattu_loppupvm,asiakas_id ,mokki_id) VALUES ('" + Tanaan +"','" + Saapumis + "','" + Poistumis + "','"+ID+"','"+t.mokkiID+"');";
+            ExecuteMyQuery(insertquery);
             //DataTable table = new DataTable();
             //MySqlDataAdapter adapter = new MySqlDataAdapter(insertquery, connection);
             //adapter.Fill(table);
@@ -81,6 +91,12 @@ namespace Mokkivaraus
             tbMax.Text = dgwMokkivalinta.CurrentRow.Cells[5].Value.ToString();
             tbVarustelu.Text = dgwMokkivalinta.CurrentRow.Cells[6].Value.ToString();
             tbPostiN.Text = dgwMokkivalinta.CurrentRow.Cells[7].Value.ToString();
+            string Query = "SELECT mokki_id FROM mokki WHERE mokkinimi = '" + tbMokinnimi.Text + "' ";
+            ExecuteMyQuery(Query);
+            DataTable table2 = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
+            adapter.Fill(table2);
+            dgwMokinid.DataSource = table2;
 
         }
 
@@ -91,6 +107,45 @@ namespace Mokkivaraus
         private void chkLasku_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+        public void ExecuteMyQuery(string query)
+        {
+            //tarkastetaan onko kysely mennyt läpi
+            try
+            {
+                OpenConnection();
+                cmd = new MySqlCommand(query, connection);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    //MessageBox.Show("Kysely suoritettu");
+                }
+                else
+                {
+                    //MessageBox.Show("Kyselyä ei suoritettu");
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public void OpenConnection()
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+        }
+        public void CloseConnection()
+        {
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
         }
     }
 }

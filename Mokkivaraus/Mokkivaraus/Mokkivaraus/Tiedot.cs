@@ -16,6 +16,7 @@ namespace Mokkivaraus
 {
     public partial class frmTiedot : Form
     {
+        int ID;
         private static MySqlConnection connection;
         private static MySqlCommand cmd = null;
         private static DataTable dt;
@@ -62,7 +63,8 @@ namespace Mokkivaraus
 
         private void btnMokki_Click(object sender, EventArgs e)
         {
-            frmMokkivalinta mokki = new frmMokkivalinta();
+            int id = 0;
+            frmMokkivalinta mokki = new frmMokkivalinta(id);
             mokki.Show();
         }
     }

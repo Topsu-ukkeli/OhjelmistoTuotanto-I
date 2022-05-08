@@ -49,7 +49,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.dgwMokinid = new System.Windows.Forms.DataGridView();
+            this.dtpEhk = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwMokkivalinta
@@ -246,11 +249,32 @@
             this.label7.TabIndex = 41;
             this.label7.Text = "Postinumero";
             // 
+            // dgwMokinid
+            // 
+            this.dgwMokinid.AllowUserToAddRows = false;
+            this.dgwMokinid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwMokinid.Location = new System.Drawing.Point(1045, 343);
+            this.dgwMokinid.Name = "dgwMokinid";
+            this.dgwMokinid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwMokinid.Size = new System.Drawing.Size(10, 10);
+            this.dgwMokinid.TabIndex = 42;
+            // 
+            // dtpEhk
+            // 
+            this.dtpEhk.CustomFormat = "yyyy-MM-dd";
+            this.dtpEhk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEhk.Location = new System.Drawing.Point(896, 418);
+            this.dtpEhk.Name = "dtpEhk";
+            this.dtpEhk.Size = new System.Drawing.Size(192, 20);
+            this.dtpEhk.TabIndex = 43;
+            // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 482);
+            this.Controls.Add(this.dtpEhk);
+            this.Controls.Add(this.dgwMokinid);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -276,6 +300,7 @@
             this.Text = "Mokkivalinta";
             this.Load += new System.EventHandler(this.frmMokkivalinta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,5 +329,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dgwMokinid;
+        private System.Windows.Forms.DateTimePicker dtpEhk;
     }
 }
