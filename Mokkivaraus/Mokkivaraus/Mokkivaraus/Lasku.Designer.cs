@@ -104,7 +104,6 @@
             // 
             // btnPalaa
             // 
-            this.btnPalaa.Enabled = false;
             this.btnPalaa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPalaa.Location = new System.Drawing.Point(19, 397);
             this.btnPalaa.Name = "btnPalaa";
@@ -197,6 +196,7 @@
             this.cbVahvistasposti.Text = "Lähetä lasku eri sähköpostiosoitteeseen";
             this.cbVahvistasposti.UseVisualStyleBackColor = true;
             this.cbVahvistasposti.Visible = false;
+            this.cbVahvistasposti.CheckedChanged += new System.EventHandler(this.cbVahvistasposti_CheckedChanged);
             // 
             // tbLsposti
             // 
@@ -206,7 +206,6 @@
             this.tbLsposti.Size = new System.Drawing.Size(179, 23);
             this.tbLsposti.TabIndex = 15;
             this.tbLsposti.Visible = false;
-            this.tbLsposti.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lblSposlasku
             // 

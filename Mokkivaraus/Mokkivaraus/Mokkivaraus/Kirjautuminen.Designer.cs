@@ -63,6 +63,7 @@
             this.txtPass.Size = new System.Drawing.Size(155, 20);
             this.txtPass.TabIndex = 4;
             this.txtPass.TextChanged += new System.EventHandler(this.txtPass_TextChanged);
+            this.txtPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Kirjautuminen_KeyDown);
             // 
             // txtID
             // 
@@ -142,7 +143,6 @@
             this.cbTiedot.TabIndex = 11;
             this.cbTiedot.Text = "Tallenna tiedot";
             this.cbTiedot.UseVisualStyleBackColor = true;
-            this.cbTiedot.CheckedChanged += new System.EventHandler(this.cbTiedot_CheckedChanged);
             // 
             // Kirjautuminen
             // 
@@ -165,6 +165,7 @@
             this.Text = "Kirjautuminen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Kirjautuminen_FormClosing);
             this.Load += new System.EventHandler(this.Kirjautuminen_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Kirjautuminen_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

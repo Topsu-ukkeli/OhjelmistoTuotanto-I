@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
+using Mokkivaraus.Model;
 
 namespace Mokkivaraus
 {
@@ -19,22 +20,9 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
-        public string IP, Tietonimi, ID, pass;
-        public uint Port;
         public frmTiedot()
         {
             InitializeComponent();
-            using (StreamReader read = new StreamReader("C:\\Temp\\Access.txt"))
-            {
-                pass = read.ReadLine();
-            }
-            using (StreamReader read = new StreamReader("C:\\Temp\\Asiakastiedot.txt"))
-            {
-                IP = read.ReadLine();
-                Port = uint.Parse(read.ReadLine());
-                Tietonimi = read.ReadLine();
-                ID = read.ReadLine();
-            }
         }
 
         private void frmTiedot_Load(object sender, EventArgs e)
@@ -42,11 +30,11 @@ namespace Mokkivaraus
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
-                builder.Server = IP;
-                builder.Port = Port;
-                builder.UserID = ID;
-                builder.Password = pass;
-                builder.Database = Tietonimi;
+                builder.Server = LoginInfo.IP;
+                builder.Port = LoginInfo.Port;
+                builder.UserID = LoginInfo.User;
+                builder.Password = LoginInfo.Pass;
+                builder.Database = LoginInfo.Name;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
                 //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
