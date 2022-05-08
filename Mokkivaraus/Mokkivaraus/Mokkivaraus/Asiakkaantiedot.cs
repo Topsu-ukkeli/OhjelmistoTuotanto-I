@@ -62,7 +62,7 @@ namespace Mokkivaraus
             int id;
             Tiedot t = new Tiedot();
             populateDGV();
-            string Query = "SELECT asiakas_id FROM asiakas WHERE etunimi = '" + txtEtu.Text + "' ";
+            string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
             ExecuteMyQuery(Query);
             DataTable table2 = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
@@ -70,6 +70,16 @@ namespace Mokkivaraus
             dgwVali.DataSource = table2;
             t.id = (int)dgwVali.CurrentRow.Cells[0].Value;
             id = t.id;
+            string Update = "UPDATE asiakas SET etunimi = '"+txtEtu.Text+"', sukunimi = '"+txtSuku.Text+"', lahiosoite = '"+txtPostiO.Text+"', puhelinnro = '"+txtPuhelin.Text+"', postinro = '"+cbPostiN.Text+"' WHERE asiakas_id = '"+lblID.Text+"';";
+            ExecuteMyQuery(Update);
+            populateDGV();
+            txtEtu.Clear();
+            txtSuku.Clear();
+            txtPostiO.Clear();
+            cbPostiN.Text = "";
+            txtPostiP.Clear();
+            txtSahko.Clear();
+            txtPuhelin.Clear();
             frmMokkivalinta valinnat = new frmMokkivalinta(id); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
             valinnat.Show();
         }
@@ -149,6 +159,7 @@ namespace Mokkivaraus
 
         private void dgvAsiakkaat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            lblID.Text = dgvAsiakkaat.CurrentRow.Cells[0].Value.ToString();
             txtEtu.Text = dgvAsiakkaat.CurrentRow.Cells[1].Value.ToString();
             txtSuku.Text = dgvAsiakkaat.CurrentRow.Cells[2].Value.ToString();
             txtPostiO.Text = dgvAsiakkaat.CurrentRow.Cells[3].Value.ToString();

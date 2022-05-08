@@ -51,6 +51,7 @@
             this.btnPoista = new System.Windows.Forms.Button();
             this.dgvAsiakkaat = new System.Windows.Forms.DataGridView();
             this.dgwVali = new System.Windows.Forms.DataGridView();
+            this.lblID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
@@ -261,11 +262,21 @@
             this.dgwVali.Size = new System.Drawing.Size(10, 10);
             this.dgwVali.TabIndex = 27;
             // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(2000, 1000);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(13, 13);
+            this.lblID.TabIndex = 28;
+            this.lblID.Text = "0";
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(913, 491);
+            this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgwVali);
             this.Controls.Add(this.dgvAsiakkaat);
             this.Controls.Add(this.btnPoista);
@@ -326,6 +337,7 @@
         private System.Windows.Forms.Button btnPoista;
         private System.Windows.Forms.DataGridView dgvAsiakkaat;
         private System.Windows.Forms.DataGridView dgwVali;
+        private System.Windows.Forms.Label lblID;
     }
 }
 
