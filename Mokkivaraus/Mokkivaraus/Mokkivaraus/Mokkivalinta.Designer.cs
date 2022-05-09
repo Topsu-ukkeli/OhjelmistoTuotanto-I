@@ -253,7 +253,7 @@
             // 
             this.dgwMokinid.AllowUserToAddRows = false;
             this.dgwMokinid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokinid.Location = new System.Drawing.Point(1045, 343);
+            this.dgwMokinid.Location = new System.Drawing.Point(989, 225);
             this.dgwMokinid.Name = "dgwMokinid";
             this.dgwMokinid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokinid.Size = new System.Drawing.Size(10, 10);
@@ -263,7 +263,7 @@
             // 
             this.dtpEhk.CustomFormat = "yyyy-MM-dd";
             this.dtpEhk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEhk.Location = new System.Drawing.Point(896, 418);
+            this.dtpEhk.Location = new System.Drawing.Point(746, 160);
             this.dtpEhk.Name = "dtpEhk";
             this.dtpEhk.Size = new System.Drawing.Size(192, 20);
             this.dtpEhk.TabIndex = 43;
@@ -273,8 +273,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1100, 482);
-            this.Controls.Add(this.dtpEhk);
-            this.Controls.Add(this.dgwMokinid);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -296,6 +294,8 @@
             this.Controls.Add(this.btnAsiakkaisiin);
             this.Controls.Add(this.btnVaraaM);
             this.Controls.Add(this.dgwMokkivalinta);
+            this.Controls.Add(this.dgwMokinid);
+            this.Controls.Add(this.dtpEhk);
             this.Name = "frmMokkivalinta";
             this.Text = "Mokkivalinta";
             this.Load += new System.EventHandler(this.frmMokkivalinta_Load);

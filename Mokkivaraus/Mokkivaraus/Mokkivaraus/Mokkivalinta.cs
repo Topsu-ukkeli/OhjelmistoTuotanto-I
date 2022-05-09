@@ -24,10 +24,9 @@ namespace Mokkivaraus
         private static DataTable dt;
         private static MySqlDataAdapter sda;
 
-        public frmMokkivalinta(int id)
+        public frmMokkivalinta()
         {
             InitializeComponent();
-            ID = id;
         }
         public void populateDGV()
         {
@@ -39,20 +38,24 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-            string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
-            string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
-            string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
-            Tiedot t = new Tiedot();
-            t.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
-            string insertquery = "INSERT INTO varaus(varattu_pvm ,varattu_alkupvm,varattu_loppupvm,asiakas_id ,mokki_id) VALUES ('" + Tanaan +"','" + Saapumis + "','" + Poistumis + "','"+ID+"','"+t.mokkiID+"');";
-            ExecuteMyQuery(insertquery);
-            //DataTable table = new DataTable();
-            //MySqlDataAdapter adapter = new MySqlDataAdapter(insertquery, connection);
-            //adapter.Fill(table);
-            //dgwMokkivalinta.DataSource = table;
-            populateDGV();
+            if (Tiedot.id == 0)
+            {
+                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+                frmAsiakastiedot asiakas = new frmAsiakastiedot();
+                asiakas.Show();
+            }
+            else
+            {
+                string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
+                string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
+                string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
+                ID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
+                string insertquery = "INSERT INTO varaus(varattu_pvm ,varattu_alkupvm,varattu_loppupvm,asiakas_id ,mokki_id) VALUES ('" + Tanaan + "','" + Saapumis + "','" + Poistumis + "','" + Tiedot.id + "','" + ID + "');";
+                ExecuteMyQuery(insertquery);
+                populateDGV();
                 frmVaraus lasku = new frmVaraus();
                 lasku.Show();
+            }
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)

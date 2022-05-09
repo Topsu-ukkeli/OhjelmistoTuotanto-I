@@ -8,14 +8,14 @@ namespace Mokkivaraus.Model
 {
     class Tiedot
     {
-        public int id { get; set; }
-        public int mokkiID { get; set; }
-        public string Katuosoite { get; set; }
-        public string Hinta { get; set; }
-        public string Kuvaus { get; set; }
-        public string Henkilomaara { get; set; }
-        public string Varustelu { get; set; }
-        public string Postinumero { get; set; }
+        public static int id { get; set; }
+        public static int mokkiID { get; set; }
+        public static string Katuosoite { get; set; }
+        public static string Hinta { get; set; }
+        public static string Kuvaus { get; set; }
+        public static string Henkilomaara { get; set; }
+        public static string Varustelu { get; set; }
+        public static string Postinumero { get; set; }
 
     }
 }
