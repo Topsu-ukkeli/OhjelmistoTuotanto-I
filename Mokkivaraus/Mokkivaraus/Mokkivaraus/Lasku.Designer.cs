@@ -44,7 +44,13 @@
             this.cbVahvistasposti = new System.Windows.Forms.CheckBox();
             this.tbLsposti = new System.Windows.Forms.TextBox();
             this.lblSposlasku = new System.Windows.Forms.Label();
+            this.dgvVarausMokki = new System.Windows.Forms.DataGridView();
+            this.dgvVarausPalvelut = new System.Windows.Forms.DataGridView();
+            this.dgvLasku = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarausMokki)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarausPalvelut)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLasku)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVaraus
@@ -53,7 +59,7 @@
             this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVaraus.Location = new System.Drawing.Point(19, 53);
             this.dgvVaraus.Name = "dgvVaraus";
-            this.dgvVaraus.Size = new System.Drawing.Size(715, 141);
+            this.dgvVaraus.Size = new System.Drawing.Size(576, 71);
             this.dgvVaraus.TabIndex = 1;
             // 
             // lblVaraus
@@ -70,7 +76,7 @@
             // 
             this.cbPaperilasku.AutoSize = true;
             this.cbPaperilasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbPaperilasku.Location = new System.Drawing.Point(19, 200);
+            this.cbPaperilasku.Location = new System.Drawing.Point(19, 233);
             this.cbPaperilasku.Name = "cbPaperilasku";
             this.cbPaperilasku.Size = new System.Drawing.Size(133, 29);
             this.cbPaperilasku.TabIndex = 3;
@@ -82,7 +88,7 @@
             // 
             this.cbSpostilasku.AutoSize = true;
             this.cbSpostilasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSpostilasku.Location = new System.Drawing.Point(420, 200);
+            this.cbSpostilasku.Location = new System.Drawing.Point(420, 233);
             this.cbSpostilasku.Name = "cbSpostilasku";
             this.cbSpostilasku.Size = new System.Drawing.Size(175, 29);
             this.cbSpostilasku.TabIndex = 4;
@@ -116,7 +122,7 @@
             // 
             this.cbLaskutusosoite.AutoSize = true;
             this.cbLaskutusosoite.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbLaskutusosoite.Location = new System.Drawing.Point(19, 235);
+            this.cbLaskutusosoite.Location = new System.Drawing.Point(19, 268);
             this.cbLaskutusosoite.Name = "cbLaskutusosoite";
             this.cbLaskutusosoite.Size = new System.Drawing.Size(215, 29);
             this.cbLaskutusosoite.TabIndex = 7;
@@ -128,7 +134,7 @@
             // tbLosoite
             // 
             this.tbLosoite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLosoite.Location = new System.Drawing.Point(126, 269);
+            this.tbLosoite.Location = new System.Drawing.Point(126, 302);
             this.tbLosoite.Name = "tbLosoite";
             this.tbLosoite.Size = new System.Drawing.Size(135, 23);
             this.tbLosoite.TabIndex = 8;
@@ -137,7 +143,7 @@
             // tbPostinum
             // 
             this.tbPostinum.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostinum.Location = new System.Drawing.Point(126, 298);
+            this.tbPostinum.Location = new System.Drawing.Point(126, 331);
             this.tbPostinum.Name = "tbPostinum";
             this.tbPostinum.Size = new System.Drawing.Size(135, 23);
             this.tbPostinum.TabIndex = 9;
@@ -146,7 +152,7 @@
             // tbPostitoim
             // 
             this.tbPostitoim.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostitoim.Location = new System.Drawing.Point(126, 327);
+            this.tbPostitoim.Location = new System.Drawing.Point(126, 360);
             this.tbPostitoim.Name = "tbPostitoim";
             this.tbPostitoim.Size = new System.Drawing.Size(135, 23);
             this.tbPostitoim.TabIndex = 10;
@@ -156,7 +162,7 @@
             // 
             this.lblOsoite.AutoSize = true;
             this.lblOsoite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOsoite.Location = new System.Drawing.Point(16, 272);
+            this.lblOsoite.Location = new System.Drawing.Point(16, 305);
             this.lblOsoite.Name = "lblOsoite";
             this.lblOsoite.Size = new System.Drawing.Size(88, 17);
             this.lblOsoite.TabIndex = 11;
@@ -167,7 +173,7 @@
             // 
             this.lblPostinumero.AutoSize = true;
             this.lblPostinumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostinumero.Location = new System.Drawing.Point(16, 301);
+            this.lblPostinumero.Location = new System.Drawing.Point(16, 334);
             this.lblPostinumero.Name = "lblPostinumero";
             this.lblPostinumero.Size = new System.Drawing.Size(87, 17);
             this.lblPostinumero.TabIndex = 12;
@@ -178,7 +184,7 @@
             // 
             this.lblPostitoimipaikka.AutoSize = true;
             this.lblPostitoimipaikka.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPostitoimipaikka.Location = new System.Drawing.Point(16, 330);
+            this.lblPostitoimipaikka.Location = new System.Drawing.Point(16, 363);
             this.lblPostitoimipaikka.Name = "lblPostitoimipaikka";
             this.lblPostitoimipaikka.Size = new System.Drawing.Size(109, 17);
             this.lblPostitoimipaikka.TabIndex = 13;
@@ -189,7 +195,7 @@
             // 
             this.cbVahvistasposti.AutoSize = true;
             this.cbVahvistasposti.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbVahvistasposti.Location = new System.Drawing.Point(420, 235);
+            this.cbVahvistasposti.Location = new System.Drawing.Point(420, 268);
             this.cbVahvistasposti.Name = "cbVahvistasposti";
             this.cbVahvistasposti.Size = new System.Drawing.Size(378, 29);
             this.cbVahvistasposti.TabIndex = 14;
@@ -201,7 +207,7 @@
             // tbLsposti
             // 
             this.tbLsposti.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbLsposti.Location = new System.Drawing.Point(526, 269);
+            this.tbLsposti.Location = new System.Drawing.Point(526, 302);
             this.tbLsposti.Name = "tbLsposti";
             this.tbLsposti.Size = new System.Drawing.Size(179, 23);
             this.tbLsposti.TabIndex = 15;
@@ -211,18 +217,47 @@
             // 
             this.lblSposlasku.AutoSize = true;
             this.lblSposlasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSposlasku.Location = new System.Drawing.Point(417, 272);
+            this.lblSposlasku.Location = new System.Drawing.Point(417, 305);
             this.lblSposlasku.Name = "lblSposlasku";
             this.lblSposlasku.Size = new System.Drawing.Size(103, 17);
             this.lblSposlasku.TabIndex = 16;
             this.lblSposlasku.Text = "Laskutusosoite";
             this.lblSposlasku.Visible = false;
             // 
+            // dgvVarausMokki
+            // 
+            this.dgvVarausMokki.AllowUserToAddRows = false;
+            this.dgvVarausMokki.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVarausMokki.Location = new System.Drawing.Point(19, 130);
+            this.dgvVarausMokki.Name = "dgvVarausMokki";
+            this.dgvVarausMokki.Size = new System.Drawing.Size(576, 71);
+            this.dgvVarausMokki.TabIndex = 17;
+            // 
+            // dgvVarausPalvelut
+            // 
+            this.dgvVarausPalvelut.AllowUserToAddRows = false;
+            this.dgvVarausPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVarausPalvelut.Location = new System.Drawing.Point(601, 53);
+            this.dgvVarausPalvelut.Name = "dgvVarausPalvelut";
+            this.dgvVarausPalvelut.Size = new System.Drawing.Size(187, 148);
+            this.dgvVarausPalvelut.TabIndex = 18;
+            // 
+            // dgvLasku
+            // 
+            this.dgvLasku.AllowUserToAddRows = false;
+            this.dgvLasku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLasku.Location = new System.Drawing.Point(727, 92);
+            this.dgvLasku.Name = "dgvLasku";
+            this.dgvLasku.Size = new System.Drawing.Size(10, 10);
+            this.dgvLasku.TabIndex = 19;
+            // 
             // frmVaraus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(990, 508);
+            this.Controls.Add(this.dgvVarausPalvelut);
+            this.Controls.Add(this.dgvVarausMokki);
             this.Controls.Add(this.lblSposlasku);
             this.Controls.Add(this.tbLsposti);
             this.Controls.Add(this.cbVahvistasposti);
@@ -239,10 +274,14 @@
             this.Controls.Add(this.cbPaperilasku);
             this.Controls.Add(this.lblVaraus);
             this.Controls.Add(this.dgvVaraus);
+            this.Controls.Add(this.dgvLasku);
             this.Name = "frmVaraus";
             this.Text = "Yhteenveto";
             this.Load += new System.EventHandler(this.frmVaraus_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarausMokki)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVarausPalvelut)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLasku)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,5 +305,8 @@
         private System.Windows.Forms.CheckBox cbVahvistasposti;
         private System.Windows.Forms.TextBox tbLsposti;
         private System.Windows.Forms.Label lblSposlasku;
+        private System.Windows.Forms.DataGridView dgvVarausMokki;
+        private System.Windows.Forms.DataGridView dgvVarausPalvelut;
+        private System.Windows.Forms.DataGridView dgvLasku;
     }
 }

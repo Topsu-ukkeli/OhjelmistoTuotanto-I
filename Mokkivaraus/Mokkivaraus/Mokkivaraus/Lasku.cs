@@ -48,6 +48,7 @@ namespace Mokkivaraus
             }
             
         }
+        
 
         private void cbSpostilasku_CheckedChanged(object sender, EventArgs e)
         {
@@ -83,6 +84,14 @@ namespace Mokkivaraus
                 tbLsposti.Visible = false;
             }
         }
+        private void update(string add)
+        {
+            string Query = "SELECT "+add +" FROM asiakas WHERE asiakas_id = '" + Tiedot.id + "' ";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
+            adapter.Fill(table);
+            dgvLasku.DataSource = table;
+        }
 
         private void btnVahvista_Click(object sender, EventArgs e)
         {
@@ -103,7 +112,9 @@ namespace Mokkivaraus
                     }
                     else
                     {
-                        to = "???";
+                        to = "sahkoposti";
+                        update(to);
+                        to = dgvLasku.Rows[0].Cells[0].Value.ToString();
                     }
                     string subject = "Village Newbies -lasku";
                     try
@@ -112,7 +123,7 @@ namespace Mokkivaraus
 
                         //MailMessage msgMail = new MailMessage(from, to, subject, Text);
                         //mailClient.Send(msgMail);
-                        MessageBox.Show("Lasku on lähetetty sähköpostiosoitteeseen: "+ to);
+                        MessageBox.Show("Lasku on lähetetty sähköpostiosoitteeseen:\n"+ to);
 
                     }
                     catch (Exception ex)
@@ -122,7 +133,18 @@ namespace Mokkivaraus
                 }
                 else
                 {
-
+                    string address;
+                    if (cbLaskutusosoite.Checked == true)
+                    {
+                        address = tbLosoite.Text;
+                    }
+                    else
+                    {
+                        address = "lahiosoite";
+                        update(address);
+                        address = dgvLasku.Rows[0].Cells[0].Value.ToString();
+                    }
+                    MessageBox.Show("Varaus on vahvistettu. \nLasku on lähetetty osoitteeseen:\n"+address);
                 }
 
             }
@@ -178,17 +200,49 @@ namespace Mokkivaraus
             {
                 MessageBox.Show("connection failed" + ex);
             }
-            populateDGV();
+            populateDGVAsiakas();
+            populateDGVMokki();
+            populateDGVPalvelut();
         }
-        public void populateDGV()
+        public void populateDGVMokki()
         {
-            string query = "SELECT MAX(varaus_id) FROM varaus";
+            string query = "SELECT * FROM mokki WHERE mokki_id = '"+Tiedot.mokkiID+"'";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+            adapter.Fill(table);
+            dgvVarausMokki.DataSource = table;
+        }
+        public void populateDGVAsiakas()
+        {
+            string query = "SELECT * FROM asiakas WHERE asiakas_id ='" + Tiedot.id + "'";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
         }
+        public void populateDGVPalvelut()
+        {
+            string haettavat= "";
+            if (Tiedot.Palvelut.Count > 0)
+            {
+                for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+                {
+                    if (i++ == Tiedot.Palvelut.Count)
+                    {
+                        haettavat += Tiedot.Palvelut[i];
+                    }
+                    else
+                    {
+                        haettavat += Tiedot.Palvelut[i] + ",";
+                    }
+                }
+                string query = "SELECT * FROM palvelu WHERE nimi ='" + haettavat + "'";
+                DataTable table = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                adapter.Fill(table);
+                dgvVarausPalvelut.DataSource = table;
+            } 
+        }
 
-        
     }
 }
