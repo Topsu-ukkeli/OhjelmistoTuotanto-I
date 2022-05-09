@@ -10,7 +10,7 @@ namespace Mokkivaraus.Model
     {
         public static int id { get; set; }
         public static int mokkiID { get; set; }
-        public static string Katuosoite { get; set; }
+        public static string alueid { get; set; }
         public static string Hinta { get; set; }
         public static string Kuvaus { get; set; }
         public static string Henkilomaara { get; set; }

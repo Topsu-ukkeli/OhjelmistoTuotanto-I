@@ -38,14 +38,6 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-            if (Tiedot.id == 0)
-            {
-                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
-                frmAsiakastiedot asiakas = new frmAsiakastiedot();
-                asiakas.Show();
-            }
-            else
-            {
                 string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
                 string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
                 string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
@@ -55,7 +47,6 @@ namespace Mokkivaraus
                 populateDGV();
                 frmVaraus lasku = new frmVaraus();
                 lasku.Show();
-            }
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
@@ -81,8 +72,6 @@ namespace Mokkivaraus
 
         private void btnAsiakkaisiin_Click(object sender, EventArgs e)
         {
-            frmTiedot at = new frmTiedot();
-            at.Show();
         }
 
         private void dgwMokkivalinta_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -94,13 +83,26 @@ namespace Mokkivaraus
             tbMax.Text = dgwMokkivalinta.CurrentRow.Cells[5].Value.ToString();
             tbVarustelu.Text = dgwMokkivalinta.CurrentRow.Cells[6].Value.ToString();
             tbPostiN.Text = dgwMokkivalinta.CurrentRow.Cells[7].Value.ToString();
+            Tiedot.alueid = dgwMokkivalinta.CurrentRow.Cells[8].Value.ToString();
             string Query = "SELECT mokki_id FROM mokki WHERE mokkinimi = '" + tbMokinnimi.Text + "' ";
             ExecuteMyQuery(Query);
             DataTable table2 = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
             adapter.Fill(table2);
             dgwMokinid.DataSource = table2;
-
+            string Aluequery = "SELECT (nimi) FROM palvelu WHERE alue_id = 5;";
+            ExecuteMyQuery(Aluequery);
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter2 = new MySqlDataAdapter(Aluequery, connection);
+            adapter2.Fill(table);
+            dgwAlue.DataSource = table;
+            int Alue = dgwAlue.Rows.Count;
+            string Palvelut;
+            for (int i = 0; i < Alue; i++)
+            {
+                Palvelut = dgwAlue.Rows[i].Cells[0].Value.ToString();
+                lbPalvelut.Items.Add(Palvelut);
+            }
         }
 
         private void chkPaikanP_CheckedChanged(object sender, EventArgs e)
@@ -149,6 +151,27 @@ namespace Mokkivaraus
             {
                 connection.Close();
             }
+        }
+
+        private void lbPalvelut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void lbPalvelut_MouseClick(object sender, MouseEventArgs e)
+        {
+            lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
+            lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+        }
+
+        private void lbValitutpalvelut_MouseClick(object sender, MouseEventArgs e)
+        {
+            lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
+            lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+        }
+
+        private void dgwMokkivalinta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

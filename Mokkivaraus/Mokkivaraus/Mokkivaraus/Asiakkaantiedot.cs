@@ -22,6 +22,7 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
+        string PostiNumero;
         public frmAsiakastiedot()
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace Mokkivaraus
                 MessageBox.Show("connection failed" + ex);
             }
             populateDGV();
+            Postinumerot();
         }
         private void poisto()
         {
@@ -59,26 +61,40 @@ namespace Mokkivaraus
         }
         private void btnVarauksiin_Click(object sender, EventArgs e)
         {
-            populateDGV();
-            string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
+                populateDGV();
+                string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
+                ExecuteMyQuery(Query);
+                DataTable table2 = new DataTable();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
+                adapter.Fill(table2);
+                dgwVali.DataSource = table2;
+                Tiedot.id = (int)dgwVali.CurrentRow.Cells[0].Value;
+                populateDGV();
+                Tyhjenna();
+                if (Tiedot.id == 0)
+                {
+                    MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+                }
+                else
+                {
+                    frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
+                    valinnat.Show();
+                }
+        }
+        private void Postinumerot()
+        {
+            string Query = "SELECT postinro FROM posti WHERE postinro BETWEEN 00000 AND 99999;";
             ExecuteMyQuery(Query);
-            DataTable table2 = new DataTable();
+            DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
-            adapter.Fill(table2);
-            dgwVali.DataSource = table2;
-            Tiedot.id = (int)dgwVali.CurrentRow.Cells[0].Value;
-            string Update = "UPDATE asiakas SET etunimi = '"+txtEtu.Text+"', sukunimi = '"+txtSuku.Text+"', lahiosoite = '"+txtPostiO.Text+"', puhelinnro = '"+txtPuhelin.Text+"', postinro = '"+cbPostiN.Text+"', sahkoposti = '"+txtSahko.Text+"'WHERE asiakas_id = '"+lblID.Text+"';";
-            ExecuteMyQuery(Update);
-            populateDGV();
-            txtEtu.Clear();
-            txtSuku.Clear();
-            txtPostiO.Clear();
-            cbPostiN.Text = "";
-            txtPostiP.Clear();
-            txtSahko.Clear();
-            txtPuhelin.Clear();
-            frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
-            valinnat.Show();
+            adapter.Fill(table);
+            dgwPostinro.DataSource = table;
+            int Posti = dgwPostinro.Rows.Count;
+            for (int i = 0; i < Posti; i++)
+            {
+                PostiNumero = dgwPostinro.Rows[i].Cells[0].Value.ToString();
+                cbPostiN.Items.Add(PostiNumero);
+            }
         }
         public void ExecuteMyQuery(string query)
         {
@@ -98,7 +114,7 @@ namespace Mokkivaraus
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
             }
             finally
             {
@@ -136,18 +152,10 @@ namespace Mokkivaraus
 
         private void chkYksityinen_CheckedChanged(object sender, EventArgs e)
         {
-            if(chkYksityinen.Checked == true)
-            {
-                chkYritys.Checked = false;
-            }
         }
 
         private void chkYritys_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkYritys.Checked == true)
-            {
-                chkYksityinen.Checked = false;
-            }
         }
 
         private void btnhae_Click(object sender, EventArgs e)
@@ -184,20 +192,56 @@ namespace Mokkivaraus
                 e.Cancel = true;
             }
         }
-
+        private void Tyhjenna()
+        {
+            txtEtu.Clear();
+            txtSuku.Clear();
+            txtPostiO.Clear();
+            cbPostiN.Text = "";
+            txtPostiP.Clear();
+            txtSahko.Clear();
+            txtPuhelin.Clear();
+        }
         private void btnLissee_Click(object sender, EventArgs e)
         {
-            string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
-            ExecuteMyQuery(insertQuery2);
-            string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
-            ExecuteMyQuery(insertQuery);
+            try
+            {
+                string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
+                ExecuteMyQuery(insertQuery2);
+                string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+                ExecuteMyQuery(insertQuery);
+            }
+            catch(Exception ex)
+            {
+
+            }
             populateDGV();
             poisto();
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
         {
+            string Delete = "DELETE FROM asiakas WHERE asiakas_id = ('"+lblID.Text+"')";
+            ExecuteMyQuery(Delete);
+            populateDGV();
+        }
 
+        private void btnPaivita_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(lblID.Text);
+            if(id <= 0)
+            {
+
+            }
+            else
+            {
+                string Update = "UPDATE asiakas SET etunimi = '" + txtEtu.Text + "', sukunimi = '" + txtSuku.Text + "', lahiosoite = '" + txtPostiO.Text + "', puhelinnro = '" + txtPuhelin.Text + "', postinro = '" + cbPostiN.Text + "', sahkoposti = '" + txtSahko.Text + "'WHERE asiakas_id = '" + lblID.Text + "';";
+                ExecuteMyQuery(Update);
+                string Update2 = "UPDATE posti SET toimipaikka = '"+txtPostiP.Text+"' WHERE postinro = '" + cbPostiN.Text + "';";
+                ExecuteMyQuery(Update2);
+                populateDGV();
+                Tyhjenna();
+            }
         }
     }
 }

@@ -42,8 +42,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.chkYksityinen = new System.Windows.Forms.CheckBox();
-            this.chkYritys = new System.Windows.Forms.CheckBox();
             this.btnVarauksiin = new System.Windows.Forms.Button();
             this.dgwTest = new System.Windows.Forms.DataGridView();
             this.btnAsiakkaat = new System.Windows.Forms.Button();
@@ -52,9 +50,12 @@
             this.dgvAsiakkaat = new System.Windows.Forms.DataGridView();
             this.dgwVali = new System.Windows.Forms.DataGridView();
             this.lblID = new System.Windows.Forms.Label();
+            this.dgwPostinro = new System.Windows.Forms.DataGridView();
+            this.btnPaivita = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).BeginInit();
             this.SuspendLayout();
             // 
             // txtEtu
@@ -170,33 +171,9 @@
             this.label7.TabIndex = 18;
             this.label7.Text = "Puhelinnumero";
             // 
-            // chkYksityinen
-            // 
-            this.chkYksityinen.AutoSize = true;
-            this.chkYksityinen.Checked = true;
-            this.chkYksityinen.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkYksityinen.Location = new System.Drawing.Point(155, 28);
-            this.chkYksityinen.Name = "chkYksityinen";
-            this.chkYksityinen.Size = new System.Drawing.Size(74, 17);
-            this.chkYksityinen.TabIndex = 20;
-            this.chkYksityinen.Text = "Yksityinen";
-            this.chkYksityinen.UseVisualStyleBackColor = true;
-            this.chkYksityinen.CheckedChanged += new System.EventHandler(this.chkYksityinen_CheckedChanged);
-            // 
-            // chkYritys
-            // 
-            this.chkYritys.AutoSize = true;
-            this.chkYritys.Location = new System.Drawing.Point(297, 28);
-            this.chkYritys.Name = "chkYritys";
-            this.chkYritys.Size = new System.Drawing.Size(51, 17);
-            this.chkYritys.TabIndex = 21;
-            this.chkYritys.Text = "Yritys";
-            this.chkYritys.UseVisualStyleBackColor = true;
-            this.chkYritys.CheckedChanged += new System.EventHandler(this.chkYritys_CheckedChanged);
-            // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(68, 415);
+            this.btnVarauksiin.Location = new System.Drawing.Point(810, 432);
             this.btnVarauksiin.Name = "btnVarauksiin";
             this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
             this.btnVarauksiin.TabIndex = 10;
@@ -215,7 +192,7 @@
             // 
             // btnAsiakkaat
             // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(182, 415);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(66, 432);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
             this.btnAsiakkaat.Size = new System.Drawing.Size(108, 64);
             this.btnAsiakkaat.TabIndex = 11;
@@ -225,9 +202,9 @@
             // 
             // btnLissee
             // 
-            this.btnLissee.Location = new System.Drawing.Point(297, 449);
+            this.btnLissee.Location = new System.Drawing.Point(502, 272);
             this.btnLissee.Name = "btnLissee";
-            this.btnLissee.Size = new System.Drawing.Size(104, 30);
+            this.btnLissee.Size = new System.Drawing.Size(104, 65);
             this.btnLissee.TabIndex = 24;
             this.btnLissee.Text = "Lisää";
             this.btnLissee.UseVisualStyleBackColor = true;
@@ -235,9 +212,9 @@
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(296, 415);
+            this.btnPoista.Location = new System.Drawing.Point(722, 271);
             this.btnPoista.Name = "btnPoista";
-            this.btnPoista.Size = new System.Drawing.Size(104, 28);
+            this.btnPoista.Size = new System.Drawing.Size(104, 65);
             this.btnPoista.TabIndex = 25;
             this.btnPoista.Text = "Poista";
             this.btnPoista.UseVisualStyleBackColor = true;
@@ -247,7 +224,7 @@
             // 
             this.dgvAsiakkaat.AllowUserToAddRows = false;
             this.dgvAsiakkaat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsiakkaat.Location = new System.Drawing.Point(406, 28);
+            this.dgvAsiakkaat.Location = new System.Drawing.Point(435, 61);
             this.dgvAsiakkaat.Name = "dgvAsiakkaat";
             this.dgvAsiakkaat.Size = new System.Drawing.Size(471, 205);
             this.dgvAsiakkaat.TabIndex = 26;
@@ -271,11 +248,31 @@
             this.lblID.TabIndex = 28;
             this.lblID.Text = "0";
             // 
+            // dgwPostinro
+            // 
+            this.dgwPostinro.AllowUserToAddRows = false;
+            this.dgwPostinro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwPostinro.Location = new System.Drawing.Point(741, 114);
+            this.dgwPostinro.Name = "dgwPostinro";
+            this.dgwPostinro.Size = new System.Drawing.Size(10, 10);
+            this.dgwPostinro.TabIndex = 29;
+            // 
+            // btnPaivita
+            // 
+            this.btnPaivita.Location = new System.Drawing.Point(612, 271);
+            this.btnPaivita.Name = "btnPaivita";
+            this.btnPaivita.Size = new System.Drawing.Size(104, 65);
+            this.btnPaivita.TabIndex = 30;
+            this.btnPaivita.Text = "Päivitä tiedot";
+            this.btnPaivita.UseVisualStyleBackColor = true;
+            this.btnPaivita.Click += new System.EventHandler(this.btnPaivita_Click);
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 508);
+            this.Controls.Add(this.btnPaivita);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgwVali);
             this.Controls.Add(this.dgvAsiakkaat);
@@ -284,8 +281,6 @@
             this.Controls.Add(this.btnAsiakkaat);
             this.Controls.Add(this.dgwTest);
             this.Controls.Add(this.btnVarauksiin);
-            this.Controls.Add(this.chkYritys);
-            this.Controls.Add(this.chkYksityinen);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -300,6 +295,7 @@
             this.Controls.Add(this.txtPostiO);
             this.Controls.Add(this.txtSuku);
             this.Controls.Add(this.txtEtu);
+            this.Controls.Add(this.dgwPostinro);
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);
@@ -307,6 +303,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -328,8 +325,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox chkYksityinen;
-        private System.Windows.Forms.CheckBox chkYritys;
         private System.Windows.Forms.Button btnVarauksiin;
         private System.Windows.Forms.DataGridView dgwTest;
         private System.Windows.Forms.Button btnAsiakkaat;
@@ -338,6 +333,8 @@
         private System.Windows.Forms.DataGridView dgvAsiakkaat;
         private System.Windows.Forms.DataGridView dgwVali;
         private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.DataGridView dgwPostinro;
+        private System.Windows.Forms.Button btnPaivita;
     }
 }
 
