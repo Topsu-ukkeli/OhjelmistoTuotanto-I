@@ -90,7 +90,7 @@
             // 
             this.dtpPoistumis.CustomFormat = "yyyy-MM-dd";
             this.dtpPoistumis.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPoistumis.Location = new System.Drawing.Point(657, 440);
+            this.dtpPoistumis.Location = new System.Drawing.Point(673, 428);
             this.dtpPoistumis.Name = "dtpPoistumis";
             this.dtpPoistumis.Size = new System.Drawing.Size(192, 20);
             this.dtpPoistumis.TabIndex = 25;
@@ -98,7 +98,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(545, 447);
+            this.label10.Location = new System.Drawing.Point(561, 435);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 13);
             this.label10.TabIndex = 27;
@@ -107,7 +107,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(545, 404);
+            this.label9.Location = new System.Drawing.Point(561, 392);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 13);
             this.label9.TabIndex = 26;
@@ -117,7 +117,7 @@
             // 
             this.dtpSaapumis.CustomFormat = "yyyy-MM-dd";
             this.dtpSaapumis.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSaapumis.Location = new System.Drawing.Point(657, 397);
+            this.dtpSaapumis.Location = new System.Drawing.Point(673, 385);
             this.dtpSaapumis.Name = "dtpSaapumis";
             this.dtpSaapumis.Size = new System.Drawing.Size(192, 20);
             this.dtpSaapumis.TabIndex = 24;
@@ -126,7 +126,7 @@
             // 
             this.tbMokinnimi.Enabled = false;
             this.tbMokinnimi.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMokinnimi.Location = new System.Drawing.Point(338, 270);
+            this.tbMokinnimi.Location = new System.Drawing.Point(354, 258);
             this.tbMokinnimi.Name = "tbMokinnimi";
             this.tbMokinnimi.Size = new System.Drawing.Size(192, 22);
             this.tbMokinnimi.TabIndex = 28;
@@ -135,7 +135,7 @@
             // 
             this.tbKatuosoite.Enabled = false;
             this.tbKatuosoite.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKatuosoite.Location = new System.Drawing.Point(338, 310);
+            this.tbKatuosoite.Location = new System.Drawing.Point(354, 298);
             this.tbKatuosoite.Name = "tbKatuosoite";
             this.tbKatuosoite.Size = new System.Drawing.Size(192, 22);
             this.tbKatuosoite.TabIndex = 29;
@@ -144,7 +144,7 @@
             // 
             this.tbHinta.Enabled = false;
             this.tbHinta.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHinta.Location = new System.Drawing.Point(338, 353);
+            this.tbHinta.Location = new System.Drawing.Point(354, 341);
             this.tbHinta.Name = "tbHinta";
             this.tbHinta.Size = new System.Drawing.Size(192, 22);
             this.tbHinta.TabIndex = 30;
@@ -153,7 +153,7 @@
             // 
             this.tbKuvaus.Enabled = false;
             this.tbKuvaus.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKuvaus.Location = new System.Drawing.Point(338, 396);
+            this.tbKuvaus.Location = new System.Drawing.Point(354, 384);
             this.tbKuvaus.Multiline = true;
             this.tbKuvaus.Name = "tbKuvaus";
             this.tbKuvaus.Size = new System.Drawing.Size(192, 74);
@@ -163,7 +163,7 @@
             // 
             this.tbPostiN.Enabled = false;
             this.tbPostiN.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostiN.Location = new System.Drawing.Point(657, 353);
+            this.tbPostiN.Location = new System.Drawing.Point(673, 341);
             this.tbPostiN.Name = "tbPostiN";
             this.tbPostiN.Size = new System.Drawing.Size(192, 22);
             this.tbPostiN.TabIndex = 34;
@@ -172,7 +172,7 @@
             // 
             this.tbVarustelu.Enabled = false;
             this.tbVarustelu.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVarustelu.Location = new System.Drawing.Point(657, 310);
+            this.tbVarustelu.Location = new System.Drawing.Point(673, 298);
             this.tbVarustelu.Name = "tbVarustelu";
             this.tbVarustelu.Size = new System.Drawing.Size(192, 22);
             this.tbVarustelu.TabIndex = 33;
@@ -181,7 +181,7 @@
             // 
             this.tbMax.Enabled = false;
             this.tbMax.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMax.Location = new System.Drawing.Point(657, 270);
+            this.tbMax.Location = new System.Drawing.Point(673, 258);
             this.tbMax.Name = "tbMax";
             this.tbMax.Size = new System.Drawing.Size(192, 22);
             this.tbMax.TabIndex = 32;
@@ -189,7 +189,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(248, 277);
+            this.label1.Location = new System.Drawing.Point(264, 265);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 35;
@@ -198,7 +198,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 317);
+            this.label2.Location = new System.Drawing.Point(264, 305);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 36;
@@ -207,7 +207,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(248, 360);
+            this.label3.Location = new System.Drawing.Point(264, 348);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 13);
             this.label3.TabIndex = 37;
@@ -216,7 +216,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(248, 403);
+            this.label4.Location = new System.Drawing.Point(264, 391);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 13);
             this.label4.TabIndex = 38;
@@ -225,7 +225,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(545, 277);
+            this.label5.Location = new System.Drawing.Point(561, 265);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 13);
             this.label5.TabIndex = 39;
@@ -234,7 +234,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(545, 317);
+            this.label6.Location = new System.Drawing.Point(561, 305);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(51, 13);
             this.label6.TabIndex = 40;
@@ -243,7 +243,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(545, 360);
+            this.label7.Location = new System.Drawing.Point(561, 348);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 41;
