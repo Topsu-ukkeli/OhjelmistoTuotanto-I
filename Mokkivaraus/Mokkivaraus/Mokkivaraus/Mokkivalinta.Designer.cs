@@ -49,7 +49,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgwMokinid = new System.Windows.Forms.DataGridView();
-            this.dtpEhk = new System.Windows.Forms.DateTimePicker();
             this.lbPalvelut = new System.Windows.Forms.ListBox();
             this.lbValitutpalvelut = new System.Windows.Forms.ListBox();
             this.dgwAlue = new System.Windows.Forms.DataGridView();
@@ -62,7 +61,7 @@
             // 
             this.dgwMokkivalinta.AllowUserToAddRows = false;
             this.dgwMokkivalinta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokkivalinta.Location = new System.Drawing.Point(15, 12);
+            this.dgwMokkivalinta.Location = new System.Drawing.Point(15, 20);
             this.dgwMokkivalinta.Name = "dgwMokkivalinta";
             this.dgwMokkivalinta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokkivalinta.Size = new System.Drawing.Size(1009, 223);
@@ -253,15 +252,6 @@
             this.dgwMokinid.Size = new System.Drawing.Size(10, 10);
             this.dgwMokinid.TabIndex = 42;
             // 
-            // dtpEhk
-            // 
-            this.dtpEhk.CustomFormat = "yyyy-MM-dd";
-            this.dtpEhk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpEhk.Location = new System.Drawing.Point(746, 160);
-            this.dtpEhk.Name = "dtpEhk";
-            this.dtpEhk.Size = new System.Drawing.Size(192, 20);
-            this.dtpEhk.TabIndex = 43;
-            // 
             // lbPalvelut
             // 
             this.lbPalvelut.FormattingEnabled = true;
@@ -319,7 +309,6 @@
             this.Controls.Add(this.btnVaraaM);
             this.Controls.Add(this.dgwMokkivalinta);
             this.Controls.Add(this.dgwMokinid);
-            this.Controls.Add(this.dtpEhk);
             this.Controls.Add(this.dgwAlue);
             this.Name = "frmMokkivalinta";
             this.Text = "Mokkivalinta";
@@ -355,7 +344,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgwMokinid;
-        private System.Windows.Forms.DateTimePicker dtpEhk;
         private System.Windows.Forms.ListBox lbPalvelut;
         private System.Windows.Forms.ListBox lbValitutpalvelut;
         private System.Windows.Forms.DataGridView dgwAlue;

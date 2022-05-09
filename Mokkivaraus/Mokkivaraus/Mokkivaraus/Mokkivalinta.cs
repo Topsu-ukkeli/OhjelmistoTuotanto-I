@@ -37,7 +37,7 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-                string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
+                //string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
                 string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
                 string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
             Tiedot.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
@@ -89,12 +89,14 @@ namespace Mokkivaraus
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
             adapter.Fill(table2);
             dgwMokinid.DataSource = table2;
-            string Aluequery = "SELECT (nimi) FROM palvelu WHERE alue_id = 5;";
+            string Aluequery = "SELECT (nimi) FROM palvelu WHERE alue_id = '"+Tiedot.alueid+"';";
             ExecuteMyQuery(Aluequery);
             DataTable table = new DataTable();
             MySqlDataAdapter adapter2 = new MySqlDataAdapter(Aluequery, connection);
             adapter2.Fill(table);
             dgwAlue.DataSource = table;
+            lbPalvelut.Items.Clear();
+            lbValitutpalvelut.Items.Clear();
             int Alue = dgwAlue.Rows.Count;
             string Palvelut;
             for (int i = 0; i < Alue; i++)
@@ -159,14 +161,14 @@ namespace Mokkivaraus
         private void lbPalvelut_MouseClick(object sender, MouseEventArgs e)
         {
             lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
-            Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
+            //Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
             lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
         }
 
         private void lbValitutpalvelut_MouseClick(object sender, MouseEventArgs e)
         {
             lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
-            Tiedot.Palvelut.Remove(lbPalvelut.SelectedItem.ToString());
+            //Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
             lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
         }
 
