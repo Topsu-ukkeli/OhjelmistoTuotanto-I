@@ -114,50 +114,50 @@ namespace Mokkivaraus
             }
         }
         private void confirmed() //vitunpaskamopovittusaatana
-        {
-            //string format = datetime.today.tostring("yyyy-mm-dd");
-            //datetime today = datetime.parse(format);
-            //string varaus="insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
-            //    " values('" + today + "','"+ today + "','"
-            //    +tiedot.saapumispäivä + "','" +tiedot.poistumispäivä + "','" +tiedot.id + "','" +tiedot.mokkiid + "');";
+        {//kokeile Datetimepickereiden kautta
+            string format = DateTime.Today.ToString("yyyy-mm-dd");
+            DateTime today = DateTime.Parse(format);
+            string varaus = "insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
+                " values('" + today + "','" + today + "','"
+                + Tiedot.Saapumispäivä + "','" + Tiedot.Poistumispäivä + "','" + Tiedot.id + "','" + Tiedot.mokkiID + "');";
 
-            //connection.open();
-            //cmd = new mysqlcommand(varaus, connection);
-            //cmd.executenonquery();
-            //connection.close();
-            //int alueid= (int)dgvvarausmokki.rows[0].cells[8].value;
-            //int palveluid, varausid, palvelulkm;
-            
-            //for (int i = 0; i < tiedot.palvelut.count; i++)
-            //{
-            //    list<string> lasketut= new list<string>();
-            //    string query = "select palvelu_id from palvelu where nimi ='" + tiedot.palvelut[i] + "' and alue_id = '" + alueid + "';";
+            connection.Open();
+            cmd = new MySqlCommand(varaus, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            int alueid = (int)dgvVarausMokki.Rows[0].Cells[8].Value;
+            int palveluid, varausid, palvelulkm;
+
+            for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+            {
+                List<string> lasketut = new List<string>();
+                string query = "select palvelu_id from palvelu where nimi ='" + Tiedot.Palvelut[i] + "' and alue_id = '" + alueid + "';";
 
 
-            //    string varausidquery = "select varaus_id from palvelu where asiakas_id ='" + tiedot.id + "' and mokki_id = '" + tiedot.mokkiid + "'"
-            //        + "and varattu_alkupvm = '"+tiedot.saapumispäivä+"'"+"and varattu_pvm ='"+ datetime.today.tostring("yyyy-mm-dd")+"'";
+                string varausidquery = "select varaus_id from palvelu where asiakas_id ='" + Tiedot.id + "' and mokki_id = '" + Tiedot.mokkiID + "'"
+                    + "and varattu_alkupvm = '" + Tiedot.Saapumispäivä + "'" + "and varattu_pvm ='" + DateTime.Today.ToString("yyyy-mm-dd") + "'";
 
-            //    mysqlcommand cmd1 = new mysqlcommand(query, connection);
-            //    mysqlcommand cmd2 = new mysqlcommand(varausidquery,connection);
-            //    connection.open();
-                
-            //    palveluid = (int)cmd1.executescalar();
-            //    varausid = (int)cmd2.executescalar();
-                
-            //    for (int j = 0; j < tiedot.palvelut.count; j++)
-            //    {
-            //        if (tiedot.palvelut[j].equals(tiedot.palvelut[i])==true)
-            //        {
-            //            lasketut.add(tiedot.palvelut[j]);
-            //        }
-            //    }
-            //    palvelulkm = lasketut.count();
-            //    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "','" + varausid + "','"+ palvelulkm+"'";
+                MySqlCommand cmd1 = new MySqlCommand(query, connection);
+                MySqlCommand cmd2 = new MySqlCommand(varausidquery, connection);
+                connection.Open();
 
-            //    mysqlcommand cmd3 = new mysqlcommand(varauksen_palvelut, connection);
-            //    cmd3.executenonquery();
-            //}
-            //connection.close();
+                palveluid = (int)cmd1.ExecuteScalar();
+                varausid = (int)cmd2.ExecuteScalar();
+
+                for (int j = 0; j < Tiedot.Palvelut.Count; j++)
+                {
+                    if (Tiedot.Palvelut[j].Equals(Tiedot.Palvelut[i]) == true)
+                    {
+                        lasketut.Add(Tiedot.Palvelut[j]);
+                    }
+                }
+                palvelulkm = lasketut.Count();
+                string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "','" + varausid + "','" + palvelulkm + "'";
+
+                MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
+                cmd3.ExecuteNonQuery();
+            }
+            connection.Close();
 
 
         }
