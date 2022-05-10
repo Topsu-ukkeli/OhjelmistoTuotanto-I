@@ -86,7 +86,7 @@ namespace Mokkivaraus
         }
         private void update(string add) //käydään hakemassa tarvittava tieto kyselyn avulla
         {
-            string Query = "SELECT "+add +" FROM asiakas WHERE asiakas_id = '" + Tiedot.id + "' ";
+            string Query = "SELECT "+add +" FROM asiakas WHERE asiakas_id = '" + Tiedot.id + "';";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
             adapter.Fill(table);
@@ -117,23 +117,25 @@ namespace Mokkivaraus
         {
             string varaus="INSERT INTO varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm,varattu_loppupvm,asiakas_id,mokki_id)" +
                 " VALUES('" + DateTime.Today.ToString("yyyy-MM-dd") + "','"+ DateTime.Today.ToString("yyyy-MM-dd") + "','"
-                +Tiedot.Saapumispäivä + "','" +Tiedot.Poistumispäivä + "','" +Tiedot.id + "','" +Tiedot.mokkiID;
+                +Tiedot.Saapumispäivä + "','" +Tiedot.Poistumispäivä + "','" +Tiedot.id + "','" +Tiedot.mokkiID + "';";
             connection.Open();
             cmd = new MySqlCommand(varaus, connection);
             cmd.ExecuteNonQuery();
             connection.Close();
             int alueid= (int)dgvVarausMokki.Rows[0].Cells[8].Value;
-            int palveluid;
+            int palveluid, varausid;
             for (int i = 0; i < Tiedot.Palvelut.Count; i++)
             {
-                string query = "SELECT palvelu_id FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "'";
+                string query = "SELECT palvelu_id FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "';";
+                string varausidquery = "SELECT varaus_id FROM palvelu WHERE asiakas_id ='" + Tiedot.Palvelut[i] + "' AND mokki_id = '" + Tiedot.mokkiID + "'"
+                    + "AND varattu_alkupvm = '"+Tiedot.Saapumispäivä+"'"+"AND varattu_pvm ='"+ DateTime.Today.ToString("yyyy-MM-dd")+"'";
                 MySqlCommand cmd1 = new MySqlCommand(query, connection);
-                MySqlCommand cmd2 = new MySqlCommand();
+                MySqlCommand cmd2 = new MySqlCommand(varausidquery,connection);
                 connection.Open();
-                palveluid = (int)cmd.ExecuteScalar();
-                string varauksen_palvelut = "INSERT INTO varauksen_palvelut(palvelu_id, varaus_id, lkm) VALUES('"+palveluid+ "','";
-
-
+                palveluid = (int)cmd1.ExecuteScalar();
+                varausid = (int)cmd2.ExecuteScalar();
+                connection.Close();
+                string varauksen_palvelut = "INSERT INTO varauksen_palvelut(palvelu_id, varaus_id, lkm) VALUES('" + palveluid + "','" + varausid + "','";
                 MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
             }
          

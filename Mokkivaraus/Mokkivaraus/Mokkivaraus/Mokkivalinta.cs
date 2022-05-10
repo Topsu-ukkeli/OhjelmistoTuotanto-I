@@ -96,6 +96,7 @@ namespace Mokkivaraus
             lbPalvelut.Items.Clear();
             lbValitutpalvelut.Items.Clear();
             int Alue = dgwAlue.Rows.Count;
+            
             string Palvelut;
             for (int i = 0; i < Alue; i++)
             {
@@ -163,9 +164,39 @@ namespace Mokkivaraus
             }
             else
             {
-                lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
-                Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
-                lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+                int tyyppi;
+                string tyyppiquery = "SELECT (tyyppi) FROM palvelu WHERE nimi = '" + lbPalvelut.SelectedItem.ToString() + "';";
+                MySqlCommand cmd1 = new MySqlCommand(tyyppiquery, connection);
+                connection.Open();
+                tyyppi = (int)cmd1.ExecuteScalar();
+                connection.Close();
+                if (tyyppi == 1)
+                {
+                    lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
+                    Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
+                    lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+                }
+                else if (tyyppi>1)
+                {
+                    int check=0;
+                    for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+                    {
+                        if(Tiedot.Palvelut[i]== lbPalvelut.SelectedItem.ToString())
+                        {
+                            check++;
+                        }
+                    }
+                    if (check <= 3)
+                    {
+                        Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
+                        lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
+                        if (check == 3)
+                        {
+                            lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+                        }
+                    }
+                    
+                }
             }
             
         }
@@ -177,9 +208,19 @@ namespace Mokkivaraus
             }
             else
             {
-                lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
-                Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
-                lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+                if (lbPalvelut.Items.Contains(lbValitutpalvelut.SelectedItem)==true)
+                {
+                    Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
+                    lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+                }
+                else
+                {
+                    lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
+                    Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
+                    lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+                }
+                
+                
             } 
         }
 
