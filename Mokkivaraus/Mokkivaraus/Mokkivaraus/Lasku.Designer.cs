@@ -51,6 +51,7 @@
             this.lblPalvelut = new System.Windows.Forms.Label();
             this.lbHinnat = new System.Windows.Forms.ListBox();
             this.lblHinnat = new System.Windows.Forms.Label();
+            this.dtpAika = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausMokki)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausPalvelut)).BeginInit();
@@ -295,6 +296,16 @@
             this.lblHinnat.TabIndex = 24;
             this.lblHinnat.Text = "Varauksen hinta";
             // 
+            // dtpAika
+            // 
+            this.dtpAika.CustomFormat = "yyyy-MM-dd";
+            this.dtpAika.Location = new System.Drawing.Point(1133, 89);
+            this.dtpAika.Name = "dtpAika";
+            this.dtpAika.Size = new System.Drawing.Size(64, 20);
+            this.dtpAika.TabIndex = 26;
+            this.dtpAika.Value = new System.DateTime(2022, 5, 10, 0, 0, 0, 0);
+            this.dtpAika.Visible = false;
+            // 
             // frmVaraus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -323,6 +334,7 @@
             this.Controls.Add(this.cbPaperilasku);
             this.Controls.Add(this.dgvVaraus);
             this.Controls.Add(this.dgvLasku);
+            this.Controls.Add(this.dtpAika);
             this.Name = "frmVaraus";
             this.Text = "Yhteenveto";
             this.Load += new System.EventHandler(this.frmVaraus_Load);
@@ -360,5 +372,6 @@
         private System.Windows.Forms.Label lblPalvelut;
         private System.Windows.Forms.ListBox lbHinnat;
         private System.Windows.Forms.Label lblHinnat;
+        private System.Windows.Forms.DateTimePicker dtpAika;
     }
 }

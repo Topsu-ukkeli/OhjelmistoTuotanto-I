@@ -114,11 +114,13 @@ namespace Mokkivaraus
             }
         }
         private void confirmed() //vitunpaskamopovittusaatana
-        {//kokeile Datetimepickereiden kautta
-            string format = DateTime.Today.ToString("yyyy-mm-dd");
-            DateTime today = DateTime.Parse(format);
+        {
+            dtpAika.Value = DateTime.Today;
+            dtpAika.CustomFormat="yyyy-MM-dd";
+            string time = dtpAika.Value.ToString("yyyy-MM-dd");
+            
             string varaus = "insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
-                " values('" + today + "','" + today + "','"
+                " values('" + DateTime.Today.ToString("yyyy-MM-dd") + "','" + DateTime.Today.ToString("yyyy-MM-dd") + "','"
                 + Tiedot.Saapumispäivä + "','" + Tiedot.Poistumispäivä + "','" + Tiedot.id + "','" + Tiedot.mokkiID + "');";
 
             connection.Open();
