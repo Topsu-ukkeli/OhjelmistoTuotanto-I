@@ -266,5 +266,11 @@ namespace Mokkivaraus
         {
 
         }
+
+        private void btnMajoitusvaraukset_Click(object sender, EventArgs e)
+        {
+            Majoitusvaraukset m = new Majoitusvaraukset();
+            m.Show();
+        }
     }
 }

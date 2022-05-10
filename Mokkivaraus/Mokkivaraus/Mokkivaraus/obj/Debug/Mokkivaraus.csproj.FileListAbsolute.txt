@@ -55,3 +55,4 @@ C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokki
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.frmVaraus.resources
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.PalveluidenHallinta.resources
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.PalveluidenHallinta.resources
+G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Majoitusvaraukset.resources

@@ -68,6 +68,12 @@
     <Compile Include="Lasku.Designer.cs">
       <DependentUpon>Lasku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Majoitusvaraukset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Majoitusvaraukset.Designer.cs">
+      <DependentUpon>Majoitusvaraukset.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Hallinta.cs" />
     <Compile Include="Model\LoginInfo.cs" />
     <Compile Include="Model\Tiedot.cs" />
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lasku.resx">
       <DependentUpon>Lasku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Majoitusvaraukset.resx">
+      <DependentUpon>Majoitusvaraukset.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mokkivalinta.resx">
       <DependentUpon>Mokkivalinta.cs</DependentUpon>

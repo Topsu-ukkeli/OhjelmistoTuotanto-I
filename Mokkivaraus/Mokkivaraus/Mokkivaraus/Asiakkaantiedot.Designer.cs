@@ -52,6 +52,7 @@
             this.lblID = new System.Windows.Forms.Label();
             this.dgwPostinro = new System.Windows.Forms.DataGridView();
             this.btnPaivita = new System.Windows.Forms.Button();
+            this.btnMajoitusvaraukset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
@@ -268,11 +269,22 @@
             this.btnPaivita.UseVisualStyleBackColor = true;
             this.btnPaivita.Click += new System.EventHandler(this.btnPaivita_Click);
             // 
+            // btnMajoitusvaraukset
+            // 
+            this.btnMajoitusvaraukset.Location = new System.Drawing.Point(192, 432);
+            this.btnMajoitusvaraukset.Name = "btnMajoitusvaraukset";
+            this.btnMajoitusvaraukset.Size = new System.Drawing.Size(108, 64);
+            this.btnMajoitusvaraukset.TabIndex = 31;
+            this.btnMajoitusvaraukset.Text = "Tarkasta varauksia";
+            this.btnMajoitusvaraukset.UseVisualStyleBackColor = true;
+            this.btnMajoitusvaraukset.Click += new System.EventHandler(this.btnMajoitusvaraukset_Click);
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(930, 508);
+            this.Controls.Add(this.btnMajoitusvaraukset);
             this.Controls.Add(this.btnPaivita);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgwVali);
@@ -336,6 +348,7 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.DataGridView dgwPostinro;
         private System.Windows.Forms.Button btnPaivita;
+        private System.Windows.Forms.Button btnMajoitusvaraukset;
     }
 }
 
