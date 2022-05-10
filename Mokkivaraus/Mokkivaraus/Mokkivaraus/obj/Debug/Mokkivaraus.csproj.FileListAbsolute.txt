@@ -56,3 +56,4 @@ G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokki
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.PalveluidenHallinta.resources
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.PalveluidenHallinta.resources
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Majoitusvaraukset.resources
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Majoitusvaraukset.resources

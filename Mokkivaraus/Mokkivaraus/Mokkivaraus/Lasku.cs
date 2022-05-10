@@ -113,36 +113,52 @@ namespace Mokkivaraus
                 MessageBox.Show(ex.Message);
             }
         }
-        private void confirmed()
+        private void confirmed() //vitunpaskamopovittusaatana
         {
-            string varaus="INSERT INTO varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm,varattu_loppupvm,asiakas_id,mokki_id)" +
-                " VALUES('" + DateTime.Today.ToString("yyyy-MM-dd") + "','"+ DateTime.Today.ToString("yyyy-MM-dd") + "','"
-                +Tiedot.Saapumispäivä + "','" +Tiedot.Poistumispäivä + "','" +Tiedot.id + "','" +Tiedot.mokkiID + "';";
+            //string format = datetime.today.tostring("yyyy-mm-dd");
+            //datetime today = datetime.parse(format);
+            //string varaus="insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
+            //    " values('" + today + "','"+ today + "','"
+            //    +tiedot.saapumispäivä + "','" +tiedot.poistumispäivä + "','" +tiedot.id + "','" +tiedot.mokkiid + "');";
 
-            connection.Open();
-            cmd = new MySqlCommand(varaus, connection);
-            cmd.ExecuteNonQuery();
-            connection.Close();
-            int alueid= (int)dgvVarausMokki.Rows[0].Cells[8].Value;
-            int palveluid, varausid;
-            for (int i = 0; i < Tiedot.Palvelut.Count; i++)
-            {
-                string query = "SELECT palvelu_id FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "';";
+            //connection.open();
+            //cmd = new mysqlcommand(varaus, connection);
+            //cmd.executenonquery();
+            //connection.close();
+            //int alueid= (int)dgvvarausmokki.rows[0].cells[8].value;
+            //int palveluid, varausid, palvelulkm;
+            
+            //for (int i = 0; i < tiedot.palvelut.count; i++)
+            //{
+            //    list<string> lasketut= new list<string>();
+            //    string query = "select palvelu_id from palvelu where nimi ='" + tiedot.palvelut[i] + "' and alue_id = '" + alueid + "';";
 
-                string varausidquery = "SELECT varaus_id FROM palvelu WHERE asiakas_id ='" + Tiedot.id + "' AND mokki_id = '" + Tiedot.mokkiID + "'"
-                    + "AND varattu_alkupvm = '"+Tiedot.Saapumispäivä+"'"+"AND varattu_pvm ='"+ DateTime.Today.ToString("yyyy-MM-dd")+"'";
 
-                MySqlCommand cmd1 = new MySqlCommand(query, connection);
-                MySqlCommand cmd2 = new MySqlCommand(varausidquery,connection);
-                connection.Open();
-                palveluid = (int)cmd1.ExecuteScalar();
-                varausid = (int)cmd2.ExecuteScalar();
-                connection.Close();
-                string varauksen_palvelut = "INSERT INTO varauksen_palvelut(palvelu_id, varaus_id, lkm) VALUES('" + palveluid + "','" + varausid + "','";
+            //    string varausidquery = "select varaus_id from palvelu where asiakas_id ='" + tiedot.id + "' and mokki_id = '" + tiedot.mokkiid + "'"
+            //        + "and varattu_alkupvm = '"+tiedot.saapumispäivä+"'"+"and varattu_pvm ='"+ datetime.today.tostring("yyyy-mm-dd")+"'";
 
-                MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
-            }
-         
+            //    mysqlcommand cmd1 = new mysqlcommand(query, connection);
+            //    mysqlcommand cmd2 = new mysqlcommand(varausidquery,connection);
+            //    connection.open();
+                
+            //    palveluid = (int)cmd1.executescalar();
+            //    varausid = (int)cmd2.executescalar();
+                
+            //    for (int j = 0; j < tiedot.palvelut.count; j++)
+            //    {
+            //        if (tiedot.palvelut[j].equals(tiedot.palvelut[i])==true)
+            //        {
+            //            lasketut.add(tiedot.palvelut[j]);
+            //        }
+            //    }
+            //    palvelulkm = lasketut.count();
+            //    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "','" + varausid + "','"+ palvelulkm+"'";
+
+            //    mysqlcommand cmd3 = new mysqlcommand(varauksen_palvelut, connection);
+            //    cmd3.executenonquery();
+            //}
+            //connection.close();
+
 
         }
 
@@ -175,6 +191,7 @@ namespace Mokkivaraus
                         {
                             to = tbLsposti.Text;
                             sendMail(to);
+                            confirmed();
                         }
                     }
                     else
@@ -183,6 +200,7 @@ namespace Mokkivaraus
                         update(to);
                         to = dgvLasku.Rows[0].Cells[0].Value.ToString();
                         sendMail(to);
+                        confirmed();
                     }
                     
                 }
