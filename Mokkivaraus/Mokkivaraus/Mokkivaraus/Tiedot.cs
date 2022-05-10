@@ -45,7 +45,7 @@ namespace Mokkivaraus
             }
             populateDGV();
             AlueID();
-            //HaeAlueet();
+            HaeAlueet();
             if (rdbAlue.Checked == true)
             {
                 NaytaAlue();
@@ -77,34 +77,19 @@ namespace Mokkivaraus
         }
         private void HaeAlueet()
         {
-            string Postit,Posti;
-            int postinro;
-            string query = "SELECT MAX(postinro) FROM posti;";
-            MySqlCommand PostiN = new MySqlCommand(query, connection);
-            if (connection.State == ConnectionState.Open)
+            string PostiNumero;
+            string Query = "SELECT postinro FROM posti WHERE postinro BETWEEN 00000 AND 99999;";
+            ExecuteMyQuery(Query);
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
+            adapter.Fill(table);
+            dgwPostinro.DataSource = table;
+            int Posti = dgwPostinro.Rows.Count;
+            for (int i = 0; i < Posti; i++)
             {
-                connection.Close();
+                PostiNumero = dgwPostinro.Rows[i].Cells[0].Value.ToString();
+                cbPostiN.Items.Add(PostiNumero);
             }
-            connection.Open();
-            Postit = PostiN.ExecuteScalar().ToString();
-            postinro = int.Parse(Postit);
-            for (int i = 1; i <= postinro; i++)
-            {
-                string query2 = "SELECT postinro FROM posti WHERE postinro = '" + i + "'";
-                MySqlCommand Alue2 = new MySqlCommand(query2, connection);
-                object test = Alue2.ExecuteScalar();
-                if (test == null)
-                {
-
-                }
-                else
-                {
-                    Posti = Alue2.ExecuteScalar().ToString();
-                    cbPostiN.Items.Add(Posti);
-                }
-
-            }
-            connection.Close();
         }
         private void btnAsiakkaat_Click(object sender, EventArgs e)
         {

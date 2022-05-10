@@ -118,6 +118,7 @@ namespace Mokkivaraus
             string varaus="INSERT INTO varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm,varattu_loppupvm,asiakas_id,mokki_id)" +
                 " VALUES('" + DateTime.Today.ToString("yyyy-MM-dd") + "','"+ DateTime.Today.ToString("yyyy-MM-dd") + "','"
                 +Tiedot.Saapumispäivä + "','" +Tiedot.Poistumispäivä + "','" +Tiedot.id + "','" +Tiedot.mokkiID + "';";
+
             connection.Open();
             cmd = new MySqlCommand(varaus, connection);
             cmd.ExecuteNonQuery();
@@ -127,8 +128,10 @@ namespace Mokkivaraus
             for (int i = 0; i < Tiedot.Palvelut.Count; i++)
             {
                 string query = "SELECT palvelu_id FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "';";
-                string varausidquery = "SELECT varaus_id FROM palvelu WHERE asiakas_id ='" + Tiedot.Palvelut[i] + "' AND mokki_id = '" + Tiedot.mokkiID + "'"
+
+                string varausidquery = "SELECT varaus_id FROM palvelu WHERE asiakas_id ='" + Tiedot.id + "' AND mokki_id = '" + Tiedot.mokkiID + "'"
                     + "AND varattu_alkupvm = '"+Tiedot.Saapumispäivä+"'"+"AND varattu_pvm ='"+ DateTime.Today.ToString("yyyy-MM-dd")+"'";
+
                 MySqlCommand cmd1 = new MySqlCommand(query, connection);
                 MySqlCommand cmd2 = new MySqlCommand(varausidquery,connection);
                 connection.Open();
@@ -136,6 +139,7 @@ namespace Mokkivaraus
                 varausid = (int)cmd2.ExecuteScalar();
                 connection.Close();
                 string varauksen_palvelut = "INSERT INTO varauksen_palvelut(palvelu_id, varaus_id, lkm) VALUES('" + palveluid + "','" + varausid + "','";
+
                 MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
             }
          
@@ -193,7 +197,8 @@ namespace Mokkivaraus
                         }
                         else
                         {
-                            address = tbLosoite.Text+", "+tbPostinum.Text+ " " + tbPostitoim.Text;
+                            address = tbLosoite.Text+", "+tbPostinum.Text+ ", " + tbPostitoim.Text;
+                            MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
                         }
                         
                     }
@@ -202,8 +207,9 @@ namespace Mokkivaraus
                         address = "lahiosoite";
                         update(address);
                         address = dgvLasku.Rows[0].Cells[0].Value.ToString();
+                        MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
                     }
-                    MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n"+address);
+                    
                 }
 
             }

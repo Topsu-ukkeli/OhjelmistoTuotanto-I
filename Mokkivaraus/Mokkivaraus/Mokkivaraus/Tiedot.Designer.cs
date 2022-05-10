@@ -57,8 +57,10 @@
             this.rdbMokki = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
             this.cbPostiN = new System.Windows.Forms.ComboBox();
+            this.dgwPostinro = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokki)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwAlue
@@ -73,7 +75,7 @@
             // 
             // btnAsiakkaat
             // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(130, 490);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(130, 491);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
             this.btnAsiakkaat.Size = new System.Drawing.Size(125, 69);
             this.btnAsiakkaat.TabIndex = 1;
@@ -209,7 +211,7 @@
             // tbKuvaus
             // 
             this.tbKuvaus.Font = new System.Drawing.Font("Microsoft YaHei", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKuvaus.Location = new System.Drawing.Point(562, 389);
+            this.tbKuvaus.Location = new System.Drawing.Point(562, 374);
             this.tbKuvaus.Multiline = true;
             this.tbKuvaus.Name = "tbKuvaus";
             this.tbKuvaus.Size = new System.Drawing.Size(192, 74);
@@ -241,7 +243,7 @@
             // 
             // btnLisaaMokki
             // 
-            this.btnLisaaMokki.Location = new System.Drawing.Point(989, 491);
+            this.btnLisaaMokki.Location = new System.Drawing.Point(960, 489);
             this.btnLisaaMokki.Name = "btnLisaaMokki";
             this.btnLisaaMokki.Size = new System.Drawing.Size(113, 67);
             this.btnLisaaMokki.TabIndex = 56;
@@ -330,6 +332,15 @@
             this.cbPostiN.Size = new System.Drawing.Size(192, 21);
             this.cbPostiN.TabIndex = 64;
             // 
+            // dgwPostinro
+            // 
+            this.dgwPostinro.AllowUserToAddRows = false;
+            this.dgwPostinro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwPostinro.Location = new System.Drawing.Point(130, 491);
+            this.dgwPostinro.Name = "dgwPostinro";
+            this.dgwPostinro.Size = new System.Drawing.Size(10, 10);
+            this.dgwPostinro.TabIndex = 65;
+            // 
             // frmTiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,11 +375,13 @@
             this.Controls.Add(this.tbAlue);
             this.Controls.Add(this.btnAsiakkaat);
             this.Controls.Add(this.dgwAlue);
+            this.Controls.Add(this.dgwPostinro);
             this.Name = "frmTiedot";
             this.Text = "Tiedot";
             this.Load += new System.EventHandler(this.frmTiedot_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokki)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -405,5 +418,6 @@
         private System.Windows.Forms.RadioButton rdbMokki;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbPostiN;
+        private System.Windows.Forms.DataGridView dgwPostinro;
     }
 }
