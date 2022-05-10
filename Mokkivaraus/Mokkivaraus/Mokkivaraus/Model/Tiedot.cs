@@ -11,6 +11,8 @@ namespace Mokkivaraus.Model
         public static int id { get; set; }
         public static int mokkiID { get; set; }
         public static List<string> Palvelut { get; set; } 
+        public static DateTime Saapumispäivä { get; set; }
+        public static DateTime Poistumispäivä { get; set; }
         public static string alueid { get; set; }
         public static string Hinta { get; set; }
         public static string Kuvaus { get; set; }

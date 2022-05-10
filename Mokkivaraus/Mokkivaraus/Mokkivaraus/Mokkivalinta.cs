@@ -16,8 +16,6 @@ namespace Mokkivaraus
 {
     public partial class frmMokkivalinta : Form
     {
-        Tiedot t = new Tiedot();
-        List<Tiedot> tiedot = new List<Tiedot>();
         private static MySqlConnection connection;
         private static MySqlCommand cmd = null;
         private static DataTable dt;
@@ -37,15 +35,14 @@ namespace Mokkivaraus
         }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
-                //string Tanaan = dtpEhk.Value.ToString("yyyy-MM-dd");
-                string Saapumis = dtpSaapumis.Value.ToString("yyyy-MM-dd");
-                string Poistumis = dtpPoistumis.Value.ToString("yyyy-MM-dd");
+            Tiedot.Saapumispäivä = dtpSaapumis.Value;
+            Tiedot.Poistumispäivä = dtpPoistumis.Value;
             Tiedot.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
             // string insertquery = "INSERT INTO varaus(varattu_pvm ,varattu_alkupvm,varattu_loppupvm,asiakas_id ,mokki_id) VALUES ('" + Tanaan + "','" + Saapumis + "','" + Poistumis + "','" + Tiedot.id + "','" + ID + "');";
             //ExecuteMyQuery(insertquery);
             populateDGV();
-                frmVaraus lasku = new frmVaraus();
-                lasku.Show();
+            frmVaraus lasku = new frmVaraus();
+            lasku.Show();
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
@@ -66,6 +63,7 @@ namespace Mokkivaraus
             {
                 MessageBox.Show("connection failed" + ex);
             }
+            Tiedot.Palvelut = new List<string>();
             populateDGV();
         }
 
@@ -160,16 +158,29 @@ namespace Mokkivaraus
 
         private void lbPalvelut_MouseClick(object sender, MouseEventArgs e)
         {
-            lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
-            //Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
-            lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+            if (lbPalvelut.SelectedItem == null)
+            {
+            }
+            else
+            {
+                lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
+                Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
+                lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+            }
+            
         }
 
         private void lbValitutpalvelut_MouseClick(object sender, MouseEventArgs e)
         {
-            lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
-            //Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
-            lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+            if (lbValitutpalvelut.SelectedItem == null)
+            {
+            }
+            else
+            {
+                lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
+                Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
+                lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+            } 
         }
 
         private void dgwMokkivalinta_CellContentClick(object sender, DataGridViewCellEventArgs e)

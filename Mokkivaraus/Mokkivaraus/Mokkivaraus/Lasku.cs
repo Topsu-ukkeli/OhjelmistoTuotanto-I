@@ -84,7 +84,7 @@ namespace Mokkivaraus
                 tbLsposti.Visible = false;
             }
         }
-        private void update(string add)
+        private void update(string add) //käydään hakemassa tarvittava tieto kyselyn avulla
         {
             string Query = "SELECT "+add +" FROM asiakas WHERE asiakas_id = '" + Tiedot.id + "' ";
             DataTable table = new DataTable();
@@ -92,51 +92,108 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvLasku.DataSource = table;
         }
-
-        private void btnVahvista_Click(object sender, EventArgs e)
+        private void sendMail(string to)    //spostin lähetys
         {
+            string subject = "Village Newbies -lasku";
             string from = "NootWare@gmail.com";
             string pass = "pofierqtrudvxeje"; //onetime password from google
             //SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
             //mailClient.EnableSsl = true;
             //mailClient.Port = 587;
             //mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
+            try
+            {
+                //string lasku = "Tuote: " + textBox2.Text + "\nMäärä: " +  + "\nSumma: " + textBox4.Text + "\n Haluatko hienomman laskun?";
+                //MailMessage msgMail = new MailMessage(from, to, subject, Text);
+                //mailClient.Send(msgMail);
+                MessageBox.Show("Lasku on lähetetty sähköpostiosoitteeseen:\n" + to);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void confirmed()
+        {
+            string varaus="INSERT INTO varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm,varattu_loppupvm,asiakas_id,mokki_id)" +
+                " VALUES('" + DateTime.Today.ToString("yyyy-MM-dd") + "','"+ DateTime.Today.ToString("yyyy-MM-dd") + "','"
+                +Tiedot.Saapumispäivä + "','" +Tiedot.Poistumispäivä + "','" +Tiedot.id + "','" +Tiedot.mokkiID;
+            connection.Open();
+            cmd = new MySqlCommand(varaus, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            int alueid= (int)dgvVarausMokki.Rows[0].Cells[8].Value;
+            int palveluid;
+            for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+            {
+                string query = "SELECT palvelu_id FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "'";
+                MySqlCommand cmd1 = new MySqlCommand(query, connection);
+                MySqlCommand cmd2 = new MySqlCommand();
+                connection.Open();
+                palveluid = (int)cmd.ExecuteScalar();
+                string varauksen_palvelut = "INSERT INTO varauksen_palvelut(palvelu_id, varaus_id, lkm) VALUES('"+palveluid+ "','";
+
+
+                MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
+            }
+         
+
+        }
+
+        private void btnVahvista_Click(object sender, EventArgs e)
+        {
+            
+            
+            
             if (cbPaperilasku.Checked == true || cbSpostilasku.Checked == true)
             {
                 if (cbSpostilasku.Checked)
                 {
-                    string to;
+                    string to = "";
                     if (cbVahvistasposti.Checked == true)
                     {
-                        to = tbLsposti.Text;
+                        if (tbLsposti.Text == "")                   //tarkistellaan että syötetty sposti on oikeaa muotoa
+                        {
+                            MessageBox.Show("Syötä sähköpostiosoite");
+                        }
+                        else if (tbLsposti.Text.Contains("@") == false == false)
+                        {
+                            MessageBox.Show("Syötä toimiva sähköpostiosoite");
+
+                        }
+                        else if (tbLsposti.Text.Contains(".com") == false && tbLsposti.Text.Contains(".fi") == false)
+                        {
+                            MessageBox.Show("Syötä toimiva sähköpostiosoite");
+                        }
+                        else
+                        {
+                            to = tbLsposti.Text;
+                            sendMail(to);
+                        }
                     }
                     else
                     {
                         to = "sahkoposti";
                         update(to);
                         to = dgvLasku.Rows[0].Cells[0].Value.ToString();
+                        sendMail(to);
                     }
-                    string subject = "Village Newbies -lasku";
-                    try
-                    {
-                        //string lasku = "Tuote: " + textBox2.Text + "\nMäärä: " +  + "\nSumma: " + textBox4.Text + "\n Haluatko hienomman laskun?";
-
-                        //MailMessage msgMail = new MailMessage(from, to, subject, Text);
-                        //mailClient.Send(msgMail);
-                        MessageBox.Show("Lasku on lähetetty sähköpostiosoitteeseen:\n"+ to);
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    
                 }
                 else
                 {
-                    string address;
-                    if (cbLaskutusosoite.Checked == true)
+                    string address = "";
+                    if (cbLaskutusosoite.Checked == true) //samoin täällä tarkistellaan että osoitetiedot on varmasti syötetty
                     {
-                        address = tbLosoite.Text;
+                        if (tbLosoite.Text == "" && tbPostinum.Text =="" && tbPostitoim.Text == "")
+                        {
+                            MessageBox.Show("Syötä laskutusosoite");
+                        }
+                        else
+                        {
+                            address = tbLosoite.Text+", "+tbPostinum.Text+ " " + tbPostitoim.Text;
+                        }
+                        
                     }
                     else
                     {
@@ -144,7 +201,7 @@ namespace Mokkivaraus
                         update(address);
                         address = dgvLasku.Rows[0].Cells[0].Value.ToString();
                     }
-                    MessageBox.Show("Varaus on vahvistettu. \nLasku on lähetetty osoitteeseen:\n"+address);
+                    MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n"+address);
                 }
 
             }
@@ -203,8 +260,48 @@ namespace Mokkivaraus
             populateDGVAsiakas();
             populateDGVMokki();
             populateDGVPalvelut();
+            getHinnat();
+
         }
-        public void populateDGVMokki()
+        private void getHinnat() //lasketaan hinnat varaukselle näkyviin 
+        {
+            double mokki, palvelutotal=0,palvelu, alvtotal=0;
+            double paivat = 1;
+            if (Tiedot.Poistumispäivä.CompareTo(Tiedot.Saapumispäivä)>0)
+            {
+                paivat = (double)Tiedot.Poistumispäivä.Subtract(Tiedot.Saapumispäivä).Days+1;
+            }
+            string query1 = "SELECT hinta FROM mokki WHERE mokki_id = '" + Tiedot.mokkiID + "'";
+            MySqlCommand mokkihinta = new MySqlCommand(query1, connection);
+            connection.Open();
+            mokki = (double)mokkihinta.ExecuteScalar();
+            string vk = "vuorokausi";
+            if (paivat > 1)
+            {
+                vk = "vuorokautta";
+            }
+            lbHinnat.Items.Add("Mökin vuokra: "+paivat +" "+ vk + ", "+(paivat*mokki)+ "€, (sis. ALV 10% "+ (0.10*(paivat*mokki))+ "€)");
+            connection.Close();
+            alvtotal += 0.10 * (paivat * mokki);
+            if (Tiedot.Palvelut.Count>0)
+            {
+                int alueid = (int)dgvVarausMokki.Rows[0].Cells[8].Value;
+                for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+                {
+                    string query2 = "SELECT hinta FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "'";
+                    MySqlCommand palveluhinta = new MySqlCommand(query2, connection);
+                    connection.Open();
+                    palvelu = (double)palveluhinta.ExecuteScalar();
+                    palvelutotal += (double)palveluhinta.ExecuteScalar();
+                    alvtotal += palvelu * 0.10;
+                    lbHinnat.Items.Add("Lisäpalvelu: " +Tiedot.Palvelut[i] + ", " + palvelu +"€, (sis. ALV 10% " + (palvelu * 0.10)+"€)");
+                    connection.Close();
+                }
+            }
+            lbHinnat.Items.Add("Kokonaishinta: "+(paivat*mokki+palvelutotal)+ "€, (sis. ALV 10% " +alvtotal+"€)");
+            
+        }
+        private void populateDGVMokki()
         {
             string query = "SELECT * FROM mokki WHERE mokki_id = '"+Tiedot.mokkiID+"'";
             DataTable table = new DataTable();
@@ -212,7 +309,7 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvVarausMokki.DataSource = table;
         }
-        public void populateDGVAsiakas()
+        private void populateDGVAsiakas()
         {
             string query = "SELECT * FROM asiakas WHERE asiakas_id ='" + Tiedot.id + "'";
             DataTable table = new DataTable();
@@ -220,26 +317,19 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
         }
-        public void populateDGVPalvelut()
+        private void populateDGVPalvelut()
         {
-            string haettavat= "";
             if (Tiedot.Palvelut.Count > 0)
             {
+                int alueid = (int)dgvVarausMokki.Rows[0].Cells[8].Value;
+                DataTable table = new DataTable();
                 for (int i = 0; i < Tiedot.Palvelut.Count; i++)
                 {
-                    if (i++ == Tiedot.Palvelut.Count)
-                    {
-                        haettavat += Tiedot.Palvelut[i];
-                    }
-                    else
-                    {
-                        haettavat += Tiedot.Palvelut[i] + ",";
-                    }
+                    
+                    string query = "SELECT * FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '"+alueid+"'";
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                    adapter.Fill(table);
                 }
-                string query = "SELECT * FROM palvelu WHERE nimi ='" + haettavat + "'";
-                DataTable table = new DataTable();
-                MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                adapter.Fill(table);
                 dgvVarausPalvelut.DataSource = table;
             } 
         }

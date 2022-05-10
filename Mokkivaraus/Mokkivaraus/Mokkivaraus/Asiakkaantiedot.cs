@@ -204,19 +204,37 @@ namespace Mokkivaraus
         }
         private void btnLissee_Click(object sender, EventArgs e)
         {
-            try
+            
+            if (txtSahko.Text == "")
             {
-                string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
-                ExecuteMyQuery(insertQuery2);
-                string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
-                ExecuteMyQuery(insertQuery);
+                MessageBox.Show("Syötä sähköpostiosoite");
             }
-            catch(Exception ex)
+            else if (txtSahko.Text.Contains("@") == false)
             {
+                MessageBox.Show("Syötä toimiva sähköpostiosoite");
 
             }
-            populateDGV();
-            poisto();
+            else if (txtSahko.Text.Contains(".com") == false && txtSahko.Text.Contains(".fi") == false)
+            {
+                MessageBox.Show("Syötä toimiva sähköpostiosoite");
+            }
+            else
+            {
+                try
+                {
+                    string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
+                    ExecuteMyQuery(insertQuery2);
+                    string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
+                    ExecuteMyQuery(insertQuery);
+                }
+                catch (Exception ex)
+                {
+
+                }
+                populateDGV();
+                poisto();
+            }
+            
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
