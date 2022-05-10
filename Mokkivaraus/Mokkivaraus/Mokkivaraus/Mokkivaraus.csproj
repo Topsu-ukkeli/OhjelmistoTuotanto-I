@@ -68,6 +68,7 @@
     <Compile Include="Lasku.Designer.cs">
       <DependentUpon>Lasku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Hallinta.cs" />
     <Compile Include="Model\LoginInfo.cs" />
     <Compile Include="Model\Tiedot.cs" />
     <Compile Include="Mokkivalinta.cs">
@@ -75,6 +76,12 @@
     </Compile>
     <Compile Include="Mokkivalinta.Designer.cs">
       <DependentUpon>Mokkivalinta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PalveluidenHallinta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PalveluidenHallinta.Designer.cs">
+      <DependentUpon>PalveluidenHallinta.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mokkivalinta.resx">
       <DependentUpon>Mokkivalinta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PalveluidenHallinta.resx">
+      <DependentUpon>PalveluidenHallinta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

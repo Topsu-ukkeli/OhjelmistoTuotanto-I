@@ -14,8 +14,6 @@ namespace Mokkivaraus.Model
         public static DateTime Saapumispäivä { get; set; }
         public static DateTime Poistumispäivä { get; set; }
         public static string alueid { get; set; }
-        public static string Hinta { get; set; }
-        public static string Kuvaus { get; set; }
         public static string Henkilomaara { get; set; }
         public static string Varustelu { get; set; }
         public static string Postinumero { get; set; }

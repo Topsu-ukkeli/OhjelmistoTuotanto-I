@@ -229,6 +229,7 @@
             this.dgvAsiakkaat.Size = new System.Drawing.Size(471, 205);
             this.dgvAsiakkaat.TabIndex = 26;
             this.dgvAsiakkaat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsiakkaat_CellClick);
+            this.dgvAsiakkaat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsiakkaat_CellContentClick);
             // 
             // dgwVali
             // 

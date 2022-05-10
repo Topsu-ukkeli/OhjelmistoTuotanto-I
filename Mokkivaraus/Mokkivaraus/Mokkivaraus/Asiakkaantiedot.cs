@@ -261,5 +261,10 @@ namespace Mokkivaraus
                 Tyhjenna();
             }
         }
+
+        private void dgvAsiakkaat_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
