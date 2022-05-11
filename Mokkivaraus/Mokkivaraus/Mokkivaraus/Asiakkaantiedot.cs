@@ -30,6 +30,7 @@ namespace Mokkivaraus
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
         {
+            Tiedot.id = 0;
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -61,8 +62,14 @@ namespace Mokkivaraus
         }
         private void btnVarauksiin_Click(object sender, EventArgs e)
         {
-                populateDGV();
-                string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
+            populateDGV();
+            string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
+            if (lblID.Text == "")
+            {
+                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+            }
+            else
+            {
                 ExecuteMyQuery(Query);
                 DataTable table2 = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
@@ -71,16 +78,18 @@ namespace Mokkivaraus
                 Tiedot.id = (int)dgwVali.CurrentRow.Cells[0].Value;
                 populateDGV();
                 Tyhjenna();
-                if (Tiedot.id == 0)
-                {
-                    MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
-                }
-                else
-                {
-                    frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
-                    valinnat.Show();
-                    this.Hide();
-                }
+            }
+            if (Tiedot.id == 0)
+            {
+                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+            }
+            else
+            {
+                frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
+                valinnat.Show();
+                this.Hide();
+            }
+
         }
         private void Postinumerot()
         {
