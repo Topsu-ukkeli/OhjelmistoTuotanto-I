@@ -63,7 +63,7 @@ namespace Mokkivaraus
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                //MessageBox.Show(e.Message);
             }
             finally
             {
@@ -102,12 +102,12 @@ namespace Mokkivaraus
             dtpVarauksenLoppupv.Value = (DateTime)dgwMajoitusvaraus.CurrentRow.Cells[4].Value;
             Hallinta.MajoitusAsiakasID = (int)dgwMajoitusvaraus.CurrentRow.Cells[5].Value;
             Hallinta.MajoitusMokkiID = (int)dgwMajoitusvaraus.CurrentRow.Cells[6].Value;
-            string Aquery = "SELECT CONCAT (etunimi,' ',sukunimi,' ',lahiosoite) FROM asiakas WHERE asiakas_id = '" + Hallinta.MajoitusAsiakasID + "';";
+            string Aquery = "SELECT etunimi,sukunimi,lahiosoite FROM asiakas WHERE asiakas_id = '" + Hallinta.MajoitusAsiakasID + "';";
             MySqlCommand Asiakas = new MySqlCommand(Aquery, connection);
             connection.Open();
             cbAsiakas.Text = Asiakas.ExecuteScalar().ToString();
             connection.Close();
-            string Mquery = "SELECT CONCAT (mokkinimi,' ',katuosoite) FROM mokki WHERE mokki_id = '" + Hallinta.MajoitusMokkiID + "'";
+            string Mquery = "SELECT mokkinimi,katuosoite FROM mokki WHERE mokki_id = '" + Hallinta.MajoitusMokkiID + "'";
             MySqlCommand Mokki = new MySqlCommand(Mquery, connection);
             connection.Open();
             cbMokki.Text = Mokki.ExecuteScalar().ToString();
@@ -116,10 +116,37 @@ namespace Mokkivaraus
 
         private void btnPaivitaMajoitus_Click(object sender, EventArgs e)
         {
+            int maara,maara2;
             string Varauspv = dtpVarauspv.Value.ToString("yyyy-MM-dd");
             string Vahvistupv = dtpVarauspv.Value.ToString("yyyy-MM-dd");
             string VarausAlkupv = dtpVarauksenAlkupv.Value.ToString("yyyy-MM-dd");
             string VarausLoppupv = dtpVarauksenLoppupv.Value.ToString("yyyy-MM-dd");
+            string hae = "SELECT MAX(asiakas_id) FROM asiakas;";
+            MySqlCommand Asiakasmaara = new MySqlCommand(hae, connection);
+            connection.Open();
+            maara = (int)Asiakasmaara.ExecuteScalar();
+            connection.Close();
+            for(int i = 0; i <= maara; i++)
+            {
+                string valitse = "SELECT asiakas_id FROM asiakas WHERE etunimi = '" +cbAsiakas.Text+ "'";
+                MySqlCommand Valitsemaara = new MySqlCommand(valitse, connection);
+                connection.Open();
+                Hallinta.MajoitusAsiakasID = (int)Valitsemaara.ExecuteScalar();
+                connection.Close();
+            }
+            string hae2 = "SELECT MAX(mokki_id) FROM mokki;";
+            MySqlCommand Mokkimaara = new MySqlCommand(hae2, connection);
+            connection.Open();
+            maara2 = (int)Mokkimaara.ExecuteScalar();
+            connection.Close();
+            for (int i = 0; i <= maara2; i++)
+            {
+                string valitse2 = "SELECT mokki_id FROM mokki WHERE mokkinimi = '" + cbMokki.Text + "'";
+                MySqlCommand Valitsemaara2 = new MySqlCommand(valitse2, connection);
+                connection.Open();
+                Hallinta.MajoitusMokkiID = (int)Valitsemaara2.ExecuteScalar();
+                connection.Close();
+            }
             string Paivita = "UPDATE varaus SET varattu_pvm = '" + Varauspv.ToString() + "',vahvistus_pvm = '" + Vahvistupv.ToString() + "', varattu_alkupvm = '" + VarausAlkupv.ToString() + "',varattu_loppupvm = '" + VarausLoppupv.ToString() + "', asiakas_id = '"+Hallinta.MajoitusAsiakasID+"',mokki_id = '"+Hallinta.MajoitusMokkiID+ "' WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
             ExecuteMyQuery(Paivita);
             populateDGV();
@@ -145,7 +172,7 @@ namespace Mokkivaraus
             connection.Open();
             for (int i = 0; i <= MaxAsiakas; i++)
             {
-                string query = "SELECT CONCAT(etunimi,' ',sukunimi,' ',lahiosoite) FROM asiakas WHERE asiakas_id = '" + i + "'; ";
+                string query = "SELECT etunimi,sukunimi,lahiosoite FROM asiakas WHERE asiakas_id = '" + i + "'; ";
                 MySqlCommand Asiakas = new MySqlCommand(query, connection);
                 object test = Asiakas.ExecuteScalar();
                 if (test == null)
@@ -172,7 +199,7 @@ namespace Mokkivaraus
             connection.Open();
             for (int i = 0; i <= MaxMokki; i++)
             {
-                string query = "SELECT CONCAT (mokkinimi,' ',katuosoite) FROM mokki WHERE mokki_id = '" + i + "'; ";
+                string query = "SELECT mokkinimi,katuosoite FROM mokki WHERE mokki_id = '" + i + "'; ";
                 MySqlCommand Asiakas = new MySqlCommand(query, connection);
                 object test = Asiakas.ExecuteScalar();
                 if (test == null)
