@@ -51,133 +51,158 @@
             this.lblID = new System.Windows.Forms.Label();
             this.dgwPostinro = new System.Windows.Forms.DataGridView();
             this.btnPaivita = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtEtu
             // 
+            this.txtEtu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEtu.Location = new System.Drawing.Point(155, 62);
             this.txtEtu.Name = "txtEtu";
-            this.txtEtu.Size = new System.Drawing.Size(222, 20);
+            this.txtEtu.Size = new System.Drawing.Size(222, 26);
             this.txtEtu.TabIndex = 0;
             // 
             // txtSuku
             // 
+            this.txtSuku.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSuku.Location = new System.Drawing.Point(155, 104);
             this.txtSuku.Name = "txtSuku";
-            this.txtSuku.Size = new System.Drawing.Size(222, 20);
+            this.txtSuku.Size = new System.Drawing.Size(222, 26);
             this.txtSuku.TabIndex = 1;
             // 
             // txtPostiO
             // 
+            this.txtPostiO.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPostiO.Location = new System.Drawing.Point(155, 150);
             this.txtPostiO.Name = "txtPostiO";
-            this.txtPostiO.Size = new System.Drawing.Size(222, 20);
+            this.txtPostiO.Size = new System.Drawing.Size(222, 26);
             this.txtPostiO.TabIndex = 2;
             // 
             // cbPostiN
             // 
+            this.cbPostiN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPostiN.FormattingEnabled = true;
             this.cbPostiN.Location = new System.Drawing.Point(155, 196);
             this.cbPostiN.Name = "cbPostiN";
-            this.cbPostiN.Size = new System.Drawing.Size(222, 21);
+            this.cbPostiN.Size = new System.Drawing.Size(222, 28);
             this.cbPostiN.TabIndex = 3;
             // 
             // txtPuhelin
             // 
+            this.txtPuhelin.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPuhelin.Location = new System.Drawing.Point(155, 340);
             this.txtPuhelin.Name = "txtPuhelin";
-            this.txtPuhelin.Size = new System.Drawing.Size(222, 20);
+            this.txtPuhelin.Size = new System.Drawing.Size(222, 26);
             this.txtPuhelin.TabIndex = 6;
             // 
             // txtSahko
             // 
+            this.txtSahko.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSahko.Location = new System.Drawing.Point(155, 294);
             this.txtSahko.Name = "txtSahko";
-            this.txtSahko.Size = new System.Drawing.Size(222, 20);
+            this.txtSahko.Size = new System.Drawing.Size(222, 26);
             this.txtSahko.TabIndex = 5;
             // 
             // txtPostiP
             // 
+            this.txtPostiP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPostiP.Location = new System.Drawing.Point(155, 246);
             this.txtPostiP.Name = "txtPostiP";
-            this.txtPostiP.Size = new System.Drawing.Size(222, 20);
+            this.txtPostiP.Size = new System.Drawing.Size(222, 26);
             this.txtPostiP.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 69);
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 12;
             this.label1.Text = "Etunimi";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 111);
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 13;
             this.label2.Text = "Sukunimi";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 157);
+            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(23, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 14;
             this.label3.Text = "Postiosoite";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 204);
+            this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(23, 203);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.Size = new System.Drawing.Size(98, 20);
             this.label4.TabIndex = 15;
             this.label4.Text = "Postinumero";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(63, 253);
+            this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(23, 252);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 13);
+            this.label5.Size = new System.Drawing.Size(123, 20);
             this.label5.TabIndex = 16;
             this.label5.Text = "Postitoimipaikka";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(63, 301);
+            this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(23, 300);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
+            this.label6.Size = new System.Drawing.Size(89, 20);
             this.label6.TabIndex = 17;
             this.label6.Text = "Sähköposti";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(63, 347);
+            this.label7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(23, 346);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(77, 13);
+            this.label7.Size = new System.Drawing.Size(115, 20);
             this.label7.TabIndex = 18;
             this.label7.Text = "Puhelinnumero";
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(1002, 408);
+            this.btnVarauksiin.BackColor = System.Drawing.Color.Orange;
+            this.btnVarauksiin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVarauksiin.Location = new System.Drawing.Point(1066, 338);
             this.btnVarauksiin.Name = "btnVarauksiin";
-            this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
+            this.btnVarauksiin.Size = new System.Drawing.Size(145, 74);
             this.btnVarauksiin.TabIndex = 10;
             this.btnVarauksiin.Text = "Siirry mökin valintaan";
-            this.btnVarauksiin.UseVisualStyleBackColor = true;
+            this.btnVarauksiin.UseVisualStyleBackColor = false;
             this.btnVarauksiin.Click += new System.EventHandler(this.btnVarauksiin_Click);
             // 
             // dgwTest
@@ -191,22 +216,26 @@
             // 
             // btnLissee
             // 
-            this.btnLissee.Location = new System.Drawing.Point(640, 272);
+            this.btnLissee.BackColor = System.Drawing.Color.Orange;
+            this.btnLissee.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLissee.Location = new System.Drawing.Point(628, 233);
             this.btnLissee.Name = "btnLissee";
             this.btnLissee.Size = new System.Drawing.Size(104, 65);
             this.btnLissee.TabIndex = 24;
             this.btnLissee.Text = "Lisää";
-            this.btnLissee.UseVisualStyleBackColor = true;
+            this.btnLissee.UseVisualStyleBackColor = false;
             this.btnLissee.Click += new System.EventHandler(this.btnLissee_Click);
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(860, 271);
+            this.btnPoista.BackColor = System.Drawing.Color.Orange;
+            this.btnPoista.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPoista.Location = new System.Drawing.Point(848, 233);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(104, 65);
             this.btnPoista.TabIndex = 25;
             this.btnPoista.Text = "Poista";
-            this.btnPoista.UseVisualStyleBackColor = true;
+            this.btnPoista.UseVisualStyleBackColor = false;
             this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
             // 
             // dgvAsiakkaat
@@ -249,27 +278,37 @@
             // 
             // btnPaivita
             // 
-            this.btnPaivita.Location = new System.Drawing.Point(750, 271);
+            this.btnPaivita.BackColor = System.Drawing.Color.Orange;
+            this.btnPaivita.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPaivita.Location = new System.Drawing.Point(738, 233);
             this.btnPaivita.Name = "btnPaivita";
             this.btnPaivita.Size = new System.Drawing.Size(104, 65);
             this.btnPaivita.TabIndex = 30;
             this.btnPaivita.Text = "Päivitä tiedot";
-            this.btnPaivita.UseVisualStyleBackColor = true;
+            this.btnPaivita.UseVisualStyleBackColor = false;
             this.btnPaivita.Click += new System.EventHandler(this.btnPaivita_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnPaivita);
+            this.panel1.Controls.Add(this.btnVarauksiin);
+            this.panel1.Controls.Add(this.btnLissee);
+            this.panel1.Controls.Add(this.btnPoista);
+            this.panel1.Location = new System.Drawing.Point(12, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1225, 427);
+            this.panel1.TabIndex = 31;
             // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(1249, 549);
-            this.Controls.Add(this.btnPaivita);
+            this.ClientSize = new System.Drawing.Size(1272, 494);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgwVali);
             this.Controls.Add(this.dgvAsiakkaat);
-            this.Controls.Add(this.btnPoista);
-            this.Controls.Add(this.btnLissee);
-            this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -286,6 +325,7 @@
             this.Controls.Add(this.txtEtu);
             this.Controls.Add(this.dgwPostinro);
             this.Controls.Add(this.dgwTest);
+            this.Controls.Add(this.panel1);
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);
@@ -294,6 +334,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,6 +365,7 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.DataGridView dgwPostinro;
         private System.Windows.Forms.Button btnPaivita;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
