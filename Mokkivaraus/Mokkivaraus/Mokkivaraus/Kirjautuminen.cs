@@ -56,9 +56,19 @@ namespace Mokkivaraus
                 this.ActiveControl = txtPass;
             }
         }
+        private void checkLogin()
+        {
+            string test= "SELECT MAX(alue_id) FROM alue";
+            int i;
+            MySqlCommand sqlCommand = new MySqlCommand(test, connection);
+            connection.Open();
+            i = (int)sqlCommand.ExecuteScalar();
+            connection.Close();
+        }
         private void btnKirjaudu_Click(object sender, EventArgs e)//Tietokantaan kirjautuminen 
         {
             Kirjautuminen kirjaus = new Kirjautuminen();
+            bool check=true;
                 try
                 {
                     MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -74,15 +84,30 @@ namespace Mokkivaraus
                     LoginInfo.Port = uint.Parse(txtPort.Text);
                     LoginInfo.User = txtID.Text;
                     LoginInfo.Pass = txtPass.Text;
+                checkLogin();
                 //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
-                    Valikko frm = new Valikko();
-                    frm.Show();
-                }
+            }
                 catch (Exception ex)
                 {
+                if(ex != null)
+                {
+                    check = false;
+                    txtPass.Clear();
+                }
+
                     MessageBox.Show("connection failed" + ex);
                 }
-            this.Hide();
+
+            if (check == false)
+            {
+
+            }
+            else
+            {
+                Valikko frm = new Valikko();
+                frm.Show();
+                this.Hide();
+            }
         }
         private void Kirjautuminen_KeyDown(object sender, KeyEventArgs e) //mahdollistetaan kirjautuminen enteriä painamalla
         {

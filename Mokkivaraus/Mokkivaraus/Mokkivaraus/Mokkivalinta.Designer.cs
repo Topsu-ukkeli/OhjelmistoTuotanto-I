@@ -61,6 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
+            this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -162,7 +163,7 @@
             // 
             this.tbKuvaus.Enabled = false;
             this.tbKuvaus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKuvaus.Location = new System.Drawing.Point(204, 549);
+            this.tbKuvaus.Location = new System.Drawing.Point(201, 204);
             this.tbKuvaus.Multiline = true;
             this.tbKuvaus.Name = "tbKuvaus";
             this.tbKuvaus.Size = new System.Drawing.Size(221, 80);
@@ -181,16 +182,17 @@
             // 
             this.tbVarustelu.Enabled = false;
             this.tbVarustelu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbVarustelu.Location = new System.Drawing.Point(204, 475);
+            this.tbVarustelu.Location = new System.Drawing.Point(201, 290);
+            this.tbVarustelu.Multiline = true;
             this.tbVarustelu.Name = "tbVarustelu";
-            this.tbVarustelu.Size = new System.Drawing.Size(221, 31);
+            this.tbVarustelu.Size = new System.Drawing.Size(221, 80);
             this.tbVarustelu.TabIndex = 33;
             // 
             // tbMax
             // 
             this.tbMax.Enabled = false;
             this.tbMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMax.Location = new System.Drawing.Point(204, 635);
+            this.tbMax.Location = new System.Drawing.Point(201, 130);
             this.tbMax.Name = "tbMax";
             this.tbMax.Size = new System.Drawing.Size(221, 31);
             this.tbMax.TabIndex = 32;
@@ -200,7 +202,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(83, 367);
+            this.label1.Location = new System.Drawing.Point(80, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 25);
             this.label1.TabIndex = 35;
@@ -211,7 +213,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(86, 407);
+            this.label2.Location = new System.Drawing.Point(81, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 25);
             this.label2.TabIndex = 36;
@@ -222,7 +224,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(105, 450);
+            this.label3.Location = new System.Drawing.Point(100, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 25);
             this.label3.TabIndex = 37;
@@ -233,7 +235,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(116, 561);
+            this.label4.Location = new System.Drawing.Point(111, 207);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 25);
             this.label4.TabIndex = 38;
@@ -244,7 +246,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 638);
+            this.label5.Location = new System.Drawing.Point(3, 133);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(188, 25);
             this.label5.TabIndex = 39;
@@ -255,7 +257,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(97, 487);
+            this.label6.Location = new System.Drawing.Point(92, 293);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 25);
             this.label6.TabIndex = 40;
@@ -266,7 +268,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(68, 524);
+            this.label7.Location = new System.Drawing.Point(63, 170);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 25);
             this.label7.TabIndex = 41;
@@ -340,6 +342,16 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.tbVarustelu);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.tbMax);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tbKuvaus);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Location = new System.Drawing.Point(3, 345);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 397);
@@ -373,17 +385,7 @@
             this.Controls.Add(this.lblPalvelut);
             this.Controls.Add(this.lbValitutpalvelut);
             this.Controls.Add(this.lbPalvelut);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.tbPostiN);
-            this.Controls.Add(this.tbVarustelu);
-            this.Controls.Add(this.tbMax);
-            this.Controls.Add(this.tbKuvaus);
             this.Controls.Add(this.tbHinta);
             this.Controls.Add(this.tbKatuosoite);
             this.Controls.Add(this.tbMokinnimi);
@@ -403,6 +405,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -33,6 +33,7 @@ namespace Mokkivaraus
             {
                 frm.Show();
                 frm.Focus();
+                frm.BringToFront();
             }
         }
 
@@ -47,6 +48,7 @@ namespace Mokkivaraus
             {
                 frm.Show();
                 frm.Focus();
+                frm.BringToFront();
             }
         }
 
@@ -61,6 +63,7 @@ namespace Mokkivaraus
             {
                 frm.Show();
                 frm.Focus();
+                frm.BringToFront();
             }
         }
 
@@ -75,14 +78,25 @@ namespace Mokkivaraus
             {
                 frm.Show();
                 frm.Focus();
+                frm.BringToFront();
             }
         }
 
         private void Valikko_FormClosing(object sender, FormClosingEventArgs e)
         {
+
             DialogResult Result = MessageBox.Show("Olet sulkemassa sovellusta","Haluatko varmasti sulkea?", MessageBoxButtons.YesNo);
             if (Result == DialogResult.Yes)
             {
+                List<Form> openForms = new List<Form>();
+
+                foreach (Form f in Application.OpenForms)
+                    openForms.Add(f);
+                foreach (Form f in openForms)
+                {
+                    if (f.Name != "Valikko")
+                        f.Close();
+                }
                 Application.Exit();
             }
             else if (Result == DialogResult.No)
@@ -102,6 +116,7 @@ namespace Mokkivaraus
             {
                 frm.Show();
                 frm.Focus();
+                frm.BringToFront();
             }
         }
     }
