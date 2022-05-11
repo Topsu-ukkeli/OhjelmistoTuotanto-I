@@ -98,6 +98,12 @@
     <Compile Include="Tiedot.Designer.cs">
       <DependentUpon>Tiedot.cs</DependentUpon>
     </Compile>
+    <Compile Include="Valikko.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Valikko.Designer.cs">
+      <DependentUpon>Valikko.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Asiakkaantiedot.resx">
       <DependentUpon>Asiakkaantiedot.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="Tiedot.resx">
       <DependentUpon>Tiedot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Valikko.resx">
+      <DependentUpon>Valikko.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

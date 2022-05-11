@@ -74,9 +74,9 @@ namespace Mokkivaraus
                     LoginInfo.Port = uint.Parse(txtPort.Text);
                     LoginInfo.User = txtID.Text;
                     LoginInfo.Pass = txtPass.Text;
-                    //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
-                    frmAsiakastiedot asiakkaat = new frmAsiakastiedot();
-                    asiakkaat.Show();
+                //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
+                    Valikko frm = new Valikko();
+                    frm.Show();
                 }
                 catch (Exception ex)
                 {
