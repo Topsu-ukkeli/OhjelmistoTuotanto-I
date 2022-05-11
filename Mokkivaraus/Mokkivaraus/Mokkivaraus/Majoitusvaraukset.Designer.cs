@@ -52,7 +52,7 @@
             this.dgwMajoitusvaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMajoitusvaraus.Location = new System.Drawing.Point(32, 12);
             this.dgwMajoitusvaraus.Name = "dgwMajoitusvaraus";
-            this.dgwMajoitusvaraus.Size = new System.Drawing.Size(947, 244);
+            this.dgwMajoitusvaraus.Size = new System.Drawing.Size(899, 244);
             this.dgwMajoitusvaraus.TabIndex = 0;
             this.dgwMajoitusvaraus.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwMajoitusvaraus_CellClick);
             // 
@@ -170,7 +170,7 @@
             // 
             // btnPaivitaMajoitus
             // 
-            this.btnPaivitaMajoitus.Location = new System.Drawing.Point(869, 451);
+            this.btnPaivitaMajoitus.Location = new System.Drawing.Point(821, 451);
             this.btnPaivitaMajoitus.Name = "btnPaivitaMajoitus";
             this.btnPaivitaMajoitus.Size = new System.Drawing.Size(110, 45);
             this.btnPaivitaMajoitus.TabIndex = 17;
@@ -180,7 +180,7 @@
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(750, 451);
+            this.btnPoista.Location = new System.Drawing.Point(702, 451);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(110, 45);
             this.btnPoista.TabIndex = 18;
