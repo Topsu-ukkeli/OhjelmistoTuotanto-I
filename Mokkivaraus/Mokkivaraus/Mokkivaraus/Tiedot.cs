@@ -379,5 +379,10 @@ namespace Mokkivaraus
             PalveluidenHallinta p = new PalveluidenHallinta();
             p.Show();
         }
+
+        private void cbPostiN_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

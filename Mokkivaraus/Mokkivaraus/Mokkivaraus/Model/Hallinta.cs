@@ -15,5 +15,8 @@ namespace Mokkivaraus.Model
         public static int PalveluidenID { get; set; }
         public static int AlueidenID { get; set; }
         public static int PostiID { get; set; }
+        public static int MajoitusAsiakasID { get; set; }
+        public static int MajoitusMokkiID { get; set; }
+        public static int MajoitusVarausID { get; set; }
     }
 }

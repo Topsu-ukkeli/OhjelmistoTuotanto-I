@@ -41,6 +41,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnPaivitaMajoitus = new System.Windows.Forms.Button();
+            this.btnPoista = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMajoitusvaraus)).BeginInit();
             this.SuspendLayout();
             // 
@@ -166,11 +168,33 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "Mökki";
             // 
+            // btnPaivitaMajoitus
+            // 
+            this.btnPaivitaMajoitus.Location = new System.Drawing.Point(869, 451);
+            this.btnPaivitaMajoitus.Name = "btnPaivitaMajoitus";
+            this.btnPaivitaMajoitus.Size = new System.Drawing.Size(110, 45);
+            this.btnPaivitaMajoitus.TabIndex = 17;
+            this.btnPaivitaMajoitus.Text = "Päivitä varaus";
+            this.btnPaivitaMajoitus.UseVisualStyleBackColor = true;
+            this.btnPaivitaMajoitus.Click += new System.EventHandler(this.btnPaivitaMajoitus_Click);
+            // 
+            // btnPoista
+            // 
+            this.btnPoista.Location = new System.Drawing.Point(750, 451);
+            this.btnPoista.Name = "btnPoista";
+            this.btnPoista.Size = new System.Drawing.Size(110, 45);
+            this.btnPoista.TabIndex = 18;
+            this.btnPoista.Text = "Poista varaus";
+            this.btnPoista.UseVisualStyleBackColor = true;
+            this.btnPoista.Click += new System.EventHandler(this.btnPoista_Click);
+            // 
             // Majoitusvaraukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 508);
+            this.Controls.Add(this.btnPoista);
+            this.Controls.Add(this.btnPaivitaMajoitus);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -208,5 +232,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnPaivitaMajoitus;
+        private System.Windows.Forms.Button btnPoista;
     }
 }

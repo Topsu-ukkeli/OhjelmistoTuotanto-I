@@ -331,6 +331,7 @@
             this.cbPostiN.Name = "cbPostiN";
             this.cbPostiN.Size = new System.Drawing.Size(192, 21);
             this.cbPostiN.TabIndex = 64;
+            this.cbPostiN.SelectedIndexChanged += new System.EventHandler(this.cbPostiN_SelectedIndexChanged);
             // 
             // dgwPostinro
             // 

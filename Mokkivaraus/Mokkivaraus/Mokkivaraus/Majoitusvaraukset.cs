@@ -42,6 +42,8 @@ namespace Mokkivaraus
                 MessageBox.Show("connection failed" + ex);
             }
             populateDGV();
+            HaeAsikkaat();
+            HaeMokit();
         }
         public void ExecuteMyQuery(string query)
         {
@@ -61,7 +63,7 @@ namespace Mokkivaraus
             }
             catch (Exception e)
             {
-                //MessageBox.Show(e.Message);
+                MessageBox.Show(e.Message);
             }
             finally
             {
@@ -93,11 +95,104 @@ namespace Mokkivaraus
 
         private void dgwMajoitusvaraus_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Hallinta.MajoitusVarausID = (int)dgwMajoitusvaraus.CurrentRow.Cells[0].Value;
             dtpVarauspv.Value = (DateTime)dgwMajoitusvaraus.CurrentRow.Cells[1].Value;
             dtpVahvistuspv.Value = (DateTime)dgwMajoitusvaraus.CurrentRow.Cells[2].Value;
             dtpVarauksenAlkupv.Value = (DateTime)dgwMajoitusvaraus.CurrentRow.Cells[3].Value;
             dtpVarauksenLoppupv.Value = (DateTime)dgwMajoitusvaraus.CurrentRow.Cells[4].Value;
+            Hallinta.MajoitusAsiakasID = (int)dgwMajoitusvaraus.CurrentRow.Cells[5].Value;
+            Hallinta.MajoitusMokkiID = (int)dgwMajoitusvaraus.CurrentRow.Cells[6].Value;
+            string Aquery = "SELECT CONCAT (etunimi,' ',sukunimi,' ',lahiosoite) FROM asiakas WHERE asiakas_id = '" + Hallinta.MajoitusAsiakasID + "';";
+            MySqlCommand Asiakas = new MySqlCommand(Aquery, connection);
+            connection.Open();
+            cbAsiakas.Text = Asiakas.ExecuteScalar().ToString();
+            connection.Close();
+            string Mquery = "SELECT CONCAT (mokkinimi,' ',katuosoite) FROM mokki WHERE mokki_id = '" + Hallinta.MajoitusMokkiID + "'";
+            MySqlCommand Mokki = new MySqlCommand(Mquery, connection);
+            connection.Open();
+            cbMokki.Text = Mokki.ExecuteScalar().ToString();
+            connection.Close();
+        }
 
+        private void btnPaivitaMajoitus_Click(object sender, EventArgs e)
+        {
+            string Varauspv = dtpVarauspv.Value.ToString("yyyy-MM-dd");
+            string Vahvistupv = dtpVarauspv.Value.ToString("yyyy-MM-dd");
+            string VarausAlkupv = dtpVarauksenAlkupv.Value.ToString("yyyy-MM-dd");
+            string VarausLoppupv = dtpVarauksenLoppupv.Value.ToString("yyyy-MM-dd");
+            string Paivita = "UPDATE varaus SET varattu_pvm = '" + Varauspv.ToString() + "',vahvistus_pvm = '" + Vahvistupv.ToString() + "', varattu_alkupvm = '" + VarausAlkupv.ToString() + "',varattu_loppupvm = '" + VarausLoppupv.ToString() + "', asiakas_id = '"+Hallinta.MajoitusAsiakasID+"',mokki_id = '"+Hallinta.MajoitusMokkiID+ "' WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
+            ExecuteMyQuery(Paivita);
+            populateDGV();
+            Poisto();
+        }
+        private void Poisto()
+        {
+            cbAsiakas.Text = "";
+            cbMokki.Text = "";
+            Hallinta.MajoitusAsiakasID = 0;
+            Hallinta.MajoitusAsiakasID = 0;
+
+        }
+        private void HaeAsikkaat()
+        {
+            int MaxAsiakas;
+            string asiakas;
+            string haequery = "SELECT MAX(asiakas_id) FROM asiakas;";
+            MySqlCommand Max = new MySqlCommand(haequery, connection);
+            connection.Open();
+            MaxAsiakas = (int)Max.ExecuteScalar();
+            connection.Close();
+            connection.Open();
+            for (int i = 0; i <= MaxAsiakas; i++)
+            {
+                string query = "SELECT CONCAT(etunimi,' ',sukunimi,' ',lahiosoite) FROM asiakas WHERE asiakas_id = '" + i + "'; ";
+                MySqlCommand Asiakas = new MySqlCommand(query, connection);
+                object test = Asiakas.ExecuteScalar();
+                if (test == null)
+                {
+
+                }
+                else
+                {
+                    asiakas = Asiakas.ExecuteScalar().ToString();
+                    cbAsiakas.Items.Add(asiakas);
+                }
+            }
+            connection.Close();
+        }
+        private void HaeMokit()
+        {
+            int MaxMokki;
+            string Mokki;
+            string haequery = "SELECT MAX(mokki_id) FROM mokki;";
+            MySqlCommand Max = new MySqlCommand(haequery, connection);
+            connection.Open();
+            MaxMokki = (int)Max.ExecuteScalar();
+            connection.Close();
+            connection.Open();
+            for (int i = 0; i <= MaxMokki; i++)
+            {
+                string query = "SELECT CONCAT (mokkinimi,' ',katuosoite) FROM mokki WHERE mokki_id = '" + i + "'; ";
+                MySqlCommand Asiakas = new MySqlCommand(query, connection);
+                object test = Asiakas.ExecuteScalar();
+                if (test == null)
+                {
+
+                }
+                else
+                {
+                    Mokki = Asiakas.ExecuteScalar().ToString();
+                    cbMokki.Items.Add(Mokki);
+                }
+            }
+            connection.Close();
+        }
+
+        private void btnPoista_Click(object sender, EventArgs e)
+        {
+            string poista = "DELETE varaus WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
+            ExecuteMyQuery(poista);
+            populateDGV();
         }
     }
 }
