@@ -11,6 +11,8 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
 using Mokkivaraus.Model;
+using System.Net.Mail;
+using System.Web;
 
 namespace Mokkivaraus
 {
@@ -92,20 +94,19 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvLasku.DataSource = table;
         }
-        private void sendMail(string to)    //spostin lähetys
+        private void sendMail(string to, string lasku)    //spostin lähetys
         {
             string subject = "Village Newbies -lasku";
             string from = "NootWare@gmail.com";
             string pass = "pofierqtrudvxeje"; //onetime password from google
-            //SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
-            //mailClient.EnableSsl = true;
-            //mailClient.Port = 587;
-            //mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
+            SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
+            mailClient.EnableSsl = true;
+            mailClient.Port = 587;
+            mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
             try
             {
-                //string lasku = "Tuote: " + textBox2.Text + "\nMäärä: " +  + "\nSumma: " + textBox4.Text + "\n Haluatko hienomman laskun?";
-                //MailMessage msgMail = new MailMessage(from, to, subject, Text);
-                //mailClient.Send(msgMail);
+                MailMessage msgMail = new MailMessage(from, to, subject, lasku);
+                mailClient.Send(msgMail);
                 MessageBox.Show("Lasku on lähetetty sähköpostiosoitteeseen:\n" + to);
             }
             catch (Exception ex)
@@ -132,11 +133,11 @@ namespace Mokkivaraus
             cmd.ExecuteNonQuery();
 
             int alueid = (int)dgvVarausMokki.Rows[0].Cells[8].Value;
-            int palveluid, varausid, palvelulkm;
+            int palveluid, palvelulkm;
 
-            string varausidquery = "select varaus_id from varaus where asiakas_id ='" + Tiedot.id + "' and mokki_id = '" + Tiedot.mokkiID + "' and varattu_alkupvm = '" + alku + "' and varattu_pvm ='" + tanaan + "';";
+            string varausidquery = "SELECT MAX(varaus_id) FROM varaus;";
             MySqlCommand cmd2 = new MySqlCommand(varausidquery, connection);
-            varausid = (int)cmd2.ExecuteScalar();
+            Lasku.varausID= (int)cmd2.ExecuteScalar();
             List<string> check = new List<string>();
             for (int i = 0; i < Tiedot.Palvelut.Count; i++)
             {
@@ -156,7 +157,7 @@ namespace Mokkivaraus
                         }
                     }
                     palvelulkm = lasketut.Count();
-                    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + varausid + "','" + palvelulkm + "');";
+                    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + Lasku.varausID + "','" + palvelulkm + "');";
 
                     MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
                     cmd3.ExecuteNonQuery();
@@ -167,12 +168,26 @@ namespace Mokkivaraus
 
 
         }
+        private void insertlasku()
+        {
+            string insert;
+            string alv = Lasku.Alv.ToString();
+            alv = alv.Replace(',', '.');
+            insert= "INSERT INTO lasku(summa,alv,varaus_id) values('"+Lasku.Total + "', '" + alv + "', '" + Lasku.varausID+"');";
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            connection.Open();
+            cmd = new MySqlCommand(insert, connection);
+            cmd.ExecuteNonQuery();
+            connection.Close();
+        }
 
         private void btnVahvista_Click(object sender, EventArgs e)
         {
-            
-            
-            
+            string lasku;
+            lasku =getHinnat();
             if (cbPaperilasku.Checked == true || cbSpostilasku.Checked == true)
             {
                 if (cbSpostilasku.Checked)
@@ -196,8 +211,9 @@ namespace Mokkivaraus
                         else
                         {
                             to = tbLsposti.Text;
-                            sendMail(to);
+                            //sendMail(to, lasku);
                             confirmed();
+                            insertlasku();
                         }
                     }
                     else
@@ -205,8 +221,9 @@ namespace Mokkivaraus
                         to = "sahkoposti";
                         update(to);
                         to = dgvLasku.Rows[0].Cells[0].Value.ToString();
-                        sendMail(to);
+                        //sendMail(to, lasku);
                         confirmed();
+                        insertlasku();
                     }
                     
                 }
@@ -223,6 +240,8 @@ namespace Mokkivaraus
                         {
                             address = tbLosoite.Text+", "+tbPostinum.Text+ ", " + tbPostitoim.Text;
                             MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
+                            confirmed();
+                            insertlasku();
                         }
                         
                     }
@@ -232,6 +251,8 @@ namespace Mokkivaraus
                         update(address);
                         address = dgvLasku.Rows[0].Cells[0].Value.ToString();
                         MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
+                        confirmed();
+                        insertlasku();
                     }
                     
                 }
@@ -295,8 +316,9 @@ namespace Mokkivaraus
             getHinnat();
 
         }
-        private void getHinnat() //lasketaan hinnat varaukselle näkyviin 
+        private string getHinnat() //lasketaan hinnat varaukselle näkyviin 
         {
+            string lasku="";
             double mokki, palvelutotal=0,palvelu, alvtotal=0;
             double paivat = 1;
             if (Tiedot.Poistumispäivä.CompareTo(Tiedot.Saapumispäivä)>0)
@@ -317,6 +339,7 @@ namespace Mokkivaraus
                 vk = "vuorokautta";
             }
             lbHinnat.Items.Add("Mökin vuokra: "+paivat +" "+ vk + ", "+(paivat*mokki)+ "€, (sis. ALV 10% "+ (0.10*(paivat*mokki))+ "€)");
+            lasku += "Mökin vuokra: " + paivat + " " + vk + ", " + (paivat * mokki) + "€, (sis. ALV 10% " + (0.10 * (paivat * mokki)) + "€)\n";
             alvtotal += 0.10 * (paivat * mokki);
             if (Tiedot.Palvelut.Count>0)
             {
@@ -329,11 +352,17 @@ namespace Mokkivaraus
                     palvelutotal += (double)palveluhinta.ExecuteScalar();
                     alvtotal += palvelu * 0.10;
                     lbHinnat.Items.Add("Lisäpalvelu: " +Tiedot.Palvelut[i] + ", " + palvelu +"€, (sis. ALV 10% " + (palvelu * 0.10)+"€)");
-                    
+                    lasku += "Lisäpalvelu: " + Tiedot.Palvelut[i] + ", " + palvelu + "€, (sis. ALV 10% " + (palvelu * 0.10) + "€)\n";
+
+
                 }
             }
+            lasku += "Kokonaishinta: " + (paivat * mokki + palvelutotal) + "€, (sis. ALV 10% " + alvtotal + "€)\n";
             lbHinnat.Items.Add("Kokonaishinta: "+(paivat*mokki+palvelutotal)+ "€, (sis. ALV 10% " +alvtotal+"€)");
+            Lasku.Total = paivat * mokki + palvelutotal;
+            Lasku.Alv = alvtotal;
             connection.Close();
+            return lasku;
             
         }
         private void populateDGVMokki()
@@ -369,5 +398,12 @@ namespace Mokkivaraus
             } 
         }
 
+        private void btnPalaa_Click(object sender, EventArgs e)
+        {
+            lbHinnat.Items.Clear();
+            this.Hide();
+            frmMokkivalinta mokki = new frmMokkivalinta();
+            mokki.Show();
+        }
     }
 }

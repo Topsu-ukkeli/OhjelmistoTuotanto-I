@@ -112,6 +112,7 @@
             this.btnPalaa.TabIndex = 6;
             this.btnPalaa.Text = "Muokkaa varausta";
             this.btnPalaa.UseVisualStyleBackColor = true;
+            this.btnPalaa.Click += new System.EventHandler(this.btnPalaa_Click);
             // 
             // cbLaskutusosoite
             // 
