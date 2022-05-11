@@ -123,6 +123,10 @@ namespace Mokkivaraus
                 " values('" + tanaan + "','" + tanaan + "','"
                 + alku + "','" + loppu + "','" + Tiedot.id + "','" + Tiedot.mokkiID + "');";
 
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             connection.Open();
             cmd = new MySqlCommand(varaus, connection);
             cmd.ExecuteNonQuery();
@@ -130,32 +134,34 @@ namespace Mokkivaraus
             int alueid = (int)dgvVarausMokki.Rows[0].Cells[8].Value;
             int palveluid, varausid, palvelulkm;
 
+            string varausidquery = "select varaus_id from varaus where asiakas_id ='" + Tiedot.id + "' and mokki_id = '" + Tiedot.mokkiID + "' and varattu_alkupvm = '" + alku + "' and varattu_pvm ='" + tanaan + "';";
+            MySqlCommand cmd2 = new MySqlCommand(varausidquery, connection);
+            varausid = (int)cmd2.ExecuteScalar();
+            List<string> check = new List<string>();
             for (int i = 0; i < Tiedot.Palvelut.Count; i++)
             {
-                List<string> lasketut = new List<string>();
-                string query = "select palvelu_id from palvelu where nimi ='" + Tiedot.Palvelut[i] + "' and alue_id = '" + alueid + "';";
-
-
-                string varausidquery = "select varaus_id from varaus where asiakas_id ='" + Tiedot.id + "' and mokki_id = '" + Tiedot.mokkiID + "' and varattu_alkupvm = '" + alku + "' and varattu_pvm ='" + tanaan + "';";
-
-                MySqlCommand cmd1 = new MySqlCommand(query, connection);
-                MySqlCommand cmd2 = new MySqlCommand(varausidquery, connection);
-
-                palveluid = (int)cmd1.ExecuteScalar();
-                varausid = (int)cmd2.ExecuteScalar();
-
-                for (int j = 0; j < Tiedot.Palvelut.Count; j++)
+                if (check.Contains(Tiedot.Palvelut[i]) == false)
                 {
-                    if (Tiedot.Palvelut[j].Equals(Tiedot.Palvelut[i]) == true)
-                    {
-                        lasketut.Add(Tiedot.Palvelut[j]);
-                    }
-                }
-                palvelulkm = lasketut.Count();
-                string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + varausid + "','" + palvelulkm + "');";
+                    List<string> lasketut = new List<string>();
 
-                MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
-                cmd3.ExecuteNonQuery();
+                    string query = "select palvelu_id from palvelu where nimi ='" + Tiedot.Palvelut[i] + "' and alue_id = '" + alueid + "';";
+                    MySqlCommand cmd1 = new MySqlCommand(query, connection);
+                    palveluid = (int)cmd1.ExecuteScalar();
+
+                    for (int j = 0; j < Tiedot.Palvelut.Count; j++)
+                    {
+                        if (Tiedot.Palvelut[j].Equals(Tiedot.Palvelut[i]) == true)
+                        {
+                            lasketut.Add(Tiedot.Palvelut[j]);
+                        }
+                    }
+                    palvelulkm = lasketut.Count();
+                    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + varausid + "','" + palvelulkm + "');";
+
+                    MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
+                    cmd3.ExecuteNonQuery();
+                    check.Add(Tiedot.Palvelut[i]);
+                }
             }
             connection.Close();
 
@@ -299,6 +305,10 @@ namespace Mokkivaraus
             }
             string query1 = "SELECT hinta FROM mokki WHERE mokki_id = '" + Tiedot.mokkiID + "'";
             MySqlCommand mokkihinta = new MySqlCommand(query1, connection);
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
             connection.Open();
             mokki = (double)mokkihinta.ExecuteScalar();
             string vk = "vuorokausi";
@@ -307,7 +317,6 @@ namespace Mokkivaraus
                 vk = "vuorokautta";
             }
             lbHinnat.Items.Add("Mökin vuokra: "+paivat +" "+ vk + ", "+(paivat*mokki)+ "€, (sis. ALV 10% "+ (0.10*(paivat*mokki))+ "€)");
-            connection.Close();
             alvtotal += 0.10 * (paivat * mokki);
             if (Tiedot.Palvelut.Count>0)
             {
@@ -316,15 +325,15 @@ namespace Mokkivaraus
                 {
                     string query2 = "SELECT hinta FROM palvelu WHERE nimi ='" + Tiedot.Palvelut[i] + "' AND alue_id = '" + alueid + "'";
                     MySqlCommand palveluhinta = new MySqlCommand(query2, connection);
-                    connection.Open();
                     palvelu = (double)palveluhinta.ExecuteScalar();
                     palvelutotal += (double)palveluhinta.ExecuteScalar();
                     alvtotal += palvelu * 0.10;
                     lbHinnat.Items.Add("Lisäpalvelu: " +Tiedot.Palvelut[i] + ", " + palvelu +"€, (sis. ALV 10% " + (palvelu * 0.10)+"€)");
-                    connection.Close();
+                    
                 }
             }
             lbHinnat.Items.Add("Kokonaishinta: "+(paivat*mokki+palvelutotal)+ "€, (sis. ALV 10% " +alvtotal+"€)");
+            connection.Close();
             
         }
         private void populateDGVMokki()

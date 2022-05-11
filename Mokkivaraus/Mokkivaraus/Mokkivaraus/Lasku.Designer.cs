@@ -223,7 +223,7 @@
             // 
             this.dgvVarausMokki.AllowUserToAddRows = false;
             this.dgvVarausMokki.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVarausMokki.Location = new System.Drawing.Point(200, 166);
+            this.dgvVarausMokki.Location = new System.Drawing.Point(201, 89);
             this.dgvVarausMokki.Name = "dgvVarausMokki";
             this.dgvVarausMokki.Size = new System.Drawing.Size(996, 71);
             this.dgvVarausMokki.TabIndex = 17;
