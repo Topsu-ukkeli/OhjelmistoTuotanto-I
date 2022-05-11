@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMokkivalinta));
             this.dgwMokkivalinta = new System.Windows.Forms.DataGridView();
             this.btnVaraaM = new System.Windows.Forms.Button();
             this.dtpPoistumis = new System.Windows.Forms.DateTimePicker();
@@ -310,6 +311,7 @@
             this.Controls.Add(this.dgwMokkivalinta);
             this.Controls.Add(this.dgwMokinid);
             this.Controls.Add(this.dgwAlue);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMokkivalinta";
             this.Text = "Mokkivalinta";
             this.Load += new System.EventHandler(this.frmMokkivalinta_Load);

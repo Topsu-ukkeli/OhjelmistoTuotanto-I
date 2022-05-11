@@ -64,7 +64,7 @@ namespace Mokkivaraus
         {
             populateDGV();
             string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
-            if (lblID.Text == "")
+            if (lblID.Text == "0")
             {
                 MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
             }
@@ -78,16 +78,16 @@ namespace Mokkivaraus
                 Tiedot.id = (int)dgwVali.CurrentRow.Cells[0].Value;
                 populateDGV();
                 Tyhjenna();
-            }
-            if (Tiedot.id == 0)
-            {
-                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
-            }
-            else
-            {
-                frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
-                valinnat.Show();
-                this.Hide();
+                if (Tiedot.id == 0)
+                {
+                    MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+                }
+                else
+                {
+                    frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
+                    valinnat.Show();
+                    this.Hide();
+                }
             }
 
         }
@@ -281,6 +281,11 @@ namespace Mokkivaraus
         {
             Majoitusvaraukset m = new Majoitusvaraukset();
             m.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            poisto();
         }
     }
 }

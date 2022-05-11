@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PalveluidenHallinta));
             this.dgwPalvelut = new System.Windows.Forms.DataGridView();
             this.tbPalvelunNimi = new System.Windows.Forms.TextBox();
             this.tbPalvelunTyyppi = new System.Windows.Forms.TextBox();
@@ -211,6 +212,7 @@
             this.Controls.Add(this.tbPalvelunTyyppi);
             this.Controls.Add(this.tbPalvelunNimi);
             this.Controls.Add(this.dgwPalvelut);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PalveluidenHallinta";
             this.Text = "PalveluidenHallinta";
             this.Load += new System.EventHandler(this.PalveluidenHallinta_Load);

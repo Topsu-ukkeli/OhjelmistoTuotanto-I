@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTiedot));
             this.dgwAlue = new System.Windows.Forms.DataGridView();
             this.btnAsiakkaat = new System.Windows.Forms.Button();
             this.tbAlue = new System.Windows.Forms.TextBox();
@@ -377,6 +378,7 @@
             this.Controls.Add(this.btnAsiakkaat);
             this.Controls.Add(this.dgwAlue);
             this.Controls.Add(this.dgwPostinro);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTiedot";
             this.Text = "Tiedot";
             this.Load += new System.EventHandler(this.frmTiedot_Load);

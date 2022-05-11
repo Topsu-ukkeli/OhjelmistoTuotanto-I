@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsiakastiedot));
             this.txtEtu = new System.Windows.Forms.TextBox();
             this.txtSuku = new System.Windows.Forms.TextBox();
             this.txtPostiO = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.dgwPostinro = new System.Windows.Forms.DataGridView();
             this.btnPaivita = new System.Windows.Forms.Button();
             this.btnMajoitusvaraukset = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
@@ -61,21 +63,21 @@
             // 
             // txtEtu
             // 
-            this.txtEtu.Location = new System.Drawing.Point(155, 62);
+            this.txtEtu.Location = new System.Drawing.Point(138, 62);
             this.txtEtu.Name = "txtEtu";
             this.txtEtu.Size = new System.Drawing.Size(222, 20);
             this.txtEtu.TabIndex = 0;
             // 
             // txtSuku
             // 
-            this.txtSuku.Location = new System.Drawing.Point(155, 104);
+            this.txtSuku.Location = new System.Drawing.Point(138, 104);
             this.txtSuku.Name = "txtSuku";
             this.txtSuku.Size = new System.Drawing.Size(222, 20);
             this.txtSuku.TabIndex = 1;
             // 
             // txtPostiO
             // 
-            this.txtPostiO.Location = new System.Drawing.Point(155, 150);
+            this.txtPostiO.Location = new System.Drawing.Point(138, 150);
             this.txtPostiO.Name = "txtPostiO";
             this.txtPostiO.Size = new System.Drawing.Size(222, 20);
             this.txtPostiO.TabIndex = 2;
@@ -83,28 +85,28 @@
             // cbPostiN
             // 
             this.cbPostiN.FormattingEnabled = true;
-            this.cbPostiN.Location = new System.Drawing.Point(155, 196);
+            this.cbPostiN.Location = new System.Drawing.Point(138, 196);
             this.cbPostiN.Name = "cbPostiN";
             this.cbPostiN.Size = new System.Drawing.Size(222, 21);
             this.cbPostiN.TabIndex = 3;
             // 
             // txtPuhelin
             // 
-            this.txtPuhelin.Location = new System.Drawing.Point(155, 340);
+            this.txtPuhelin.Location = new System.Drawing.Point(138, 340);
             this.txtPuhelin.Name = "txtPuhelin";
             this.txtPuhelin.Size = new System.Drawing.Size(222, 20);
             this.txtPuhelin.TabIndex = 6;
             // 
             // txtSahko
             // 
-            this.txtSahko.Location = new System.Drawing.Point(155, 294);
+            this.txtSahko.Location = new System.Drawing.Point(138, 294);
             this.txtSahko.Name = "txtSahko";
             this.txtSahko.Size = new System.Drawing.Size(222, 20);
             this.txtSahko.TabIndex = 5;
             // 
             // txtPostiP
             // 
-            this.txtPostiP.Location = new System.Drawing.Point(155, 246);
+            this.txtPostiP.Location = new System.Drawing.Point(138, 246);
             this.txtPostiP.Name = "txtPostiP";
             this.txtPostiP.Size = new System.Drawing.Size(222, 20);
             this.txtPostiP.TabIndex = 4;
@@ -112,7 +114,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(63, 69);
+            this.label1.Location = new System.Drawing.Point(46, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 12;
@@ -121,7 +123,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(63, 111);
+            this.label2.Location = new System.Drawing.Point(46, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 13;
@@ -130,7 +132,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 157);
+            this.label3.Location = new System.Drawing.Point(46, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 14;
@@ -139,7 +141,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(63, 204);
+            this.label4.Location = new System.Drawing.Point(46, 204);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 15;
@@ -148,7 +150,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(63, 253);
+            this.label5.Location = new System.Drawing.Point(46, 253);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 13);
             this.label5.TabIndex = 16;
@@ -157,7 +159,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(63, 301);
+            this.label6.Location = new System.Drawing.Point(46, 301);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 17;
@@ -166,7 +168,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(63, 347);
+            this.label7.Location = new System.Drawing.Point(46, 347);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
             this.label7.TabIndex = 18;
@@ -174,7 +176,7 @@
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(1063, 432);
+            this.btnVarauksiin.Location = new System.Drawing.Point(1046, 432);
             this.btnVarauksiin.Name = "btnVarauksiin";
             this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
             this.btnVarauksiin.TabIndex = 10;
@@ -185,7 +187,7 @@
             // dgwTest
             // 
             this.dgwTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwTest.Location = new System.Drawing.Point(829, 207);
+            this.dgwTest.Location = new System.Drawing.Point(812, 207);
             this.dgwTest.Name = "dgwTest";
             this.dgwTest.Size = new System.Drawing.Size(10, 10);
             this.dgwTest.TabIndex = 23;
@@ -193,7 +195,7 @@
             // 
             // btnAsiakkaat
             // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(66, 432);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(49, 432);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
             this.btnAsiakkaat.Size = new System.Drawing.Size(108, 64);
             this.btnAsiakkaat.TabIndex = 11;
@@ -203,7 +205,7 @@
             // 
             // btnLissee
             // 
-            this.btnLissee.Location = new System.Drawing.Point(640, 272);
+            this.btnLissee.Location = new System.Drawing.Point(688, 275);
             this.btnLissee.Name = "btnLissee";
             this.btnLissee.Size = new System.Drawing.Size(104, 65);
             this.btnLissee.TabIndex = 24;
@@ -213,7 +215,7 @@
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(860, 271);
+            this.btnPoista.Location = new System.Drawing.Point(908, 274);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(104, 65);
             this.btnPoista.TabIndex = 25;
@@ -225,7 +227,7 @@
             // 
             this.dgvAsiakkaat.AllowUserToAddRows = false;
             this.dgvAsiakkaat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsiakkaat.Location = new System.Drawing.Point(405, 61);
+            this.dgvAsiakkaat.Location = new System.Drawing.Point(388, 61);
             this.dgvAsiakkaat.Name = "dgvAsiakkaat";
             this.dgvAsiakkaat.Size = new System.Drawing.Size(766, 205);
             this.dgvAsiakkaat.TabIndex = 26;
@@ -254,14 +256,14 @@
             // 
             this.dgwPostinro.AllowUserToAddRows = false;
             this.dgwPostinro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPostinro.Location = new System.Drawing.Point(741, 114);
+            this.dgwPostinro.Location = new System.Drawing.Point(724, 114);
             this.dgwPostinro.Name = "dgwPostinro";
             this.dgwPostinro.Size = new System.Drawing.Size(10, 10);
             this.dgwPostinro.TabIndex = 29;
             // 
             // btnPaivita
             // 
-            this.btnPaivita.Location = new System.Drawing.Point(750, 271);
+            this.btnPaivita.Location = new System.Drawing.Point(798, 274);
             this.btnPaivita.Name = "btnPaivita";
             this.btnPaivita.Size = new System.Drawing.Size(104, 65);
             this.btnPaivita.TabIndex = 30;
@@ -271,7 +273,7 @@
             // 
             // btnMajoitusvaraukset
             // 
-            this.btnMajoitusvaraukset.Location = new System.Drawing.Point(192, 432);
+            this.btnMajoitusvaraukset.Location = new System.Drawing.Point(175, 432);
             this.btnMajoitusvaraukset.Name = "btnMajoitusvaraukset";
             this.btnMajoitusvaraukset.Size = new System.Drawing.Size(108, 64);
             this.btnMajoitusvaraukset.TabIndex = 31;
@@ -279,11 +281,22 @@
             this.btnMajoitusvaraukset.UseVisualStyleBackColor = true;
             this.btnMajoitusvaraukset.Click += new System.EventHandler(this.btnMajoitusvaraukset_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(578, 275);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 65);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "Tyhjennä kentät";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1202, 601);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnMajoitusvaraukset);
             this.Controls.Add(this.btnPaivita);
             this.Controls.Add(this.lblID);
@@ -309,6 +322,7 @@
             this.Controls.Add(this.txtEtu);
             this.Controls.Add(this.dgwPostinro);
             this.Controls.Add(this.dgwTest);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);
@@ -349,6 +363,7 @@
         private System.Windows.Forms.DataGridView dgwPostinro;
         private System.Windows.Forms.Button btnPaivita;
         private System.Windows.Forms.Button btnMajoitusvaraukset;
+        private System.Windows.Forms.Button button1;
     }
 }
 

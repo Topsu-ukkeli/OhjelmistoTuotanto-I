@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVaraus));
             this.dgvVaraus = new System.Windows.Forms.DataGridView();
             this.cbPaperilasku = new System.Windows.Forms.CheckBox();
             this.cbSpostilasku = new System.Windows.Forms.CheckBox();
@@ -336,6 +337,7 @@
             this.Controls.Add(this.dgvVaraus);
             this.Controls.Add(this.dgvLasku);
             this.Controls.Add(this.dtpAika);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVaraus";
             this.Text = "Yhteenveto";
             this.Load += new System.EventHandler(this.frmVaraus_Load);

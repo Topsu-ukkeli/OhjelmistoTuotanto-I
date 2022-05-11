@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Majoitusvaraukset));
             this.dgwMajoitusvaraus = new System.Windows.Forms.DataGridView();
             this.cbAsiakas = new System.Windows.Forms.ComboBox();
             this.cbMokki = new System.Windows.Forms.ComboBox();
@@ -208,6 +209,7 @@
             this.Controls.Add(this.cbMokki);
             this.Controls.Add(this.cbAsiakas);
             this.Controls.Add(this.dgwMajoitusvaraus);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Majoitusvaraukset";
             this.Text = "Majoitusvaraukset";
             this.Load += new System.EventHandler(this.Majoitusvaraukset_Load);
