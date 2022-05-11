@@ -192,15 +192,7 @@ namespace Mokkivaraus
 
         private void frmAsiakastiedot_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult Result = MessageBox.Show("Haluatko poistua ilman tietojen tallennusta?", "Olet poistumassa tallentamatta!", MessageBoxButtons.YesNo);
-            if (Result == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else if (Result == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+
         }
         private void Tyhjenna()
         {

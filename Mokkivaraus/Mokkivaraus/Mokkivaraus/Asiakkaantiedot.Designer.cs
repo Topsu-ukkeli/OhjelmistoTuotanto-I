@@ -44,7 +44,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnVarauksiin = new System.Windows.Forms.Button();
             this.dgwTest = new System.Windows.Forms.DataGridView();
-            this.btnAsiakkaat = new System.Windows.Forms.Button();
             this.btnLissee = new System.Windows.Forms.Button();
             this.btnPoista = new System.Windows.Forms.Button();
             this.dgvAsiakkaat = new System.Windows.Forms.DataGridView();
@@ -52,7 +51,6 @@
             this.lblID = new System.Windows.Forms.Label();
             this.dgwPostinro = new System.Windows.Forms.DataGridView();
             this.btnPaivita = new System.Windows.Forms.Button();
-            this.btnMajoitusvaraukset = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwVali)).BeginInit();
@@ -174,7 +172,7 @@
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(1063, 432);
+            this.btnVarauksiin.Location = new System.Drawing.Point(1002, 408);
             this.btnVarauksiin.Name = "btnVarauksiin";
             this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
             this.btnVarauksiin.TabIndex = 10;
@@ -190,16 +188,6 @@
             this.dgwTest.Size = new System.Drawing.Size(10, 10);
             this.dgwTest.TabIndex = 23;
             this.dgwTest.Visible = false;
-            // 
-            // btnAsiakkaat
-            // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(66, 432);
-            this.btnAsiakkaat.Name = "btnAsiakkaat";
-            this.btnAsiakkaat.Size = new System.Drawing.Size(108, 64);
-            this.btnAsiakkaat.TabIndex = 11;
-            this.btnAsiakkaat.Text = "Tarkasta asiakkaiden tiedot";
-            this.btnAsiakkaat.UseVisualStyleBackColor = true;
-            this.btnAsiakkaat.Click += new System.EventHandler(this.btnAsiakkaat_Click);
             // 
             // btnLissee
             // 
@@ -269,29 +257,18 @@
             this.btnPaivita.UseVisualStyleBackColor = true;
             this.btnPaivita.Click += new System.EventHandler(this.btnPaivita_Click);
             // 
-            // btnMajoitusvaraukset
-            // 
-            this.btnMajoitusvaraukset.Location = new System.Drawing.Point(192, 432);
-            this.btnMajoitusvaraukset.Name = "btnMajoitusvaraukset";
-            this.btnMajoitusvaraukset.Size = new System.Drawing.Size(108, 64);
-            this.btnMajoitusvaraukset.TabIndex = 31;
-            this.btnMajoitusvaraukset.Text = "Tarkasta varauksia";
-            this.btnMajoitusvaraukset.UseVisualStyleBackColor = true;
-            this.btnMajoitusvaraukset.Click += new System.EventHandler(this.btnMajoitusvaraukset_Click);
-            // 
             // frmAsiakastiedot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1202, 601);
-            this.Controls.Add(this.btnMajoitusvaraukset);
+            this.BackColor = System.Drawing.Color.Orange;
+            this.ClientSize = new System.Drawing.Size(1249, 549);
             this.Controls.Add(this.btnPaivita);
             this.Controls.Add(this.lblID);
             this.Controls.Add(this.dgwVali);
             this.Controls.Add(this.dgvAsiakkaat);
             this.Controls.Add(this.btnPoista);
             this.Controls.Add(this.btnLissee);
-            this.Controls.Add(this.btnAsiakkaat);
             this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -340,7 +317,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnVarauksiin;
         private System.Windows.Forms.DataGridView dgwTest;
-        private System.Windows.Forms.Button btnAsiakkaat;
         private System.Windows.Forms.Button btnLissee;
         private System.Windows.Forms.Button btnPoista;
         private System.Windows.Forms.DataGridView dgvAsiakkaat;
@@ -348,7 +324,6 @@
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.DataGridView dgwPostinro;
         private System.Windows.Forms.Button btnPaivita;
-        private System.Windows.Forms.Button btnMajoitusvaraukset;
     }
 }
 
