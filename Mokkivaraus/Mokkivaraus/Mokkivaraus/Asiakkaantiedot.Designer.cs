@@ -174,7 +174,7 @@
             // 
             // btnVarauksiin
             // 
-            this.btnVarauksiin.Location = new System.Drawing.Point(810, 432);
+            this.btnVarauksiin.Location = new System.Drawing.Point(1063, 432);
             this.btnVarauksiin.Name = "btnVarauksiin";
             this.btnVarauksiin.Size = new System.Drawing.Size(108, 64);
             this.btnVarauksiin.TabIndex = 10;
@@ -185,7 +185,7 @@
             // dgwTest
             // 
             this.dgwTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwTest.Location = new System.Drawing.Point(1041, 463);
+            this.dgwTest.Location = new System.Drawing.Point(829, 207);
             this.dgwTest.Name = "dgwTest";
             this.dgwTest.Size = new System.Drawing.Size(10, 10);
             this.dgwTest.TabIndex = 23;
@@ -203,7 +203,7 @@
             // 
             // btnLissee
             // 
-            this.btnLissee.Location = new System.Drawing.Point(502, 272);
+            this.btnLissee.Location = new System.Drawing.Point(640, 272);
             this.btnLissee.Name = "btnLissee";
             this.btnLissee.Size = new System.Drawing.Size(104, 65);
             this.btnLissee.TabIndex = 24;
@@ -213,7 +213,7 @@
             // 
             // btnPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(722, 271);
+            this.btnPoista.Location = new System.Drawing.Point(860, 271);
             this.btnPoista.Name = "btnPoista";
             this.btnPoista.Size = new System.Drawing.Size(104, 65);
             this.btnPoista.TabIndex = 25;
@@ -225,9 +225,9 @@
             // 
             this.dgvAsiakkaat.AllowUserToAddRows = false;
             this.dgvAsiakkaat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAsiakkaat.Location = new System.Drawing.Point(435, 61);
+            this.dgvAsiakkaat.Location = new System.Drawing.Point(405, 61);
             this.dgvAsiakkaat.Name = "dgvAsiakkaat";
-            this.dgvAsiakkaat.Size = new System.Drawing.Size(471, 205);
+            this.dgvAsiakkaat.Size = new System.Drawing.Size(766, 205);
             this.dgvAsiakkaat.TabIndex = 26;
             this.dgvAsiakkaat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsiakkaat_CellClick);
             this.dgvAsiakkaat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsiakkaat_CellContentClick);
@@ -261,7 +261,7 @@
             // 
             // btnPaivita
             // 
-            this.btnPaivita.Location = new System.Drawing.Point(612, 271);
+            this.btnPaivita.Location = new System.Drawing.Point(750, 271);
             this.btnPaivita.Name = "btnPaivita";
             this.btnPaivita.Size = new System.Drawing.Size(104, 65);
             this.btnPaivita.TabIndex = 30;
@@ -283,7 +283,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(930, 508);
+            this.ClientSize = new System.Drawing.Size(1202, 601);
             this.Controls.Add(this.btnMajoitusvaraukset);
             this.Controls.Add(this.btnPaivita);
             this.Controls.Add(this.lblID);
@@ -292,7 +292,6 @@
             this.Controls.Add(this.btnPoista);
             this.Controls.Add(this.btnLissee);
             this.Controls.Add(this.btnAsiakkaat);
-            this.Controls.Add(this.dgwTest);
             this.Controls.Add(this.btnVarauksiin);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -309,6 +308,7 @@
             this.Controls.Add(this.txtSuku);
             this.Controls.Add(this.txtEtu);
             this.Controls.Add(this.dgwPostinro);
+            this.Controls.Add(this.dgwTest);
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);
