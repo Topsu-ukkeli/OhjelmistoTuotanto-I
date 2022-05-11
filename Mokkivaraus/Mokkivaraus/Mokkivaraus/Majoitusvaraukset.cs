@@ -224,23 +224,40 @@ namespace Mokkivaraus
         }
         private void TarkistaPaivat()
         {
-            connection.Close();
             string AikaAlku = dtpVarauksenAlkupv.Value.ToString("yyyy-MM-dd");
             string AikaLoppu = dtpVarauksenLoppupv.Value.ToString("yyyy-MM-dd");
-            string HaeAlku = "SELECT varattu_alkupvm FROM varaus WHERE varattu_alkupvm = '"+AikaAlku+"' AND mokki_id = '" + Hallinta.MajoitusMokkiID+"';";
-            MySqlCommand VarausAlku = new MySqlCommand(HaeAlku, connection);
             connection.Open();
-            AikaAlku = VarausAlku.ExecuteScalar().ToString();
+            for (int i = 0; i <= Hallinta.MajoitusVarausID; i++)
+            {
+                string HaeAlku = "SELECT varattu_alkupvm FROM varaus WHERE varattu_alkupvm = '" + AikaAlku + "' AND varaus_id = '" + i + "';";
+                MySqlCommand VarausAlku = new MySqlCommand(HaeAlku, connection);
+                object test = VarausAlku.ExecuteScalar();
+                if (test == null)
+                {
+
+                }
+                else
+                {
+                    AikaAlku = VarausAlku.ExecuteScalar().ToString();
+                }
+                string HaeLoppu = "SELECT varattu_loppupvm FROM varaus WHERE varattu_loppupvm = '" + AikaLoppu + "' AND varaus_id = '" + i + "';";
+                MySqlCommand VarausLoppu = new MySqlCommand(HaeLoppu, connection);
+                object test2 = VarausLoppu.ExecuteScalar();
+                if (test2 == null)
+                {
+
+                }
+                else
+                {
+                    AikaLoppu = VarausLoppu.ExecuteScalar().ToString();
+                }
+                if (dtpVarauksenAlkupv.Value > Convert.ToDateTime(AikaAlku) && dtpVarauksenLoppupv.Value < Convert.ToDateTime(AikaLoppu))
+                {
+                    MessageBox.Show("Varaus on jo olemassa tälle viikolle");
+                }
+            }
             connection.Close();
-            string HaeLoppu = "SELECT varattu_loppupvm FROM varaus WHERE varattu_loppupvm = '" + AikaLoppu + "' AND mokki_id = '" + Hallinta.MajoitusMokkiID + "';";
-            MySqlCommand VarausLoppu = new MySqlCommand(HaeLoppu, connection);
-            connection.Open();
-            AikaLoppu = VarausLoppu.ExecuteScalar().ToString();
             connection.Close();
-            //if(dtpVarauksenAlkupv.Value > Convert.ToDateTime(AikaAlku) && dtpVarauksenLoppupv.Value < Convert.ToDateTime(AikaLoppu))
-            //{
-            //    MessageBox.Show("Varaus on jo olemassa tälle viikolle");
-            //}
             //dtpVarauksenAlkupv.MinDate = Convert.ToDateTime(AikaLoppu);
             //dtpVarauksenAlkupv.MaxDate = Convert.ToDateTime(AikaAlku);
             //dtpVarauksenLoppupv.MinDate = Convert.ToDateTime(AikaLoppu);
