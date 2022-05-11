@@ -75,7 +75,7 @@
             // 
             // btnAsiakkaat
             // 
-            this.btnAsiakkaat.Location = new System.Drawing.Point(130, 491);
+            this.btnAsiakkaat.Location = new System.Drawing.Point(11, 503);
             this.btnAsiakkaat.Name = "btnAsiakkaat";
             this.btnAsiakkaat.Size = new System.Drawing.Size(125, 69);
             this.btnAsiakkaat.TabIndex = 1;
@@ -263,7 +263,7 @@
             // 
             // btnPoistaMokki
             // 
-            this.btnPoistaMokki.Location = new System.Drawing.Point(475, 491);
+            this.btnPoistaMokki.Location = new System.Drawing.Point(475, 489);
             this.btnPoistaMokki.Name = "btnPoistaMokki";
             this.btnPoistaMokki.Size = new System.Drawing.Size(113, 67);
             this.btnPoistaMokki.TabIndex = 58;
@@ -316,11 +316,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(301, 489);
+            this.button1.Location = new System.Drawing.Point(11, 428);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(125, 69);
             this.button1.TabIndex = 63;
-            this.button1.Text = "Palvelunmuokkauksee";
+            this.button1.Text = "Palvelun muokkaukseen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -337,7 +337,7 @@
             // 
             this.dgwPostinro.AllowUserToAddRows = false;
             this.dgwPostinro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPostinro.Location = new System.Drawing.Point(130, 491);
+            this.dgwPostinro.Location = new System.Drawing.Point(11, 503);
             this.dgwPostinro.Name = "dgwPostinro";
             this.dgwPostinro.Size = new System.Drawing.Size(10, 10);
             this.dgwPostinro.TabIndex = 65;
