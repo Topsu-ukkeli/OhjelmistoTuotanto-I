@@ -214,6 +214,9 @@ namespace Mokkivaraus
                             //sendMail(to, lasku);
                             confirmed();
                             insertlasku();
+                            this.Hide();
+                            frmAsiakastiedot frm = new frmAsiakastiedot();
+                            frm.Show();
                         }
                     }
                     else
@@ -224,6 +227,9 @@ namespace Mokkivaraus
                         //sendMail(to, lasku);
                         confirmed();
                         insertlasku();
+                        this.Hide();
+                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        frm.Show();
                     }
                     
                 }
@@ -242,6 +248,9 @@ namespace Mokkivaraus
                             MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
                             confirmed();
                             insertlasku();
+                            this.Hide();
+                            frmAsiakastiedot frm = new frmAsiakastiedot();
+                            frm.Show();
                         }
                         
                     }
@@ -252,7 +261,9 @@ namespace Mokkivaraus
                         address = dgvLasku.Rows[0].Cells[0].Value.ToString();
                         MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
                         confirmed();
-                        insertlasku();
+                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        frm.Show();
+                        this.Hide();
                     }
                     
                 }
@@ -318,6 +329,7 @@ namespace Mokkivaraus
         }
         private string getHinnat() //lasketaan hinnat varaukselle näkyviin 
         {
+            lbHinnat.Items.Clear();
             string lasku="";
             double mokki, palvelutotal=0,palvelu, alvtotal=0;
             double paivat = 1;

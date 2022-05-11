@@ -79,6 +79,7 @@ namespace Mokkivaraus
                 {
                     frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
                     valinnat.Show();
+                    this.Hide();
                 }
         }
         private void Postinumerot()
