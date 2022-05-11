@@ -32,6 +32,7 @@ namespace Mokkivaraus
             else 
             {
                 frm.Show();
+                frm.Focus();
             }
         }
 
@@ -45,6 +46,7 @@ namespace Mokkivaraus
             else
             {
                 frm.Show();
+                frm.Focus();
             }
         }
 
@@ -58,6 +60,7 @@ namespace Mokkivaraus
             else
             {
                 frm.Show();
+                frm.Focus();
             }
         }
 
@@ -71,6 +74,7 @@ namespace Mokkivaraus
             else
             {
                 frm.Show();
+                frm.Focus();
             }
         }
 
@@ -84,6 +88,20 @@ namespace Mokkivaraus
             else if (Result == DialogResult.No)
             {
                 e.Cancel = true;
+            }
+        }
+
+        private void btnLaskuihin_Click(object sender, EventArgs e)
+        {
+            LaskuHallinta frm = new LaskuHallinta();
+            if (Application.OpenForms.OfType<LaskuHallinta>().Count() == 1)
+            {
+
+            }
+            else
+            {
+                frm.Show();
+                frm.Focus();
             }
         }
     }

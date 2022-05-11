@@ -36,6 +36,7 @@ namespace Mokkivaraus
             this.btnPalveluihin = new System.Windows.Forms.Button();
             this.btnVarauksiin = new System.Windows.Forms.Button();
             this.btnUusivaraus = new System.Windows.Forms.Button();
+            this.btnLaskuihin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,13 +65,14 @@ namespace Mokkivaraus
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.btnLaskuihin);
             this.panel1.Controls.Add(this.btnMokkiAlue);
             this.panel1.Controls.Add(this.btnPalveluihin);
             this.panel1.Controls.Add(this.btnVarauksiin);
             this.panel1.Controls.Add(this.btnUusivaraus);
-            this.panel1.Location = new System.Drawing.Point(12, 150);
+            this.panel1.Location = new System.Drawing.Point(12, 125);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(545, 330);
+            this.panel1.Size = new System.Drawing.Size(504, 356);
             this.panel1.TabIndex = 2;
             // 
             // btnMokkiAlue
@@ -78,7 +80,7 @@ namespace Mokkivaraus
             this.btnMokkiAlue.BackColor = System.Drawing.Color.Orange;
             this.btnMokkiAlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMokkiAlue.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnMokkiAlue.Location = new System.Drawing.Point(381, 174);
+            this.btnMokkiAlue.Location = new System.Drawing.Point(328, 174);
             this.btnMokkiAlue.Name = "btnMokkiAlue";
             this.btnMokkiAlue.Size = new System.Drawing.Size(145, 120);
             this.btnMokkiAlue.TabIndex = 3;
@@ -91,7 +93,7 @@ namespace Mokkivaraus
             this.btnPalveluihin.BackColor = System.Drawing.Color.Orange;
             this.btnPalveluihin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPalveluihin.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnPalveluihin.Location = new System.Drawing.Point(215, 174);
+            this.btnPalveluihin.Location = new System.Drawing.Point(177, 174);
             this.btnPalveluihin.Name = "btnPalveluihin";
             this.btnPalveluihin.Size = new System.Drawing.Size(145, 120);
             this.btnPalveluihin.TabIndex = 2;
@@ -117,7 +119,7 @@ namespace Mokkivaraus
             this.btnUusivaraus.BackColor = System.Drawing.Color.Orange;
             this.btnUusivaraus.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUusivaraus.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnUusivaraus.Location = new System.Drawing.Point(381, 20);
+            this.btnUusivaraus.Location = new System.Drawing.Point(328, 48);
             this.btnUusivaraus.Name = "btnUusivaraus";
             this.btnUusivaraus.Size = new System.Drawing.Size(145, 120);
             this.btnUusivaraus.TabIndex = 0;
@@ -125,12 +127,25 @@ namespace Mokkivaraus
             this.btnUusivaraus.UseVisualStyleBackColor = false;
             this.btnUusivaraus.Click += new System.EventHandler(this.btnUusivaraus_Click);
             // 
+            // btnLaskuihin
+            // 
+            this.btnLaskuihin.BackColor = System.Drawing.Color.Orange;
+            this.btnLaskuihin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLaskuihin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnLaskuihin.Location = new System.Drawing.Point(26, 48);
+            this.btnLaskuihin.Name = "btnLaskuihin";
+            this.btnLaskuihin.Size = new System.Drawing.Size(145, 120);
+            this.btnLaskuihin.TabIndex = 4;
+            this.btnLaskuihin.Text = "Laskujen hallintaan";
+            this.btnLaskuihin.UseVisualStyleBackColor = false;
+            this.btnLaskuihin.Click += new System.EventHandler(this.btnLaskuihin_Click);
+            // 
             // Valikko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(573, 493);
+            this.ClientSize = new System.Drawing.Size(529, 493);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblOtsikko);
             this.Controls.Add(this.panel1);
@@ -153,5 +168,6 @@ namespace Mokkivaraus
         private System.Windows.Forms.Button btnPalveluihin;
         private System.Windows.Forms.Button btnVarauksiin;
         private System.Windows.Forms.Button btnUusivaraus;
+        private System.Windows.Forms.Button btnLaskuihin;
     }
 }

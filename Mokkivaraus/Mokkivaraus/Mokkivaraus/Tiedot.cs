@@ -309,6 +309,9 @@ namespace Mokkivaraus
         {
             if (rdbAlue.Checked == true)
             {
+                panel3.Visible = true;
+                panel1.Visible = false;
+                panel2.Visible = false;
                 dgwMokki.Enabled = false;
                 dgwMokki.Visible = false;
                 tbMokinnimi.Visible = false;
@@ -343,6 +346,9 @@ namespace Mokkivaraus
         {
             if (rdbMokki.Checked == true)
             {
+                panel1.Visible = true;
+                panel2.Visible = true;
+                panel3.Visible = false;
                 dgwMokki.Enabled = true;
                 dgwMokki.Visible = true;
                 tbMokinnimi.Visible = true;

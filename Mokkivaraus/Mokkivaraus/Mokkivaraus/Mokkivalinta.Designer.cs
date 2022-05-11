@@ -67,6 +67,7 @@
             // dgwMokkivalinta
             // 
             this.dgwMokkivalinta.AllowUserToAddRows = false;
+            this.dgwMokkivalinta.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwMokkivalinta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwMokkivalinta.Location = new System.Drawing.Point(3, 101);
             this.dgwMokkivalinta.Name = "dgwMokkivalinta";
