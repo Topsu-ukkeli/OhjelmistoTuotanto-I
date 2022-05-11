@@ -43,6 +43,7 @@ namespace Mokkivaraus
             populateDGV();
             frmVaraus lasku = new frmVaraus();
             lasku.Show();
+            this.Hide();
         }
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)

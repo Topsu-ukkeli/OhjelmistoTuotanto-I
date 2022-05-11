@@ -75,6 +75,7 @@
       <DependentUpon>Majoitusvaraukset.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Hallinta.cs" />
+    <Compile Include="Model\Lasku.cs" />
     <Compile Include="Model\LoginInfo.cs" />
     <Compile Include="Model\Tiedot.cs" />
     <Compile Include="Mokkivalinta.cs">
