@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Kirjautuminen));
             this.txtIP = new System.Windows.Forms.TextBox();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.txtPass = new System.Windows.Forms.TextBox();
@@ -192,6 +193,7 @@
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(393, 300);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Kirjautuminen";
             this.Text = "Kirjautuminen";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Kirjautuminen_FormClosing);

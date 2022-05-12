@@ -98,6 +98,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Raportointi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Raportointi.Designer.cs">
+      <DependentUpon>Raportointi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tiedot.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Raportointi.resx">
+      <DependentUpon>Raportointi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tiedot.resx">
       <DependentUpon>Tiedot.cs</DependentUpon>
     </EmbeddedResource>
