@@ -291,6 +291,8 @@ namespace Mokkivaraus
                             lasku = getHinnat();
                             //sendConfirm(to);
                             //sendMail(to, lasku);
+                            frmAsiakastiedot frm = new frmAsiakastiedot();
+                            frm.Show();
                             this.Hide();
                         }
 
@@ -309,7 +311,10 @@ namespace Mokkivaraus
                         //sendConfirm(to);
                         //sendMail(to, lasku);
                         MessageBox.Show("Varaus on vahvistettu. \nLasku on lähetty sähköpostilla osoitteeseen: \n"+to);
+                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        frm.Show();
                         this.Hide();
+
                     }
                     
                 }
@@ -336,6 +341,8 @@ namespace Mokkivaraus
                             lasku = getHinnat();
                             //sendConfirm(to);
 
+                            frmAsiakastiedot frm = new frmAsiakastiedot();
+                            frm.Show();
                             this.Hide();
 
                         }
@@ -356,6 +363,8 @@ namespace Mokkivaraus
                         lasku = getHinnat();
                         //sendConfirm(to);
 
+                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        frm.Show();
                         this.Hide();
                     }
                    

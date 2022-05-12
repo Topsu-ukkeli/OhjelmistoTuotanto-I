@@ -84,7 +84,7 @@ namespace Mokkivaraus
                 }//Tarkistetaan uudelleen onko asiakas valittu
                 else
                 {
-                    frmMokkivalinta valinnat = new frmMokkivalinta(); 
+                    frmMokkivalinta valinnat = new frmMokkivalinta();
                     valinnat.Show();
                     this.Hide();
                 }
