@@ -24,7 +24,7 @@ namespace Mokkivaraus
         {
             InitializeComponent();
         }
-        public void populateDGV()
+        public void populateDGV()//haetaan laskut näkyviin
         {
             string query = "SELECT * FROM lasku";
             DataTable table = new DataTable();
@@ -35,7 +35,6 @@ namespace Mokkivaraus
 
         private void LaskuHallinta_Load(object sender, EventArgs e)
         {
-            
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -57,7 +56,7 @@ namespace Mokkivaraus
 
 
         private void dgvLaskut_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//syötetään tiedot näkyville muokattavaksi
             int id;
             string nimi="";
             tbLaskuID.Text = dgvLaskut.CurrentRow.Cells[0].Value.ToString();
