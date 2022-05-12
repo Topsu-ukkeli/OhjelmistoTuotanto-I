@@ -85,6 +85,7 @@
             // dtpVarauspv
             // 
             this.dtpVarauspv.CustomFormat = "yyyy-MM-dd";
+            this.dtpVarauspv.Enabled = false;
             this.dtpVarauspv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpVarauspv.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVarauspv.Location = new System.Drawing.Point(158, 18);
@@ -95,6 +96,7 @@
             // dtpVahvistuspv
             // 
             this.dtpVahvistuspv.CustomFormat = "yyyy-MM-dd";
+            this.dtpVahvistuspv.Enabled = false;
             this.dtpVahvistuspv.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpVahvistuspv.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpVahvistuspv.Location = new System.Drawing.Point(158, 53);

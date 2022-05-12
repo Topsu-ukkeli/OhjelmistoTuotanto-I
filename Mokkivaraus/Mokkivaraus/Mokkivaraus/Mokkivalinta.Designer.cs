@@ -58,10 +58,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lbHinta = new System.Windows.Forms.ListBox();
+            this.lbHintaValitut = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +73,7 @@
             this.dgwMokkivalinta.AllowUserToAddRows = false;
             this.dgwMokkivalinta.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwMokkivalinta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokkivalinta.Location = new System.Drawing.Point(3, 101);
+            this.dgwMokkivalinta.Location = new System.Drawing.Point(44, 103);
             this.dgwMokkivalinta.Name = "dgwMokkivalinta";
             this.dgwMokkivalinta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokkivalinta.Size = new System.Drawing.Size(1025, 238);
@@ -82,7 +85,7 @@
             // 
             this.btnVaraaM.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnVaraaM.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVaraaM.Location = new System.Drawing.Point(836, 639);
+            this.btnVaraaM.Location = new System.Drawing.Point(877, 671);
             this.btnVaraaM.Name = "btnVaraaM";
             this.btnVaraaM.Size = new System.Drawing.Size(192, 103);
             this.btnVaraaM.TabIndex = 3;
@@ -105,7 +108,7 @@
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(19, 62);
+            this.label10.Location = new System.Drawing.Point(60, 64);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(157, 25);
             this.label10.TabIndex = 27;
@@ -116,7 +119,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(19, 19);
+            this.label9.Location = new System.Drawing.Point(60, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(159, 25);
             this.label9.TabIndex = 26;
@@ -136,7 +139,7 @@
             // 
             this.tbMokinnimi.Enabled = false;
             this.tbMokinnimi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMokinnimi.Location = new System.Drawing.Point(204, 364);
+            this.tbMokinnimi.Location = new System.Drawing.Point(245, 366);
             this.tbMokinnimi.Name = "tbMokinnimi";
             this.tbMokinnimi.Size = new System.Drawing.Size(221, 31);
             this.tbMokinnimi.TabIndex = 28;
@@ -145,7 +148,7 @@
             // 
             this.tbKatuosoite.Enabled = false;
             this.tbKatuosoite.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKatuosoite.Location = new System.Drawing.Point(204, 401);
+            this.tbKatuosoite.Location = new System.Drawing.Point(245, 403);
             this.tbKatuosoite.Name = "tbKatuosoite";
             this.tbKatuosoite.Size = new System.Drawing.Size(221, 31);
             this.tbKatuosoite.TabIndex = 29;
@@ -154,7 +157,7 @@
             // 
             this.tbHinta.Enabled = false;
             this.tbHinta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHinta.Location = new System.Drawing.Point(204, 438);
+            this.tbHinta.Location = new System.Drawing.Point(245, 440);
             this.tbHinta.Name = "tbHinta";
             this.tbHinta.Size = new System.Drawing.Size(221, 31);
             this.tbHinta.TabIndex = 30;
@@ -173,7 +176,7 @@
             // 
             this.tbPostiN.Enabled = false;
             this.tbPostiN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostiN.Location = new System.Drawing.Point(204, 512);
+            this.tbPostiN.Location = new System.Drawing.Point(245, 514);
             this.tbPostiN.Name = "tbPostiN";
             this.tbPostiN.Size = new System.Drawing.Size(221, 31);
             this.tbPostiN.TabIndex = 34;
@@ -278,7 +281,7 @@
             // 
             this.dgwMokinid.AllowUserToAddRows = false;
             this.dgwMokinid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokinid.Location = new System.Drawing.Point(989, 225);
+            this.dgwMokinid.Location = new System.Drawing.Point(1030, 227);
             this.dgwMokinid.Name = "dgwMokinid";
             this.dgwMokinid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokinid.Size = new System.Drawing.Size(10, 10);
@@ -286,24 +289,26 @@
             // 
             // lbPalvelut
             // 
+            this.lbPalvelut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbPalvelut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPalvelut.FormattingEnabled = true;
             this.lbPalvelut.ItemHeight = 25;
-            this.lbPalvelut.Location = new System.Drawing.Point(458, 384);
+            this.lbPalvelut.Location = new System.Drawing.Point(18, 39);
             this.lbPalvelut.Name = "lbPalvelut";
-            this.lbPalvelut.Size = new System.Drawing.Size(279, 204);
+            this.lbPalvelut.Size = new System.Drawing.Size(279, 250);
             this.lbPalvelut.TabIndex = 44;
             this.lbPalvelut.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbPalvelut_MouseClick);
             this.lbPalvelut.SelectedIndexChanged += new System.EventHandler(this.lbPalvelut_SelectedIndexChanged);
             // 
             // lbValitutpalvelut
             // 
+            this.lbValitutpalvelut.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbValitutpalvelut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbValitutpalvelut.FormattingEnabled = true;
             this.lbValitutpalvelut.ItemHeight = 25;
-            this.lbValitutpalvelut.Location = new System.Drawing.Point(743, 384);
+            this.lbValitutpalvelut.Location = new System.Drawing.Point(303, 39);
             this.lbValitutpalvelut.Name = "lbValitutpalvelut";
-            this.lbValitutpalvelut.Size = new System.Drawing.Size(279, 204);
+            this.lbValitutpalvelut.Size = new System.Drawing.Size(279, 250);
             this.lbValitutpalvelut.TabIndex = 45;
             this.lbValitutpalvelut.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lbValitutpalvelut_MouseClick);
             // 
@@ -311,7 +316,7 @@
             // 
             this.dgwAlue.AllowUserToAddRows = false;
             this.dgwAlue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwAlue.Location = new System.Drawing.Point(862, 186);
+            this.dgwAlue.Location = new System.Drawing.Point(903, 188);
             this.dgwAlue.Name = "dgwAlue";
             this.dgwAlue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwAlue.Size = new System.Drawing.Size(10, 10);
@@ -322,7 +327,7 @@
             this.lblPalvelut.AutoSize = true;
             this.lblPalvelut.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblPalvelut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPalvelut.Location = new System.Drawing.Point(453, 356);
+            this.lblPalvelut.Location = new System.Drawing.Point(494, 358);
             this.lblPalvelut.Name = "lblPalvelut";
             this.lblPalvelut.Size = new System.Drawing.Size(284, 25);
             this.lblPalvelut.TabIndex = 47;
@@ -333,7 +338,7 @@
             this.lblValitut.AutoSize = true;
             this.lblValitut.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblValitut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValitut.Location = new System.Drawing.Point(743, 356);
+            this.lblValitut.Location = new System.Drawing.Point(784, 358);
             this.lblValitut.Name = "lblValitut";
             this.lblValitut.Size = new System.Drawing.Size(186, 25);
             this.lblValitut.TabIndex = 48;
@@ -352,7 +357,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(3, 345);
+            this.panel1.Location = new System.Drawing.Point(44, 347);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 397);
             this.panel1.TabIndex = 49;
@@ -360,9 +365,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel2.Location = new System.Drawing.Point(440, 345);
+            this.panel2.Controls.Add(this.lbHinta);
+            this.panel2.Controls.Add(this.lbHintaValitut);
+            this.panel2.Controls.Add(this.lbPalvelut);
+            this.panel2.Controls.Add(this.lbValitutpalvelut);
+            this.panel2.Location = new System.Drawing.Point(481, 347);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(588, 265);
+            this.panel2.Size = new System.Drawing.Size(588, 318);
             this.panel2.TabIndex = 50;
             // 
             // panel3
@@ -370,21 +379,42 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Controls.Add(this.dtpPoistumis);
             this.panel3.Controls.Add(this.dtpSaapumis);
-            this.panel3.Location = new System.Drawing.Point(3, 10);
+            this.panel3.Location = new System.Drawing.Point(44, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(431, 85);
             this.panel3.TabIndex = 51;
+            // 
+            // lbHinta
+            // 
+            this.lbHinta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbHinta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHinta.FormattingEnabled = true;
+            this.lbHinta.ItemHeight = 25;
+            this.lbHinta.Location = new System.Drawing.Point(201, 39);
+            this.lbHinta.Name = "lbHinta";
+            this.lbHinta.Size = new System.Drawing.Size(96, 250);
+            this.lbHinta.TabIndex = 52;
+            // 
+            // lbHintaValitut
+            // 
+            this.lbHintaValitut.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbHintaValitut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHintaValitut.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.lbHintaValitut.FormattingEnabled = true;
+            this.lbHintaValitut.ItemHeight = 25;
+            this.lbHintaValitut.Location = new System.Drawing.Point(486, 39);
+            this.lbHintaValitut.Name = "lbHintaValitut";
+            this.lbHintaValitut.Size = new System.Drawing.Size(96, 250);
+            this.lbHintaValitut.TabIndex = 53;
             // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(1040, 755);
+            this.ClientSize = new System.Drawing.Size(1095, 794);
             this.Controls.Add(this.lblValitut);
             this.Controls.Add(this.lblPalvelut);
-            this.Controls.Add(this.lbValitutpalvelut);
-            this.Controls.Add(this.lbPalvelut);
             this.Controls.Add(this.tbPostiN);
             this.Controls.Add(this.tbHinta);
             this.Controls.Add(this.tbKatuosoite);
@@ -407,6 +437,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -444,5 +475,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ListBox lbHinta;
+        private System.Windows.Forms.ListBox lbHintaValitut;
     }
 }

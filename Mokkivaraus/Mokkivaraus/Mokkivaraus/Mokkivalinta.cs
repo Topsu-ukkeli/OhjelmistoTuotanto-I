@@ -93,14 +93,26 @@ namespace Mokkivaraus
             dgwAlue.DataSource = table;
             lbPalvelut.Items.Clear();
             lbValitutpalvelut.Items.Clear();
+            lbHinta.Items.Clear();
+            lbHintaValitut.Items.Clear();
             int Alue = dgwAlue.Rows.Count;
             
-            string Palvelut;
+            string Palvelut,addthis;
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+            connection.Open();
             for (int i = 0; i < Alue; i++)
             {
                 Palvelut = dgwAlue.Rows[i].Cells[0].Value.ToString();
+                string hintaquery = "SELECT hinta FROM palvelu WHERE alue_id = '" + Tiedot.alueid + "' AND nimi ='"+Palvelut+"';";
+                MySqlCommand hinnat = new MySqlCommand(hintaquery, connection);
+                addthis= hinnat.ExecuteScalar().ToString();
                 lbPalvelut.Items.Add(Palvelut);
+                lbHinta.Items.Add(addthis);
             }
+            connection.Close();
         }
 
         private void chkPaikanP_CheckedChanged(object sender, EventArgs e)
@@ -163,16 +175,22 @@ namespace Mokkivaraus
             else
             {
                 int tyyppi;
+                string hinta;
                 string tyyppiquery = "SELECT (tyyppi) FROM palvelu WHERE nimi = '" + lbPalvelut.SelectedItem.ToString() + "';";
                 MySqlCommand cmd1 = new MySqlCommand(tyyppiquery, connection);
+                string hintaquery = "SELECT hinta FROM palvelu WHERE alue_id = '" + Tiedot.alueid + "' AND nimi ='" + lbPalvelut.SelectedItem.ToString() + "';";
+                MySqlCommand hinnat = new MySqlCommand(hintaquery, connection);
                 connection.Open();
+                hinta = hinnat.ExecuteScalar().ToString();
                 tyyppi = (int)cmd1.ExecuteScalar();
                 connection.Close();
                 if (tyyppi == 1)
                 {
+                    lbHintaValitut.Items.Add(hinta);
                     lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
                     Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
                     lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
+                    lbHinta.Items.Remove(hinta);
                 }
                 else if (tyyppi>1)
                 {
@@ -188,8 +206,10 @@ namespace Mokkivaraus
                     {
                         Tiedot.Palvelut.Add(lbPalvelut.SelectedItem.ToString());
                         lbValitutpalvelut.Items.Add(lbPalvelut.SelectedItem);
+                        lbHintaValitut.Items.Add(hinta);
                         if (check == 3)
                         {
+                            lbHinta.Items.Remove(hinta);
                             lbPalvelut.Items.Remove(lbPalvelut.SelectedItem);
                         }
                     }
@@ -201,21 +221,30 @@ namespace Mokkivaraus
 
         private void lbValitutpalvelut_MouseClick(object sender, MouseEventArgs e)
         {
+            string hinta;
             if (lbValitutpalvelut.SelectedItem == null)
             {
             }
             else
             {
+                string hintaquery = "SELECT hinta FROM palvelu WHERE alue_id = '" + Tiedot.alueid + "' AND nimi ='" + lbValitutpalvelut.SelectedItem.ToString() + "';";
+                MySqlCommand hinnat = new MySqlCommand(hintaquery, connection);
+                connection.Open();
+                hinta = hinnat.ExecuteScalar().ToString();
+                connection.Close();
                 if (lbPalvelut.Items.Contains(lbValitutpalvelut.SelectedItem)==true)
                 {
                     Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
                     lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+                    lbHintaValitut.Items.Remove(hinta);
                 }
                 else
                 {
                     lbPalvelut.Items.Add(lbValitutpalvelut.SelectedItem);
+                    lbHinta.Items.Add(hinta);
                     Tiedot.Palvelut.Remove(lbValitutpalvelut.SelectedItem.ToString());
                     lbValitutpalvelut.Items.Remove(lbValitutpalvelut.SelectedItem);
+                    lbHintaValitut.Items.Remove(hinta);
                 }
                 
                 
