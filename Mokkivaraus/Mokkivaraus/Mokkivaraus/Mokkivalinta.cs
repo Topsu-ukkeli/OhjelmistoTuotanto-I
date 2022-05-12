@@ -37,6 +37,7 @@ namespace Mokkivaraus
 
         private void frmMokkivalinta_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -294,6 +295,18 @@ namespace Mokkivaraus
                 adapter2.Fill(table2);
                 dgwMokkivalinta.DataSource = table2;
             }
+        }
+
+        private void dtpSaapumis_ValueChanged(object sender, EventArgs e)
+        {
+            dtpPoistumis.MinDate = dtpSaapumis.Value;
+        }
+
+        private void btnTakaisin_Click(object sender, EventArgs e)
+        {
+            frmAsiakastiedot frm = new frmAsiakastiedot();
+            frm.Show();
+            this.Hide();
         }
     }
 }

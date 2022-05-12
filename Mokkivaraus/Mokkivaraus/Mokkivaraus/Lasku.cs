@@ -289,8 +289,8 @@ namespace Mokkivaraus
                             confirmed();
                             insertlasku();
                             lasku = getHinnat();
-                            //sendConfirm(to);
-                            //sendMail(to, lasku);
+                            sendConfirm(to);
+                            sendMail(to, lasku);
                             frmAsiakastiedot frm = new frmAsiakastiedot();
                             frm.Show();
                             this.Hide();
@@ -308,8 +308,8 @@ namespace Mokkivaraus
                         confirmed();
                         insertlasku();
                         lasku = getHinnat();
-                        //sendConfirm(to);
-                        //sendMail(to, lasku);
+                        sendConfirm(to);
+                        sendMail(to, lasku);
                         MessageBox.Show("Varaus on vahvistettu. \nLasku on lähetty sähköpostilla osoitteeseen: \n"+to);
                         frmAsiakastiedot frm = new frmAsiakastiedot();
                         frm.Show();
@@ -339,7 +339,7 @@ namespace Mokkivaraus
                             confirmed();
                             insertlasku();
                             lasku = getHinnat();
-                            //sendConfirm(to);
+                            sendConfirm(to);
 
                             frmAsiakastiedot frm = new frmAsiakastiedot();
                             frm.Show();
@@ -361,7 +361,7 @@ namespace Mokkivaraus
                         confirmed();
                         insertlasku();
                         lasku = getHinnat();
-                        //sendConfirm(to);
+                        sendConfirm(to);
 
                         frmAsiakastiedot frm = new frmAsiakastiedot();
                         frm.Show();
@@ -424,6 +424,8 @@ namespace Mokkivaraus
             {
                 MessageBox.Show("connection failed" + ex);
             }
+            dtpSaapumis.Value = Tiedot.Saapumispäivä;
+            dtpLahto.Value = Tiedot.Poistumispäivä;
             populateDGVAsiakas();
             populateDGVMokki();
             populateDGVPalvelut();

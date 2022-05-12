@@ -93,9 +93,10 @@ namespace Mokkivaraus
                 {
                     check = false;
                     txtPass.Clear();
+                    MessageBox.Show("Kirjautuminen epäonnistui");
                 }
 
-                    MessageBox.Show("connection failed" + ex);
+                    
                 }
 
             if (check == false)

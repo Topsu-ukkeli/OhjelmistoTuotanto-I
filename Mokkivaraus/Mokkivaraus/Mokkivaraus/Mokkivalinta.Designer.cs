@@ -62,6 +62,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnVapaat = new System.Windows.Forms.Button();
             this.dgwVarauksenID = new System.Windows.Forms.DataGridView();
+            this.btnTakaisin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
@@ -76,7 +77,7 @@
             this.dgwMokkivalinta.AllowUserToAddRows = false;
             this.dgwMokkivalinta.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgwMokkivalinta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokkivalinta.Location = new System.Drawing.Point(44, 103);
+            this.dgwMokkivalinta.Location = new System.Drawing.Point(11, 103);
             this.dgwMokkivalinta.Name = "dgwMokkivalinta";
             this.dgwMokkivalinta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokkivalinta.Size = new System.Drawing.Size(1025, 238);
@@ -88,7 +89,7 @@
             // 
             this.btnVaraaM.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnVaraaM.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVaraaM.Location = new System.Drawing.Point(877, 671);
+            this.btnVaraaM.Location = new System.Drawing.Point(844, 671);
             this.btnVaraaM.Name = "btnVaraaM";
             this.btnVaraaM.Size = new System.Drawing.Size(192, 103);
             this.btnVaraaM.TabIndex = 3;
@@ -102,16 +103,18 @@
             this.dtpPoistumis.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpPoistumis.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpPoistumis.Location = new System.Drawing.Point(179, 47);
+            this.dtpPoistumis.MinDate = new System.DateTime(2022, 5, 12, 23, 51, 39, 0);
             this.dtpPoistumis.Name = "dtpPoistumis";
             this.dtpPoistumis.Size = new System.Drawing.Size(221, 31);
             this.dtpPoistumis.TabIndex = 25;
+            this.dtpPoistumis.Value = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(60, 64);
+            this.label10.Location = new System.Drawing.Point(207, 64);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(157, 25);
             this.label10.TabIndex = 27;
@@ -122,7 +125,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(60, 21);
+            this.label9.Location = new System.Drawing.Point(207, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(159, 25);
             this.label9.TabIndex = 26;
@@ -133,16 +136,19 @@
             this.dtpSaapumis.CustomFormat = "yyyy-MM-dd";
             this.dtpSaapumis.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpSaapumis.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpSaapumis.Location = new System.Drawing.Point(179, 4);
+            this.dtpSaapumis.Location = new System.Drawing.Point(179, 9);
+            this.dtpSaapumis.MinDate = new System.DateTime(2022, 5, 12, 0, 0, 0, 0);
             this.dtpSaapumis.Name = "dtpSaapumis";
             this.dtpSaapumis.Size = new System.Drawing.Size(221, 31);
             this.dtpSaapumis.TabIndex = 24;
+            this.dtpSaapumis.Value = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
+            this.dtpSaapumis.ValueChanged += new System.EventHandler(this.dtpSaapumis_ValueChanged);
             // 
             // tbMokinnimi
             // 
             this.tbMokinnimi.Enabled = false;
             this.tbMokinnimi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbMokinnimi.Location = new System.Drawing.Point(245, 366);
+            this.tbMokinnimi.Location = new System.Drawing.Point(212, 366);
             this.tbMokinnimi.Name = "tbMokinnimi";
             this.tbMokinnimi.Size = new System.Drawing.Size(221, 31);
             this.tbMokinnimi.TabIndex = 28;
@@ -151,7 +157,7 @@
             // 
             this.tbKatuosoite.Enabled = false;
             this.tbKatuosoite.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbKatuosoite.Location = new System.Drawing.Point(245, 403);
+            this.tbKatuosoite.Location = new System.Drawing.Point(212, 403);
             this.tbKatuosoite.Name = "tbKatuosoite";
             this.tbKatuosoite.Size = new System.Drawing.Size(221, 31);
             this.tbKatuosoite.TabIndex = 29;
@@ -160,7 +166,7 @@
             // 
             this.tbHinta.Enabled = false;
             this.tbHinta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbHinta.Location = new System.Drawing.Point(245, 440);
+            this.tbHinta.Location = new System.Drawing.Point(212, 440);
             this.tbHinta.Name = "tbHinta";
             this.tbHinta.Size = new System.Drawing.Size(221, 31);
             this.tbHinta.TabIndex = 30;
@@ -179,7 +185,7 @@
             // 
             this.tbPostiN.Enabled = false;
             this.tbPostiN.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostiN.Location = new System.Drawing.Point(245, 514);
+            this.tbPostiN.Location = new System.Drawing.Point(212, 514);
             this.tbPostiN.Name = "tbPostiN";
             this.tbPostiN.Size = new System.Drawing.Size(221, 31);
             this.tbPostiN.TabIndex = 34;
@@ -284,7 +290,7 @@
             // 
             this.dgwMokinid.AllowUserToAddRows = false;
             this.dgwMokinid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMokinid.Location = new System.Drawing.Point(1030, 227);
+            this.dgwMokinid.Location = new System.Drawing.Point(997, 227);
             this.dgwMokinid.Name = "dgwMokinid";
             this.dgwMokinid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwMokinid.Size = new System.Drawing.Size(10, 10);
@@ -319,7 +325,7 @@
             // 
             this.dgwAlue.AllowUserToAddRows = false;
             this.dgwAlue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwAlue.Location = new System.Drawing.Point(903, 188);
+            this.dgwAlue.Location = new System.Drawing.Point(870, 188);
             this.dgwAlue.Name = "dgwAlue";
             this.dgwAlue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgwAlue.Size = new System.Drawing.Size(10, 10);
@@ -330,7 +336,7 @@
             this.lblPalvelut.AutoSize = true;
             this.lblPalvelut.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblPalvelut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPalvelut.Location = new System.Drawing.Point(494, 358);
+            this.lblPalvelut.Location = new System.Drawing.Point(461, 358);
             this.lblPalvelut.Name = "lblPalvelut";
             this.lblPalvelut.Size = new System.Drawing.Size(284, 25);
             this.lblPalvelut.TabIndex = 47;
@@ -341,7 +347,7 @@
             this.lblValitut.AutoSize = true;
             this.lblValitut.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblValitut.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValitut.Location = new System.Drawing.Point(784, 358);
+            this.lblValitut.Location = new System.Drawing.Point(751, 358);
             this.lblValitut.Name = "lblValitut";
             this.lblValitut.Size = new System.Drawing.Size(186, 25);
             this.lblValitut.TabIndex = 48;
@@ -360,7 +366,7 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(44, 347);
+            this.panel1.Location = new System.Drawing.Point(11, 347);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(431, 397);
             this.panel1.TabIndex = 49;
@@ -372,7 +378,7 @@
             this.panel2.Controls.Add(this.lbHintaValitut);
             this.panel2.Controls.Add(this.lbPalvelut);
             this.panel2.Controls.Add(this.lbValitutpalvelut);
-            this.panel2.Location = new System.Drawing.Point(481, 347);
+            this.panel2.Location = new System.Drawing.Point(448, 347);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(588, 318);
             this.panel2.TabIndex = 50;
@@ -405,7 +411,7 @@
             this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Controls.Add(this.dtpPoistumis);
             this.panel3.Controls.Add(this.dtpSaapumis);
-            this.panel3.Location = new System.Drawing.Point(44, 12);
+            this.panel3.Location = new System.Drawing.Point(191, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(431, 85);
             this.panel3.TabIndex = 51;
@@ -414,7 +420,7 @@
             // 
             this.btnVapaat.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnVapaat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVapaat.Location = new System.Drawing.Point(481, 12);
+            this.btnVapaat.Location = new System.Drawing.Point(628, 12);
             this.btnVapaat.Name = "btnVapaat";
             this.btnVapaat.Size = new System.Drawing.Size(192, 85);
             this.btnVapaat.TabIndex = 52;
@@ -434,12 +440,25 @@
             this.dgwVarauksenID.TabIndex = 53;
             this.dgwVarauksenID.Visible = false;
             // 
+            // btnTakaisin
+            // 
+            this.btnTakaisin.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnTakaisin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTakaisin.Location = new System.Drawing.Point(11, 14);
+            this.btnTakaisin.Name = "btnTakaisin";
+            this.btnTakaisin.Size = new System.Drawing.Size(174, 81);
+            this.btnTakaisin.TabIndex = 54;
+            this.btnTakaisin.Text = "Takaisin";
+            this.btnTakaisin.UseVisualStyleBackColor = false;
+            this.btnTakaisin.Click += new System.EventHandler(this.btnTakaisin_Click);
+            // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(1095, 794);
+            this.ClientSize = new System.Drawing.Size(1121, 816);
+            this.Controls.Add(this.btnTakaisin);
             this.Controls.Add(this.btnVapaat);
             this.Controls.Add(this.lblValitut);
             this.Controls.Add(this.lblPalvelut);
@@ -509,5 +528,6 @@
         private System.Windows.Forms.ListBox lbHintaValitut;
         private System.Windows.Forms.Button btnVapaat;
         private System.Windows.Forms.DataGridView dgwVarauksenID;
+        private System.Windows.Forms.Button btnTakaisin;
     }
 }
