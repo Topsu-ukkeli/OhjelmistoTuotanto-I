@@ -176,16 +176,36 @@ namespace Mokkivaraus
                 string PalvelunNimi = "SELECT nimi FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[i].Cells[0].Value + "';";
                 MySqlCommand Palvelut = new MySqlCommand(PalvelunNimi, connection);
                 connection.Open();
-                KaikkiTiedot.Add(Palvelut.ExecuteScalar().ToString());
+                object test = Palvelut.ExecuteScalar();
                 connection.Close();
+                if (test == null)
+                {
+
+                }
+                else
+                {
+                    connection.Open();
+                    KaikkiTiedot.Add(Palvelut.ExecuteScalar().ToString());
+                    connection.Close();
+                }
             }
             for (int j = 0; j < dgwPalveluID.Rows.Count; j++)
             {
                 string test = "SELECT hinta FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[j].Cells[0].Value + "';";
                 MySqlCommand Palvelut2 = new MySqlCommand(test, connection);
                 connection.Open();
-                KaikkiTiedot2.Add(Palvelut2.ExecuteScalar().ToString());
+                object test2 = Palvelut2.ExecuteScalar();
                 connection.Close();
+                if (test2 == null)
+                {
+
+                }
+                else
+                {
+                    connection.Open();
+                    KaikkiTiedot2.Add(Palvelut2.ExecuteScalar().ToString());
+                    connection.Close();
+                }
             }
             for (int j = 0; j < KaikkiTiedot.Count; j++)
             {

@@ -100,9 +100,9 @@
             // 
             this.dgwPalveluID.AllowUserToAddRows = false;
             this.dgwPalveluID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPalveluID.Location = new System.Drawing.Point(784, 360);
+            this.dgwPalveluID.Location = new System.Drawing.Point(654, 244);
             this.dgwPalveluID.Name = "dgwPalveluID";
-            this.dgwPalveluID.Size = new System.Drawing.Size(400, 171);
+            this.dgwPalveluID.Size = new System.Drawing.Size(10, 10);
             this.dgwPalveluID.TabIndex = 7;
             // 
             // lbNimet
