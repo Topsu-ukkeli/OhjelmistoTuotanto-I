@@ -38,8 +38,6 @@ namespace Mokkivaraus
             Tiedot.Saapumispäivä = dtpSaapumis.Value;
             Tiedot.Poistumispäivä = dtpPoistumis.Value;
             Tiedot.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
-            // string insertquery = "INSERT INTO varaus(varattu_pvm ,varattu_alkupvm,varattu_loppupvm,asiakas_id ,mokki_id) VALUES ('" + Tanaan + "','" + Saapumis + "','" + Poistumis + "','" + Tiedot.id + "','" + ID + "');";
-            //ExecuteMyQuery(insertquery);
             populateDGV();
             frmVaraus lasku = new frmVaraus();
             lasku.Show();
@@ -58,7 +56,6 @@ namespace Mokkivaraus
                 builder.Database = LoginInfo.Name;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
-                //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {

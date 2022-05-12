@@ -62,3 +62,4 @@ G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokki
 C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.LaskuHallinta.resources
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.LaskuHallinta.resources
 G:\Github\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Raportointi.resources
+C:\Users\Njekk\Documents\GitHub\OhjelmistoTuotanto\Mokkivaraus\Mokkivaraus\Mokkivaraus\obj\Debug\Mokkivaraus.Raportointi.resources
