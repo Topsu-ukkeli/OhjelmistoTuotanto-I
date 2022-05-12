@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAsiakastiedot));
             this.txtEtu = new System.Windows.Forms.TextBox();
             this.txtSuku = new System.Windows.Forms.TextBox();
             this.txtPostiO = new System.Windows.Forms.TextBox();
@@ -327,6 +328,7 @@
             this.Controls.Add(this.dgwPostinro);
             this.Controls.Add(this.dgwTest);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAsiakastiedot";
             this.Text = "Asiakastiedot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAsiakastiedot_FormClosing);

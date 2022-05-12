@@ -119,5 +119,20 @@ namespace Mokkivaraus
                 frm.BringToFront();
             }
         }
+
+        private void btnRaportointi_Click(object sender, EventArgs e)
+        {
+            Raportointi frm = new Raportointi();
+            if (Application.OpenForms.OfType<Raportointi>().Count() == 1)
+            {
+
+            }
+            else
+            {
+                frm.Show();
+                frm.Focus();
+                frm.BringToFront();
+            }
+        }
     }
 }
