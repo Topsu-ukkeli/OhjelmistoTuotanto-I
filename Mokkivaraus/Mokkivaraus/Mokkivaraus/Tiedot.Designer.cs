@@ -41,7 +41,6 @@
             this.lblHinta = new System.Windows.Forms.Label();
             this.lblkatu = new System.Windows.Forms.Label();
             this.lblMokinnimi = new System.Windows.Forms.Label();
-            this.tbPostiN = new System.Windows.Forms.TextBox();
             this.tbVarustelu = new System.Windows.Forms.TextBox();
             this.tbMax = new System.Windows.Forms.TextBox();
             this.tbKuvaus = new System.Windows.Forms.TextBox();
@@ -63,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokki)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwAlue
@@ -195,14 +195,6 @@
             this.lblMokinnimi.Size = new System.Drawing.Size(101, 24);
             this.lblMokinnimi.TabIndex = 49;
             this.lblMokinnimi.Text = "Mökin nimi";
-            // 
-            // tbPostiN
-            // 
-            this.tbPostiN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostiN.Location = new System.Drawing.Point(868, 354);
-            this.tbPostiN.Name = "tbPostiN";
-            this.tbPostiN.Size = new System.Drawing.Size(192, 29);
-            this.tbPostiN.TabIndex = 48;
             // 
             // tbVarustelu
             // 
@@ -341,7 +333,7 @@
             // 
             this.cbPostiN.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPostiN.FormattingEnabled = true;
-            this.cbPostiN.Location = new System.Drawing.Point(868, 427);
+            this.cbPostiN.Location = new System.Drawing.Point(176, 88);
             this.cbPostiN.Name = "cbPostiN";
             this.cbPostiN.Size = new System.Drawing.Size(192, 32);
             this.cbPostiN.TabIndex = 64;
@@ -368,6 +360,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel2.Controls.Add(this.cbPostiN);
             this.panel2.Location = new System.Drawing.Point(692, 264);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(390, 232);
@@ -388,7 +381,6 @@
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(1097, 597);
             this.Controls.Add(this.tbKuvaus);
-            this.Controls.Add(this.cbPostiN);
             this.Controls.Add(this.rdbMokki);
             this.Controls.Add(this.rdbAlue);
             this.Controls.Add(this.lblAlueV);
@@ -403,7 +395,6 @@
             this.Controls.Add(this.lblHinta);
             this.Controls.Add(this.lblkatu);
             this.Controls.Add(this.lblMokinnimi);
-            this.Controls.Add(this.tbPostiN);
             this.Controls.Add(this.tbVarustelu);
             this.Controls.Add(this.tbMax);
             this.Controls.Add(this.tbHinta);
@@ -425,6 +416,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokki)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPostinro)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,7 +436,6 @@
         private System.Windows.Forms.Label lblHinta;
         private System.Windows.Forms.Label lblkatu;
         private System.Windows.Forms.Label lblMokinnimi;
-        private System.Windows.Forms.TextBox tbPostiN;
         private System.Windows.Forms.TextBox tbVarustelu;
         private System.Windows.Forms.TextBox tbMax;
         private System.Windows.Forms.TextBox tbKuvaus;

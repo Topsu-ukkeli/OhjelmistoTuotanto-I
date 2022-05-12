@@ -180,7 +180,7 @@ namespace Mokkivaraus
             tbKuvaus.Text = dgwMokki.CurrentRow.Cells[4].Value.ToString();
             tbMax.Text = dgwMokki.CurrentRow.Cells[5].Value.ToString();
             tbVarustelu.Text = dgwMokki.CurrentRow.Cells[6].Value.ToString();
-            tbPostiN.Text = dgwMokki.CurrentRow.Cells[7].Value.ToString();
+            cbPostiN.Text = dgwMokki.CurrentRow.Cells[7].Value.ToString();
             Hallinta.mokinvalittuID = (int)dgwMokki.CurrentRow.Cells[0].Value;
             string query = "SELECT nimi FROM alue WHERE alue_id = '" + (int)dgwMokki.CurrentRow.Cells[8].Value + "'";
             MySqlCommand Aluenimi = new MySqlCommand(query, connection);
@@ -231,7 +231,7 @@ namespace Mokkivaraus
         {
             double Hinta;
             int HenkMaara;
-            if (tbMokinnimi.Text == "" || tbKatuosoite.Text == "" || tbHinta.Text == "" || tbKuvaus.Text == "" || tbMax.Text == "" || tbVarustelu.Text == "" || tbPostiN.Text == "" || cbAlueid.Text == "")
+            if (tbMokinnimi.Text == "" || tbKatuosoite.Text == "" || tbHinta.Text == "" || tbKuvaus.Text == "" || tbMax.Text == "" || tbVarustelu.Text == "" || cbPostiN.Text == "" || cbAlueid.Text == "")
             {
                 MessageBox.Show("Tietoja puuttuu ole hyvä ja täytä kaikki tiedot");
             }
@@ -247,7 +247,7 @@ namespace Mokkivaraus
                     {
                         Hinta = double.Parse(tbHinta.Text);
                         HenkMaara = int.Parse(tbMax.Text);
-                        string lisaaQuery = "INSERT INTO mokki(mokkinimi,katuosoite,hinta,kuvaus,henkilomaara,varustelu,postinro,alue_id) VALUES('" + tbMokinnimi.Text + "','" + tbKatuosoite.Text + "','" + Hinta + "','" + tbKuvaus.Text + "','" + HenkMaara + "','" + tbVarustelu.Text + "','" + tbPostiN.Text + "','" + Hallinta.alueenvalittuID + "');";
+                        string lisaaQuery = "INSERT INTO mokki(mokkinimi,katuosoite,hinta,kuvaus,henkilomaara,varustelu,postinro,alue_id) VALUES('" + tbMokinnimi.Text + "','" + tbKatuosoite.Text + "','" + Hinta + "','" + tbKuvaus.Text + "','" + HenkMaara + "','" + tbVarustelu.Text + "','" + cbPostiN.Text + "','" + Hallinta.alueenvalittuID + "');";
                         ExecuteMyQuery(lisaaQuery);
                         populateDGV();
                     }
@@ -264,7 +264,7 @@ namespace Mokkivaraus
             tbKuvaus.Text = "";
             tbMax.Clear();
             tbVarustelu.Clear();
-            tbPostiN.Clear();
+            cbPostiN.Text = "";
             cbAlueid.Text = "";
         }
         private void AlueID()
@@ -320,7 +320,7 @@ namespace Mokkivaraus
                 tbKuvaus.Visible = false;
                 tbMax.Visible = false;
                 tbVarustelu.Visible = false;
-                tbPostiN.Visible = false;
+                cbPostiN.Visible = false;
                 cbAlueid.Visible = false;
                 btnLisaaMokki.Visible = false;
                 btnPoistaMokki.Visible = false;
@@ -357,7 +357,7 @@ namespace Mokkivaraus
                 tbKuvaus.Visible = true;
                 tbMax.Visible = true;
                 tbVarustelu.Visible = true;
-                tbPostiN.Visible = true;
+                cbPostiN.Visible = true;
                 cbAlueid.Visible = true;
                 btnLisaaMokki.Visible = true;
                 btnPoistaMokki.Visible = true;

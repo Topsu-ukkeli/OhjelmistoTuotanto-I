@@ -217,52 +217,18 @@ namespace Mokkivaraus
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
-        {
-            string poista = "DELETE varaus WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
-            ExecuteMyQuery(poista);
-            populateDGV();
+        {//laskun poisto tarvitaan TÄHÄN!
+            string poistalasku = "DELETE lasku FROM lasku WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
+            ExecuteMyQuery(poistalasku);
+            string poistapalvelu = "DELETE FROM varauksen_palvelut WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
+            ExecuteMyQuery(poistapalvelu);
+            string poista = "DELETE varaus FROM varaus WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(poista, connection);
+            adapter.Fill(table);
+            dgwMajoitusvaraus.DataSource = table;
         }
-        private void TarkistaPaivat()
-        {
-            string AikaAlku = dtpVarauksenAlkupv.Value.ToString("yyyy-MM-dd");
-            string AikaLoppu = dtpVarauksenLoppupv.Value.ToString("yyyy-MM-dd");
-            connection.Open();
-            for (int i = 0; i <= Hallinta.MajoitusVarausID; i++)
-            {
-                string HaeAlku = "SELECT varattu_alkupvm FROM varaus WHERE varattu_alkupvm = '" + AikaAlku + "' AND varaus_id = '" + i + "';";
-                MySqlCommand VarausAlku = new MySqlCommand(HaeAlku, connection);
-                object test = VarausAlku.ExecuteScalar();
-                if (test == null)
-                {
-
-                }
-                else
-                {
-                    AikaAlku = VarausAlku.ExecuteScalar().ToString();
-                }
-                string HaeLoppu = "SELECT varattu_loppupvm FROM varaus WHERE varattu_loppupvm = '" + AikaLoppu + "' AND varaus_id = '" + i + "';";
-                MySqlCommand VarausLoppu = new MySqlCommand(HaeLoppu, connection);
-                object test2 = VarausLoppu.ExecuteScalar();
-                if (test2 == null)
-                {
-
-                }
-                else
-                {
-                    AikaLoppu = VarausLoppu.ExecuteScalar().ToString();
-                }
-                if (dtpVarauksenAlkupv.Value > Convert.ToDateTime(AikaAlku) && dtpVarauksenLoppupv.Value < Convert.ToDateTime(AikaLoppu))
-                {
-                    MessageBox.Show("Varaus on jo olemassa tälle viikolle");
-                }
-            }
-            connection.Close();
-            connection.Close();
-            //dtpVarauksenAlkupv.MinDate = Convert.ToDateTime(AikaLoppu);
-            //dtpVarauksenAlkupv.MaxDate = Convert.ToDateTime(AikaAlku);
-            //dtpVarauksenLoppupv.MinDate = Convert.ToDateTime(AikaLoppu);
-            //dtpVarauksenLoppupv.MaxDate = Convert.ToDateTime(AikaAlku);
-
-        }
+        
     }
+    
 }
