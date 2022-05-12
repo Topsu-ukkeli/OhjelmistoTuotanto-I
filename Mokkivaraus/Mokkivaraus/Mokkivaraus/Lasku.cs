@@ -114,7 +114,26 @@ namespace Mokkivaraus
                 MessageBox.Show(ex.Message);
             }
         }
-        private void confirmed() //vitunpaskamopovittusaatana
+        private void sendConfirm(string to)//tilausvahvistuksen lähetys spostiin
+        {
+            string subject = "Tilausvahvistus";
+            string from = "NootWare@gmail.com";
+            string pass = "pofierqtrudvxeje"; //onetime password from google
+            SmtpClient mailClient = new SmtpClient("smtp.gmail.com");
+            mailClient.EnableSsl = true;
+            mailClient.Port = 587;
+            mailClient.Credentials = new System.Net.NetworkCredential(from, pass);
+            try
+            {
+                MailMessage msgMail = new MailMessage(from, to, subject, Lasku.Vahvistus);
+                mailClient.Send(msgMail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void confirmed() //Varauksen syöttö tietokantaan 
         {
             string alku = Tiedot.Saapumispäivä.ToString("yyyy-MM-dd");
             string loppu = Tiedot.Poistumispäivä.ToString("yyyy-MM-dd");
@@ -123,7 +142,7 @@ namespace Mokkivaraus
             string varaus = "insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
                 " values('" + tanaan + "','" + tanaan + "','"
                 + alku + "','" + loppu + "','" + Tiedot.id + "','" + Tiedot.mokkiID + "');";
-
+            string palvelut = "", mokkinimi;
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
@@ -139,94 +158,152 @@ namespace Mokkivaraus
             MySqlCommand cmd2 = new MySqlCommand(varausidquery, connection);
             Lasku.varausID= (int)cmd2.ExecuteScalar();
             List<string> check = new List<string>();
-            for (int i = 0; i < Tiedot.Palvelut.Count; i++)
+            if (Tiedot.Palvelut.Count>0)
             {
-                if (check.Contains(Tiedot.Palvelut[i]) == false)
+                for (int i = 0; i < Tiedot.Palvelut.Count; i++)
                 {
-                    List<string> lasketut = new List<string>();
-
-                    string query = "select palvelu_id from palvelu where nimi ='" + Tiedot.Palvelut[i] + "' and alue_id = '" + alueid + "';";
-                    MySqlCommand cmd1 = new MySqlCommand(query, connection);
-                    palveluid = (int)cmd1.ExecuteScalar();
-
-                    for (int j = 0; j < Tiedot.Palvelut.Count; j++)
+                    palvelut += "\n"+Tiedot.Palvelut[i];
+                    if (check.Contains(Tiedot.Palvelut[i]) == false)
                     {
-                        if (Tiedot.Palvelut[j].Equals(Tiedot.Palvelut[i]) == true)
-                        {
-                            lasketut.Add(Tiedot.Palvelut[j]);
-                        }
-                    }
-                    palvelulkm = lasketut.Count();
-                    string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + Lasku.varausID + "','" + palvelulkm + "');";
+                        List<string> lasketut = new List<string>();
 
-                    MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
-                    cmd3.ExecuteNonQuery();
-                    check.Add(Tiedot.Palvelut[i]);
+                        string query = "select palvelu_id from palvelu where nimi ='" + Tiedot.Palvelut[i] + "' and alue_id = '" + alueid + "';";
+                        MySqlCommand cmd1 = new MySqlCommand(query, connection);
+                        palveluid = (int)cmd1.ExecuteScalar();
+
+                        for (int j = 0; j < Tiedot.Palvelut.Count; j++)
+                        {
+                            if (Tiedot.Palvelut[j].Equals(Tiedot.Palvelut[i]) == true)
+                            {
+                                lasketut.Add(Tiedot.Palvelut[j]);
+                            }
+                        }
+                        palvelulkm = lasketut.Count();
+                        string varauksen_palvelut = "insert into varauksen_palvelut(palvelu_id, varaus_id, lkm) values('" + palveluid + "', '" + Lasku.varausID + "','" + palvelulkm + "');";
+
+                        MySqlCommand cmd3 = new MySqlCommand(varauksen_palvelut, connection);
+                        cmd3.ExecuteNonQuery();
+                        check.Add(Tiedot.Palvelut[i]);
+                    }
                 }
             }
+            else
+            {
+                palvelut = "Ei lisäpalveluita";
+            }
+            string mokinnimi = "SELECT mokkinimi FROM mokki WHERE mokki_id ='" + Tiedot.mokkiID + "';",nimi="";
+            MySqlCommand cmd4 = new MySqlCommand(mokinnimi, connection);
+            nimi = cmd4.ExecuteScalar().ToString();
+            Lasku.Vahvistus = "Hei,\n" +
+            "\n" +
+            "Kiitos, että valitsit Village Newbies - mökin!\n" +
+            "Alla löydät tarkemmat tiedot varauksestasi.\n" +
+            "\n" +
+            "Varausnumero:"+Lasku.varausID+"\n" +
+            "Mökki: "+nimi+"\n" +
+            "Saapumispäivä: "+alku+"\n"+
+            "Lähtöpäivä: "+loppu+"\n"+
+            "Lisäpalvelut: "+palvelut+"\n"+
+            "Kokonaishinta: " + Lasku.Total + "€\n" +
+            "Sis. Alv 10%: "+ Lasku.Alv + "€\n" +
+            "\n" +
+            "\n" +
+            "\n" +
+            "Varauksen voi peruuttaa/ muuttaa maksutta 10 vuorokautta ennen saapumispäivää. \n" +
+            "Mikäli haluat tehdä muutoksia tilaukseesi, olethan yhteydessä asiakaspalveluumme!\n" +
+            "\n" +
+            "Huom! Tämä on tilausvahvistus. Lasku toimitetaan sinulle erikseen valitsemallasi toimitustavalla.\n" +
+            "\n" +
+            "\n" +
+            "Ystävällisin terveisin\n" +
+            "Village Newbies Oy\n" +
+            "Siilokatu 1\n" +
+            "90700 OULU\n";
             connection.Close();
 
 
         }
-        private void insertlasku()
+        private void insertlasku() //laskun syöttö tietokantaan
         {
-            string insert;
+            string insert, getlasku;
             string alv = Lasku.Alv.ToString();
             alv = alv.Replace(',', '.');
             insert= "INSERT INTO lasku(summa,alv,varaus_id) values('"+Lasku.Total + "', '" + alv + "', '" + Lasku.varausID+"');";
+            getlasku = "SELECT lasku_id FROM lasku WHERE varaus_id ='" + Lasku.varausID+"';";
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
             }
             connection.Open();
-            cmd = new MySqlCommand(insert, connection);
+            MySqlCommand cmd = new MySqlCommand(insert, connection);
+            MySqlCommand cmd2 = new MySqlCommand(getlasku, connection);
+
             cmd.ExecuteNonQuery();
+            Lasku.LaskuID = (int)cmd2.ExecuteScalar();
             connection.Close();
+        }
+        private void checkmail(string to)
+        {
+            if (tbLsposti.Text == "")                   //tarkistellaan että syötetty sposti on oikeaa muotoa
+            {
+                MessageBox.Show("Syötä sähköpostiosoite");
+            }
+            else if (tbLsposti.Text.Contains("@") == false == false)
+            {
+                MessageBox.Show("Syötä toimiva sähköpostiosoite");
+
+            }
+            else if (tbLsposti.Text.Contains(".com") == false && tbLsposti.Text.Contains(".fi") == false)
+            {
+                MessageBox.Show("Syötä toimiva sähköpostiosoite");
+            }
+            else
+            {
+                to = tbLsposti.Text;
+                
+            }
         }
 
         private void btnVahvista_Click(object sender, EventArgs e)
         {
             string lasku;
-            lasku =getHinnat();
+            string to = "";
+            Lasku.Vahvistus = "";
+            
             if (cbPaperilasku.Checked == true || cbSpostilasku.Checked == true)
             {
                 if (cbSpostilasku.Checked)
                 {
-                    string to = "";
+                    
+
                     if (cbVahvistasposti.Checked == true)
                     {
-                        if (tbLsposti.Text == "")                   //tarkistellaan että syötetty sposti on oikeaa muotoa
-                        {
-                            MessageBox.Show("Syötä sähköpostiosoite");
-                        }
-                        else if (tbLsposti.Text.Contains("@") == false == false)
-                        {
-                            MessageBox.Show("Syötä toimiva sähköpostiosoite");
+                        checkmail(to);
+                        
+                        confirmed();
+                        insertlasku();
+                        lasku = getHinnat();
+                        //sendConfirm(to);
+                        //sendMail(to, lasku);
 
-                        }
-                        else if (tbLsposti.Text.Contains(".com") == false && tbLsposti.Text.Contains(".fi") == false)
-                        {
-                            MessageBox.Show("Syötä toimiva sähköpostiosoite");
-                        }
-                        else
-                        {
-                            to = tbLsposti.Text;
-                            //sendMail(to, lasku);
-                            confirmed();
-                            insertlasku();
-                            this.Hide();
-                            frmAsiakastiedot frm = new frmAsiakastiedot();
-                            frm.Show();
-                        }
+                        this.Hide();
+                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        frm.Show();
                     }
                     else
                     {
                         to = "sahkoposti";
                         update(to);
                         to = dgvLasku.Rows[0].Cells[0].Value.ToString();
-                        //sendMail(to, lasku);
+
+                        
                         confirmed();
                         insertlasku();
+                        lasku = getHinnat();
+                        //sendConfirm(to);
+                        //sendMail(to, lasku);
+                        
+
                         this.Hide();
                         frmAsiakastiedot frm = new frmAsiakastiedot();
                         frm.Show();
@@ -246,8 +323,16 @@ namespace Mokkivaraus
                         {
                             address = tbLosoite.Text+", "+tbPostinum.Text+ ", " + tbPostitoim.Text;
                             MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
+
+                            to = "sahkoposti";
+                            update(to);
+                            to = dgvLasku.Rows[0].Cells[0].Value.ToString();
+
                             confirmed();
                             insertlasku();
+                            lasku = getHinnat();
+                            //sendConfirm(to);
+
                             this.Hide();
                             frmAsiakastiedot frm = new frmAsiakastiedot();
                             frm.Show();
@@ -260,13 +345,23 @@ namespace Mokkivaraus
                         update(address);
                         address = dgvLasku.Rows[0].Cells[0].Value.ToString();
                         MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
+                        to = "sahkoposti";
+                        update(to);
+                        to = dgvLasku.Rows[0].Cells[0].Value.ToString();
+                        
                         confirmed();
+                        insertlasku();
+                        lasku = getHinnat();
+                        //sendConfirm(to);
+
                         frmAsiakastiedot frm = new frmAsiakastiedot();
                         frm.Show();
                         this.Hide();
+                        
                     }
-                    
+                   
                 }
+                
 
             }
             else
@@ -327,10 +422,10 @@ namespace Mokkivaraus
             getHinnat();
 
         }
-        private string getHinnat() //lasketaan hinnat varaukselle näkyviin 
+        private string getHinnat() //lasketaan hinnat varaukselle näkyviin sekä kerätään tiedot valmiiksi laskulle ja vahvistusviestille
         {
             lbHinnat.Items.Clear();
-            string lasku="";
+            string lasku = "", etunimi = "", sukunimi = "", lisapalvelu=""; 
             double mokki, palvelutotal=0,palvelu, alvtotal=0;
             double paivat = 1;
             if (Tiedot.Poistumispäivä.CompareTo(Tiedot.Saapumispäivä)>0)
@@ -351,7 +446,6 @@ namespace Mokkivaraus
                 vk = "vuorokautta";
             }
             lbHinnat.Items.Add("Mökin vuokra: "+paivat +" "+ vk + ", "+(paivat*mokki)+ "€, (sis. ALV 10% "+ (0.10*(paivat*mokki))+ "€)");
-            lasku += "Mökin vuokra: " + paivat + " " + vk + ", " + (paivat * mokki) + "€, (sis. ALV 10% " + (0.10 * (paivat * mokki)) + "€)\n";
             alvtotal += 0.10 * (paivat * mokki);
             if (Tiedot.Palvelut.Count>0)
             {
@@ -364,15 +458,55 @@ namespace Mokkivaraus
                     palvelutotal += (double)palveluhinta.ExecuteScalar();
                     alvtotal += palvelu * 0.10;
                     lbHinnat.Items.Add("Lisäpalvelu: " +Tiedot.Palvelut[i] + ", " + palvelu +"€, (sis. ALV 10% " + (palvelu * 0.10)+"€)");
-                    lasku += "Lisäpalvelu: " + Tiedot.Palvelut[i] + ", " + palvelu + "€, (sis. ALV 10% " + (palvelu * 0.10) + "€)\n";
+                    lisapalvelu += "Lisäpalvelu: " + Tiedot.Palvelut[i] + ", " + palvelu + "€, (sis. ALV 10% " + (palvelu * 0.10) + "€)\n";
 
 
                 }
             }
-            lasku += "Kokonaishinta: " + (paivat * mokki + palvelutotal) + "€, (sis. ALV 10% " + alvtotal + "€)\n";
+            string query3 = "select etunimi from asiakas where asiakas_id = " +Tiedot.id;
+            string query4 = "select sukunimi from asiakas where asiakas_id = " + Tiedot.id;
+            MySqlCommand etu = new MySqlCommand(query3, connection);
+            MySqlCommand suku = new MySqlCommand(query4, connection);
+            etunimi = etu.ExecuteScalar().ToString();
+            sukunimi = suku.ExecuteScalar().ToString();
+            lasku += "Hei,\n" +
+                         "\n" +
+                         "Tämä on lasku tekemästäsi varauksesta \n" +
+                         "Varausnumero: " + Lasku.varausID + "\n" +
+                         "Laskunumero: "+Lasku.LaskuID+"\n" +
+                         "Alla löydät laskun maksutiedot sekä erittelyn.\n" +
+                         "\n" +
+                         "\n" +
+                         "Maksajan nimi: " + etunimi + " " + sukunimi + "\n" +
+                         "Saaja: Village Newbies Oy\n" +
+                         "Saajan tilinumero IBAN: FI123 4000 5678 9123 45\n" +
+                         "BIC: ABCCBA\n" +
+                         "Viitenumero: 54533211\n" +
+                         "Eräpäivä: "+ Tiedot.Poistumispäivä.ToString("yyyy-MM-dd") + "\n"+
+                         "Summa(EURO): " + (paivat * mokki + palvelutotal) + "\n"+
+                         "\n" +
+                         "\n" +
+                         "Erittely \n" +
+                         "Mökkivuokra/vuorokausi: " + mokki+ "€,  (sis. ALV 10% " + (0.10 *mokki)+"€)\n" +
+                         "Vuokra vuorokaudet: " + paivat + "\n" +
+                         "Vuokrasumma: " + (mokki * paivat) + "\n" +
+                            lisapalvelu+ "\n" +
+                         "Kokonaishinta: " +(paivat * mokki + palvelutotal) + "€\n" +
+                         "Sis. Alv 10%: " + alvtotal + "€\n" +
+                         "\n" +
+                         "\n" +
+                         "\n" +
+                         "Mikäli haluat tehdä muutoksia tilaukseesi, olethan yhteydessä asiakaspalveluumme!\n" +
+                         "\n" +
+                         "\n" +
+                         "Ystävällisin terveisin\n" +
+                         "Village Newbies Oy\n" +
+                         "Siilokatu 1\n" +
+                         "90700 OULU\n";
             lbHinnat.Items.Add("Kokonaishinta: "+(paivat*mokki+palvelutotal)+ "€, (sis. ALV 10% " +alvtotal+"€)");
             Lasku.Total = paivat * mokki + palvelutotal;
             Lasku.Alv = alvtotal;
+            
             connection.Close();
             return lasku;
             
