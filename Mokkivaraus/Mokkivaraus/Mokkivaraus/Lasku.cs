@@ -27,7 +27,7 @@ namespace Mokkivaraus
         {
             InitializeComponent();
         }
-        private void cbPaperilasku_CheckedChanged(object sender, EventArgs e)
+        private void cbPaperilasku_CheckedChanged(object sender, EventArgs e) //ehtojen tarkistusta mitä tulee näyttää milloinkin näytöllä
         {
             bool visible;
             if (cbPaperilasku.Checked == true)
@@ -52,7 +52,7 @@ namespace Mokkivaraus
         }
         
 
-        private void cbSpostilasku_CheckedChanged(object sender, EventArgs e)
+        private void cbSpostilasku_CheckedChanged(object sender, EventArgs e)//ehtojen tarkistusta mitä tulee näyttää milloinkin näytöllä
         {
 
             if (cbSpostilasku.Checked == true)
@@ -73,7 +73,7 @@ namespace Mokkivaraus
                 cbVahvistasposti.Visible = false;
             }
         }
-        private void cbVahvistasposti_CheckedChanged(object sender, EventArgs e)
+        private void cbVahvistasposti_CheckedChanged(object sender, EventArgs e)//ehtojen tarkistusta mitä tulee näyttää milloinkin näytöllä
         {
             if (cbVahvistasposti.Checked == true)
             {
@@ -133,7 +133,7 @@ namespace Mokkivaraus
                 MessageBox.Show(ex.Message);
             }
         }
-        private void confirmed() //Varauksen syöttö tietokantaan 
+        private void confirmed() //Varauksen syöttö tietokantaan sekä vahvistus viestin kokoaminen
         {
             string alku = Tiedot.Saapumispäivä.ToString("yyyy-MM-dd");
             string loppu = Tiedot.Poistumispäivä.ToString("yyyy-MM-dd");
@@ -242,13 +242,13 @@ namespace Mokkivaraus
             Lasku.LaskuID = (int)cmd2.ExecuteScalar();
             connection.Close();
         }
-        private void checkmail(string to)
+        private void checkmail(ref string to)
         {
             if (tbLsposti.Text == "")                   //tarkistellaan että syötetty sposti on oikeaa muotoa
             {
                 MessageBox.Show("Syötä sähköpostiosoite");
             }
-            else if (tbLsposti.Text.Contains("@") == false == false)
+            else if (tbLsposti.Text.Contains("@") == false)
             {
                 MessageBox.Show("Syötä toimiva sähköpostiosoite");
 
@@ -270,7 +270,7 @@ namespace Mokkivaraus
             string to = "";
             Lasku.Vahvistus = "";
             
-            if (cbPaperilasku.Checked == true || cbSpostilasku.Checked == true)
+            if (cbPaperilasku.Checked == true || cbSpostilasku.Checked == true)//tarkistetaan että laitetaan lasku valitulla tavalla
             {
                 if (cbSpostilasku.Checked)
                 {
@@ -278,17 +278,24 @@ namespace Mokkivaraus
 
                     if (cbVahvistasposti.Checked == true)
                     {
-                        checkmail(to);
-                        
-                        confirmed();
-                        insertlasku();
-                        lasku = getHinnat();
-                        //sendConfirm(to);
-                        //sendMail(to, lasku);
+                        checkmail(ref to);
 
-                        this.Hide();
-                        Valikko frm = new Valikko();
-                        frm.Show();
+                        if (to=="")
+                        {
+
+                        }
+                        else
+                        {
+                            confirmed();
+                            insertlasku();
+                            lasku = getHinnat();
+                            //sendConfirm(to);
+                            //sendMail(to, lasku);
+                            this.Hide();
+                        }
+
+
+
                     }
                     else
                     {
@@ -301,10 +308,8 @@ namespace Mokkivaraus
                         lasku = getHinnat();
                         //sendConfirm(to);
                         //sendMail(to, lasku);
-                        
+                        MessageBox.Show("Varaus on vahvistettu. \nLasku on lähetty sähköpostilla osoitteeseen: \n"+to);
                         this.Hide();
-                        Valikko frm = new Valikko();
-                        frm.Show();
                     }
                     
                 }
@@ -320,7 +325,7 @@ namespace Mokkivaraus
                         else
                         {
                             address = tbLosoite.Text+", "+tbPostinum.Text+ ", " + tbPostitoim.Text;
-                            MessageBox.Show("Varaus on vahvistettu. \nLasku on postitettu osoitteeseen:\n" + address);
+                            MessageBox.Show("Varaus on vahvistettu. \nLasku postitetaan osoitteeseen:\n" + address);
 
                             to = "sahkoposti";
                             update(to);
@@ -332,8 +337,7 @@ namespace Mokkivaraus
                             //sendConfirm(to);
 
                             this.Hide();
-                            Valikko frm = new Valikko();
-                            frm.Show();
+
                         }
                         
                     }
@@ -353,10 +357,6 @@ namespace Mokkivaraus
                         //sendConfirm(to);
 
                         this.Hide();
-                        Valikko frm = new Valikko();
-                        frm.Show();
-                        
-                        
                     }
                    
                 }
@@ -398,7 +398,7 @@ namespace Mokkivaraus
         }
         
         private void frmVaraus_Load(object sender, EventArgs e)
-        {
+        {//yhdistetään tietokantaan
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -510,7 +510,7 @@ namespace Mokkivaraus
             return lasku;
             
         }
-        private void populateDGVMokki()
+        private void populateDGVMokki() //haetaan mökin tiedot
         {
             string query = "SELECT * FROM mokki WHERE mokki_id = '"+Tiedot.mokkiID+"'";
             DataTable table = new DataTable();
@@ -518,7 +518,7 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvVarausMokki.DataSource = table;
         }
-        private void populateDGVAsiakas()
+        private void populateDGVAsiakas()//haetaan asiakkaan tiedot
         {
             string query = "SELECT * FROM asiakas WHERE asiakas_id ='" + Tiedot.id + "'";
             DataTable table = new DataTable();
@@ -526,7 +526,7 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvVaraus.DataSource = table;
         }
-        private void populateDGVPalvelut()
+        private void populateDGVPalvelut()//haetaan palveluiden tiedot
         {
             if (Tiedot.Palvelut.Count > 0)
             {
