@@ -130,8 +130,7 @@ namespace Mokkivaraus
             else
             {
                 frm.Show();
-                frm.Focus();
-                frm.BringToFront();
+                
             }
         }
     }

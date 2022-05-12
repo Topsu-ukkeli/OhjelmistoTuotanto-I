@@ -35,6 +35,7 @@ namespace Mokkivaraus
 
         private void LaskuHallinta_Load(object sender, EventArgs e)
         {
+            
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();

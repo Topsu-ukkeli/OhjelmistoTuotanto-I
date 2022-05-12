@@ -104,9 +104,18 @@ namespace Mokkivaraus
             }
             else
             {
-                Valikko frm = new Valikko();
-                frm.Show();
-                this.Hide();
+                try
+                {
+                    Valikko frm = new Valikko();
+                    frm.Show();
+                    this.Hide();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Tapahtui virhe\n Olkaa hyvä ja käynnistäkää sovellus uudelleen");
+   
+                }
+                
             }
         }
         private void Kirjautuminen_KeyDown(object sender, KeyEventArgs e) //mahdollistetaan kirjautuminen enteriä painamalla

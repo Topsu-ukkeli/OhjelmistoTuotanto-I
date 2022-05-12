@@ -142,7 +142,7 @@ namespace Mokkivaraus
             string varaus = "insert into varaus(varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm, asiakas_id, mokki_id)" +
                 " values('" + tanaan + "','" + tanaan + "','"
                 + alku + "','" + loppu + "','" + Tiedot.id + "','" + Tiedot.mokkiID + "');";
-            string palvelut = "", mokkinimi;
+            string palvelut = "";
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
@@ -287,7 +287,7 @@ namespace Mokkivaraus
                         //sendMail(to, lasku);
 
                         this.Hide();
-                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        Valikko frm = new Valikko();
                         frm.Show();
                     }
                     else
@@ -296,16 +296,14 @@ namespace Mokkivaraus
                         update(to);
                         to = dgvLasku.Rows[0].Cells[0].Value.ToString();
 
-                        
                         confirmed();
                         insertlasku();
                         lasku = getHinnat();
                         //sendConfirm(to);
                         //sendMail(to, lasku);
                         
-
                         this.Hide();
-                        frmAsiakastiedot frm = new frmAsiakastiedot();
+                        Valikko frm = new Valikko();
                         frm.Show();
                     }
                     
@@ -334,7 +332,7 @@ namespace Mokkivaraus
                             //sendConfirm(to);
 
                             this.Hide();
-                            frmAsiakastiedot frm = new frmAsiakastiedot();
+                            Valikko frm = new Valikko();
                             frm.Show();
                         }
                         
@@ -354,9 +352,10 @@ namespace Mokkivaraus
                         lasku = getHinnat();
                         //sendConfirm(to);
 
-                        frmAsiakastiedot frm = new frmAsiakastiedot();
-                        frm.Show();
                         this.Hide();
+                        Valikko frm = new Valikko();
+                        frm.Show();
+                        
                         
                     }
                    
