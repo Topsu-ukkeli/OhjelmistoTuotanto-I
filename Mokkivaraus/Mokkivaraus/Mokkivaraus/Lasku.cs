@@ -228,7 +228,7 @@ namespace Mokkivaraus
             string insert, getlasku;
             string alv = Lasku.Alv.ToString();
             alv = alv.Replace(',', '.');
-            insert= "INSERT INTO lasku(summa,alv,varaus_id) values('"+Lasku.Total + "', '" + alv + "', '" + Lasku.varausID+"');";
+            insert= "INSERT INTO lasku(summa,alv,varaus_id,maksettu) values('"+Lasku.Total + "', '" + alv + "', '" + Lasku.varausID+"','"+1+"');";
             getlasku = "SELECT lasku_id FROM lasku WHERE varaus_id ='" + Lasku.varausID+"';";
             if (connection.State == ConnectionState.Open)
             {
