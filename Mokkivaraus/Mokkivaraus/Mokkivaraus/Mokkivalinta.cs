@@ -294,19 +294,6 @@ namespace Mokkivaraus
                 adapter2.Fill(table2);
                 dgwMokkivalinta.DataSource = table2;
             }
-            //List<int> PalveluID = new List<int>();
-            //for (int i = 0; i < dgwMokkivalinta.Rows.Count; i++)
-            //{
-            //    VarausID.Add((int)dgwMokkivalinta.Rows[i].Cells[0].Value);
-            //}
-            //for (int i = 0; i < VarausID.Count; i++)
-            //{
-            //    string HaePalvelut = "SELECT palvelu_id FROM varauksen_palvelut WHERE varaus_id = '" + VarausID[i] + "';";
-            //    DataTable table2 = new DataTable();
-            //    MySqlDataAdapter adapter2 = new MySqlDataAdapter(HaePalvelut, connection);
-            //    adapter2.Fill(table2);
-            //    dgwPalveluID.DataSource = table2;
-            //}
         }
     }
 }
