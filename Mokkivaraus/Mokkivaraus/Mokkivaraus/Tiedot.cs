@@ -26,7 +26,7 @@ namespace Mokkivaraus
         }
 
         private void frmTiedot_Load(object sender, EventArgs e)
-        {
+        {//Avataan yhteys tietokantaan 
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -37,15 +37,14 @@ namespace Mokkivaraus
                 builder.Database = LoginInfo.Name;
                 builder.SslMode = MySqlSslMode.None;
                 connection = new MySqlConnection(builder.ToString());
-                //MessageBox.Show("Database connection successfull", "Connection", MessageBoxButtons.OK);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("connection failed" + ex);
             }
-            populateDGV();
+            populateDGV();//Päivitetään datagridview tietokannan tiedoilla
             AlueID();
-            HaeAlueet();
+            HaePostit(); //Haetaan postit
             if (rdbAlue.Checked == true)
             {
                 NaytaAlue();
@@ -57,7 +56,7 @@ namespace Mokkivaraus
         }
 
         public void populateDGV()
-        {
+        {//Tarkistetaan kumpaa tietoa päivitetään
             if (rdbAlue.Checked == true)
             {
                 string query = "SELECT * FROM alue";
@@ -75,8 +74,8 @@ namespace Mokkivaraus
                 dgwMokki.DataSource = table2;
             }
         }
-        private void HaeAlueet()
-        {
+        private void HaePostit()
+        {//Haetaan postinumerot comboboxiin tietokannasta
             string PostiNumero;
             string Query = "SELECT postinro FROM posti WHERE postinro BETWEEN 00000 AND 99999;";
             ExecuteMyQuery(Query);
@@ -102,7 +101,7 @@ namespace Mokkivaraus
         }
 
         private void btnLisaaAlue_Click(object sender, EventArgs e)
-        {
+        {//Lisätään uusi alue tietokantaan painike näkyy vain jos alueen muokkaus on valittu
             if (tbAlue.Text == "")
             {
                 MessageBox.Show("Anna alueen nimi!");
@@ -173,7 +172,7 @@ namespace Mokkivaraus
         }
 
         private void dgwMokki_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//Datagridviewi:n riviä painamalla tulee valitut tiedot näkyviin mökin laatikoihin
             tbMokinnimi.Text = dgwMokki.CurrentRow.Cells[1].Value.ToString();
             tbKatuosoite.Text = dgwMokki.CurrentRow.Cells[2].Value.ToString();
             tbHinta.Text = dgwMokki.CurrentRow.Cells[3].Value.ToString();
@@ -190,13 +189,13 @@ namespace Mokkivaraus
         }
 
         private void dgwAlue_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//Alueen datagridview:n riviä klikkaamalla tulee tiedot näkyviin alueiden laatikoihin
             tbAlue.Text = dgwAlue.CurrentRow.Cells[1].Value.ToString();
             Hallinta.alueenvalittuID = (int)dgwAlue.CurrentRow.Cells[0].Value;
         }
 
         private void btnPoistaAlue_Click(object sender, EventArgs e)
-        {
+        {//Poistetaan alue tietokannasta
             string query = "DELETE FROM alue WHERE alue_id = '" + Hallinta.alueenvalittuID + "'";
             ExecuteMyQuery(query);
             populateDGV();
@@ -204,7 +203,7 @@ namespace Mokkivaraus
         }
 
         private void btnPoistaMokki_Click(object sender, EventArgs e)
-        {
+        {//Poistetaan mökki tietokannasta
             DialogResult Result = MessageBox.Show("Haluatko varmasti poistaa tiedot?", "Olet poistamassa tietoja", MessageBoxButtons.YesNo);
             if (Result == DialogResult.Yes)
             {
@@ -228,7 +227,7 @@ namespace Mokkivaraus
         }
 
         private void btnLisaaMokki_Click(object sender, EventArgs e)
-        {
+        {//Lisätään mökki tietokantaan tarkistetaan että kaikki tiedot on mitä tarvitaan
             double Hinta;
             int HenkMaara;
             if (tbMokinnimi.Text == "" || tbKatuosoite.Text == "" || tbHinta.Text == "" || tbKuvaus.Text == "" || tbMax.Text == "" || tbVarustelu.Text == "" || cbPostiN.Text == "" || cbAlueid.Text == "")
@@ -246,7 +245,7 @@ namespace Mokkivaraus
                     else if (tbMokinnimi.Text != dgwMokki.Rows[i].Cells[1].Value.ToString() && i + 1 == dgwMokki.Rows.Count)
                     {
                         Hinta = double.Parse(tbHinta.Text);
-                        HenkMaara = int.Parse(tbMax.Text);
+                        HenkMaara = int.Parse(tbMax.Text);//Laitetaan sql komento toimimaan ja lisätään mökki
                         string lisaaQuery = "INSERT INTO mokki(mokkinimi,katuosoite,hinta,kuvaus,henkilomaara,varustelu,postinro,alue_id) VALUES('" + tbMokinnimi.Text + "','" + tbKatuosoite.Text + "','" + Hinta + "','" + tbKuvaus.Text + "','" + HenkMaara + "','" + tbVarustelu.Text + "','" + cbPostiN.Text + "','" + Hallinta.alueenvalittuID + "');";
                         ExecuteMyQuery(lisaaQuery);
                         populateDGV();
@@ -268,7 +267,7 @@ namespace Mokkivaraus
             cbAlueid.Text = "";
         }
         private void AlueID()
-        {
+        {//Haetaan alueen tiedot comboboxiin josta käyttäjä voi valita niitä
             string Alue;
             int Posti = dgwAlue.Rows.Count;
             for (int i = 0; i < Posti; i++)
@@ -280,7 +279,7 @@ namespace Mokkivaraus
 
         private void cbAlueid_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //Haetaan alueen id jotta voidaan käyttää sitä muissa funktioissa ja se lisätään luokkaan
             string query = "SELECT alue_id FROM alue WHERE nimi = '" + cbAlueid.Text + "'";
             MySqlCommand AlueID = new MySqlCommand(query, connection);
             if (connection.State == ConnectionState.Open)
@@ -298,15 +297,15 @@ namespace Mokkivaraus
 
         private void rdbAlue_CheckedChanged(object sender, EventArgs e)
         {
-            NaytaAlue();
+            NaytaAlue();//Kutsutaan näytäalueen funktiota
         }
 
         private void rdbMokki_CheckedChanged(object sender, EventArgs e)
         {
-            NaytaMokki();
+            NaytaMokki();//Kutsutaan näytämökki funktiota
         }
         public void NaytaAlue()
-        {
+        {//Jos radiobutton on painettu näytetään alueiden tiedot ja peitetään mökin tiedot
             if (rdbAlue.Checked == true)
             {
                 panel3.Visible = true;
@@ -343,7 +342,7 @@ namespace Mokkivaraus
             }
         }
         public void NaytaMokki()
-        {
+        {//Jos radiobutton on painettu näytetään mökin tiedot ja piilotetaan alueen tiedot
             if (rdbMokki.Checked == true)
             {
                 panel1.Visible = true;

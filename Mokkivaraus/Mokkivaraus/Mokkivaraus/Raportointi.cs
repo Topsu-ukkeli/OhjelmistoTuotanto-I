@@ -26,7 +26,7 @@ namespace Mokkivaraus
         }
 
         private void Raportointi_Load(object sender, EventArgs e)
-        {
+        {//Luodaan yhteys tietokantaan
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -47,7 +47,7 @@ namespace Mokkivaraus
             TaytaAlueet();
         }
         private void PopulateMajoituDgv()
-        {
+        {//Päivitetään datagridview
             string query = "SELECT * FROM varaus";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
@@ -63,7 +63,7 @@ namespace Mokkivaraus
         //    dgwPalvelut.DataSource = table;
         //}
         private void TaytaAlueet()
-        {
+        {//Täytetään alue combobox tiedoilla tietokannasta
             int MaxAlue;
             string Nimi;
             string Query = "SELECT MAX(alue_id) FROM alue";
@@ -128,11 +128,11 @@ namespace Mokkivaraus
         }
 
         private void btnHae_Click(object sender, EventArgs e)
-        {
+        {//tarkistetaan onko yhteys jo avattu jos on suletaan se
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
-            }
+            }//muutetaan datetimepicker arvot string arvoiksi jotta niitä on helpompi liikutella tietokannassa
             string Alkupv = dtpAlkupv.Value.ToString("yyyy-MM-dd");
             string Loppupv = dtpLoppupv.Value.ToString("yyyy-MM-dd");
             string Hae = "SELECT * FROM varaus WHERE (varattu_alkupvm BETWEEN ('"+ Alkupv+ "') AND ('" + Loppupv + "')) AND(varattu_loppupvm BETWEEN('" + Alkupv + "') AND('" + Loppupv + "')); ";
@@ -156,7 +156,7 @@ namespace Mokkivaraus
         }
 
         private void btnHaeAlue_Click(object sender, EventArgs e)
-        {
+        {//Haetaan alueet alueen nimen mukaan ja lisätään ne listaan jotta voidaan lisätä ne listboxiin
             List<int> Lukumaara = new List<int>();
             if (connection.State == ConnectionState.Open)
             {
@@ -239,7 +239,7 @@ namespace Mokkivaraus
                     }
                 }
                 for (int j = 0; j < KaikkiTiedot.Count; j++)
-                {
+                {//Lisätään for loopissa tiedot listboxiin 
                     lbNimet.Items.Add(KaikkiTiedot[j] + " " + KaikkiTiedot2[j] + " €" + " Kappalaite = " + Lukumaara[j]);
                 }
             }

@@ -92,6 +92,7 @@
             this.cbPostiN.Name = "cbPostiN";
             this.cbPostiN.Size = new System.Drawing.Size(222, 28);
             this.cbPostiN.TabIndex = 3;
+            this.cbPostiN.TextChanged += new System.EventHandler(this.cbPostiN_TextChanged);
             // 
             // txtPuhelin
             // 
@@ -308,6 +309,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1173, 430);
             this.panel1.TabIndex = 31;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // frmAsiakastiedot
             // 

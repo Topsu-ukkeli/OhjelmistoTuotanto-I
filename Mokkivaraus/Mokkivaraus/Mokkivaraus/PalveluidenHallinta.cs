@@ -30,7 +30,7 @@ namespace Mokkivaraus
         }
 
         private void PalveluidenHallinta_Load(object sender, EventArgs e)
-        {
+        {//Yhdistetään tietokantaan
             try
             {
                 MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -60,7 +60,7 @@ namespace Mokkivaraus
         }
 
         private void btnLisaa_Click(object sender, EventArgs e)
-        {
+        {//Listään palvelu tietokantaan tarkistetaan onko laatikot tyhjiä.
             double hinta,Alv;
             int alueenID;
             if (tbPalvelunNimi.Text == "" || tbPalvelunTyyppi.Text == "" || tbPalvelunKuvaus.Text == "" || tbPalvelunHinta.Text == "" || tbALV.Text == "")
@@ -77,7 +77,7 @@ namespace Mokkivaraus
                         break;
                     }
                     else if (tbPalvelunNimi.Text != dgwPalvelut.Rows[i].Cells[1].Value.ToString() && i + 1 == dgwPalvelut.Rows.Count||tbPalvelunNimi.Text == "Loppusiivous"||tbPalvelunNimi.Text == "loppusiivous")
-                    {
+                    {//Jos laatikot eivät ollet tyhjiä lisätään niiden tiedot tietokantaan
                         hinta = double.Parse(tbPalvelunHinta.Text);
                         Alv = double.Parse(tbALV.Text);
                         string query = "SELECT alue_id FROM alue WHERE nimi = '" + cbAlue.Text + "'";
@@ -96,7 +96,7 @@ namespace Mokkivaraus
 
         }
         private void Poisto()
-        {
+        {//tyhjennetään kentät
             tbPalvelunNimi.Clear();
             tbPalvelunTyyppi.Clear();
             tbPalvelunKuvaus.Clear();
@@ -105,7 +105,7 @@ namespace Mokkivaraus
             cbAlue.Text = "";
         }
         private void HaeAlueet()
-        {
+        {//Alue haetaan tietokannasta ja laitetaan comboboxiin
             int alueet;
             string alue;
             string query = "SELECT MAX(alue_id) FROM alue;";
@@ -175,7 +175,7 @@ namespace Mokkivaraus
         }
 
         private void dgwPalvelut_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//Datagridviewin riviä klikkaamalla voi valita tiedot jos niitä haluaa muokata
             string alueentieto;
             tbPalvelunNimi.Text = dgwPalvelut.CurrentRow.Cells[1].Value.ToString();
             tbPalvelunTyyppi.Text = dgwPalvelut.CurrentRow.Cells[2].Value.ToString();
@@ -193,7 +193,7 @@ namespace Mokkivaraus
         }
 
         private void btnPoistaPalvelu_Click(object sender, EventArgs e)
-        {
+        {//Poistetaan palvelu
             DialogResult Result = MessageBox.Show("Haluatko varmasti poistaa palvelun?", "Olet poistamassa palvelun", MessageBoxButtons.YesNo);
             if(Result == DialogResult.Yes)
             {
@@ -212,7 +212,7 @@ namespace Mokkivaraus
         }
 
         private void btnPaivitaPalvelua_Click(object sender, EventArgs e)
-        {
+        {//Päivitetään palvelu tietokantaan
             if(tbPalvelunNimi.Text == ""||tbPalvelunTyyppi.Text == ""||tbPalvelunKuvaus.Text  == ""||tbPalvelunHinta.Text == ""||tbALV.Text == "")
             {
                 MessageBox.Show("Valitse tieto jota päivitetään");

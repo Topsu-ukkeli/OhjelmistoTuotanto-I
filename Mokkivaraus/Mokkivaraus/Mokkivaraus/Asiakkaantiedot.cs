@@ -29,7 +29,7 @@ namespace Mokkivaraus
         }
 
         private void frmAsiakastiedot_Load(object sender, EventArgs e)
-        {
+        {//yhteyden luominen tietokantaan
             Tiedot.id = 0;
             try
             {
@@ -51,7 +51,7 @@ namespace Mokkivaraus
             Postinumerot();
         }
         private void poisto()
-        {
+        {//Tyhjennetään kaikki kentät lisäyksen/päivityksen/poiston jälkeen
             txtEtu.Clear();
             txtSuku.Clear();
             txtPostiO.Clear();
@@ -66,10 +66,10 @@ namespace Mokkivaraus
             string Query = "SELECT asiakas_id FROM asiakas WHERE asiakas_id = '" + lblID.Text + "' ";
             if (lblID.Text == "0")
             {
-                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
+                MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas"); //Tarkastetaan että asiakas on valittu kenen nimellä varaus tehdään
             }
             else
-            {
+            {//kun asiakas on valittu varmistetaan tiedot oikeiksi
                 ExecuteMyQuery(Query);
                 DataTable table2 = new DataTable();
                 MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
@@ -81,10 +81,10 @@ namespace Mokkivaraus
                 if (Tiedot.id == 0)
                 {
                     MessageBox.Show("Asiakasta ei ole valittu ole hyvä ja valitse asiakas");
-                }
+                }//Tarkistetaan uudelleen onko asiakas valittu
                 else
                 {
-                    frmMokkivalinta valinnat = new frmMokkivalinta(); // tähän täytyy tehdä postinumeron tarkistus saadaan vanhasta työstä jos numeroa ei löydy se lisätään niin myös henkilöön kuin postiin
+                    frmMokkivalinta valinnat = new frmMokkivalinta(); 
                     valinnat.Show();
                     this.Hide();
                 }
@@ -92,7 +92,7 @@ namespace Mokkivaraus
 
         }
         private void Postinumerot()
-        {
+        {//Ladataan postinumerot tietokannasta valmiiksi
             string Query = "SELECT postinro FROM posti WHERE postinro BETWEEN 00000 AND 99999;";
             ExecuteMyQuery(Query);
             DataTable table = new DataTable();
@@ -146,7 +146,7 @@ namespace Mokkivaraus
             }
         }
         public void populateDGV()
-        {
+        {//päivitetään datagridview
             string query = "SELECT * FROM asiakas";
             DataTable table = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
@@ -173,7 +173,7 @@ namespace Mokkivaraus
         }
 
         private void dgvAsiakkaat_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//Käyttäjä voi valita datagridview:stä tietoja klikkaamalla rivejä ja tiedot tulevat näkyviin tekstikenttiin
             lblID.Text = dgvAsiakkaat.CurrentRow.Cells[0].Value.ToString();
             txtEtu.Text = dgvAsiakkaat.CurrentRow.Cells[1].Value.ToString();
             txtSuku.Text = dgvAsiakkaat.CurrentRow.Cells[2].Value.ToString();
@@ -181,7 +181,7 @@ namespace Mokkivaraus
             txtSahko.Text = dgvAsiakkaat.CurrentRow.Cells[4].Value.ToString();
             txtPuhelin.Text = dgvAsiakkaat.CurrentRow.Cells[5].Value.ToString();
             cbPostiN.Text = dgvAsiakkaat.CurrentRow.Cells[6].Value.ToString();
-            string Query = "SELECT toimipaikka FROM posti WHERE postinro = '"+cbPostiN.Text+"' ";
+            string Query = "SELECT toimipaikka FROM posti WHERE postinro = '"+cbPostiN.Text+"' "; // Toimipaikka valitaan sql kyselyllä postinumeron mukaan
             ExecuteMyQuery(Query);
             DataTable table2 = new DataTable();
             MySqlDataAdapter adapter = new MySqlDataAdapter(Query, connection);
@@ -195,7 +195,7 @@ namespace Mokkivaraus
 
         }
         private void Tyhjenna()
-        {
+        {//tyhjennetään kentät 
             txtEtu.Clear();
             txtSuku.Clear();
             txtPostiO.Clear();
@@ -206,7 +206,7 @@ namespace Mokkivaraus
         }
         private void btnLissee_Click(object sender, EventArgs e)
         {
-            
+            //Lisätään asiakas ja tarkistetaan onko sähköpostiosoite oikein kirjoitettu 
             if (txtSahko.Text == "")
             {
                 MessageBox.Show("Syötä sähköpostiosoite");
@@ -223,7 +223,7 @@ namespace Mokkivaraus
             else
             {
                 try
-                {
+                {//sitten lisätään asiakas tietokantaan sekä postinumero postitoimipaikkoineen posti tauluun
                     string insertQuery2 = "INSERT INTO posti(postinro,toimipaikka) VALUES('" + cbPostiN.Text + "','" + txtPostiP.Text + "')";
                     ExecuteMyQuery(insertQuery2);
                     string insertQuery = "INSERT INTO asiakas(etunimi,sukunimi,lahiosoite,sahkoposti,puhelinnro,postinro) VALUES('" + txtEtu.Text + "','" + txtSuku.Text + "','" + txtPostiO.Text + "','" + txtSahko.Text + "','" + txtPuhelin.Text + "','" + cbPostiN.Text + "')";
@@ -234,20 +234,20 @@ namespace Mokkivaraus
 
                 }
                 populateDGV();
-                poisto();
+                Tyhjenna();
             }
             
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
-        {
+        {//Poistetaan valittu asiakas
             string Delete = "DELETE FROM asiakas WHERE asiakas_id = ('"+lblID.Text+"')";
             ExecuteMyQuery(Delete);
             populateDGV();
         }
 
         private void btnPaivita_Click(object sender, EventArgs e)
-        {
+        {//päivitetään tietoja asiakkaan ID tulee olla valittu, joka onnistuu kun datagridview:n riviä klikataan
             int id = int.Parse(lblID.Text);
             if(id <= 0)
             {
@@ -275,9 +275,28 @@ namespace Mokkivaraus
             m.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            poisto();
+
+        }
+
+        private void cbPostiN_TextChanged(object sender, EventArgs e)
+        {//haetaan postitoimipaikka kun postinumero vaihtuu jos sitä ei löydy ei anneta mitään
+            string haeToimipaikka = "SELECT toimipaikka FROM posti WHERE postinro = '" + cbPostiN.Text + "' ";
+            MySqlCommand Toimipaikka = new MySqlCommand(haeToimipaikka, connection);
+            connection.Open();
+            object test = Toimipaikka.ExecuteScalar();
+            connection.Close();
+            if (test == null)
+            {
+
+            }
+            else
+            {
+                connection.Open();
+                txtPostiP.Text = Toimipaikka.ExecuteScalar().ToString();
+                connection.Close();
+            }
         }
     }
 }

@@ -57,15 +57,18 @@
             this.lblValitut = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.lbHinta = new System.Windows.Forms.ListBox();
             this.lbHintaValitut = new System.Windows.Forms.ListBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.btnVapaat = new System.Windows.Forms.Button();
+            this.dgwVarauksenID = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokkivalinta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMokinid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwAlue)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwVarauksenID)).BeginInit();
             this.SuspendLayout();
             // 
             // dgwMokkivalinta
@@ -374,16 +377,6 @@
             this.panel2.Size = new System.Drawing.Size(588, 318);
             this.panel2.TabIndex = 50;
             // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.Controls.Add(this.dtpPoistumis);
-            this.panel3.Controls.Add(this.dtpSaapumis);
-            this.panel3.Location = new System.Drawing.Point(44, 12);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(431, 85);
-            this.panel3.TabIndex = 51;
-            // 
             // lbHinta
             // 
             this.lbHinta.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -407,12 +400,47 @@
             this.lbHintaValitut.Size = new System.Drawing.Size(96, 250);
             this.lbHintaValitut.TabIndex = 53;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Controls.Add(this.dtpPoistumis);
+            this.panel3.Controls.Add(this.dtpSaapumis);
+            this.panel3.Location = new System.Drawing.Point(44, 12);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(431, 85);
+            this.panel3.TabIndex = 51;
+            // 
+            // btnVapaat
+            // 
+            this.btnVapaat.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnVapaat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVapaat.Location = new System.Drawing.Point(481, 12);
+            this.btnVapaat.Name = "btnVapaat";
+            this.btnVapaat.Size = new System.Drawing.Size(192, 85);
+            this.btnVapaat.TabIndex = 52;
+            this.btnVapaat.Text = "Hae vapaat mökit";
+            this.btnVapaat.UseVisualStyleBackColor = false;
+            this.btnVapaat.Click += new System.EventHandler(this.btnVapaat_Click);
+            // 
+            // dgwVarauksenID
+            // 
+            this.dgwVarauksenID.AllowUserToAddRows = false;
+            this.dgwVarauksenID.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgwVarauksenID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwVarauksenID.Location = new System.Drawing.Point(12, 21);
+            this.dgwVarauksenID.Name = "dgwVarauksenID";
+            this.dgwVarauksenID.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwVarauksenID.Size = new System.Drawing.Size(10, 10);
+            this.dgwVarauksenID.TabIndex = 53;
+            this.dgwVarauksenID.Visible = false;
+            // 
             // frmMokkivalinta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Orange;
             this.ClientSize = new System.Drawing.Size(1095, 794);
+            this.Controls.Add(this.btnVapaat);
             this.Controls.Add(this.lblValitut);
             this.Controls.Add(this.lblPalvelut);
             this.Controls.Add(this.tbPostiN);
@@ -422,6 +450,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.btnVaraaM);
+            this.Controls.Add(this.dgwVarauksenID);
             this.Controls.Add(this.dgwMokkivalinta);
             this.Controls.Add(this.dgwMokinid);
             this.Controls.Add(this.dgwAlue);
@@ -439,6 +468,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgwVarauksenID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,5 +507,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ListBox lbHinta;
         private System.Windows.Forms.ListBox lbHintaValitut;
+        private System.Windows.Forms.Button btnVapaat;
+        private System.Windows.Forms.DataGridView dgwVarauksenID;
     }
 }

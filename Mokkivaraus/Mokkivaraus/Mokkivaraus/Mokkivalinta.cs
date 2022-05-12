@@ -25,20 +25,11 @@ namespace Mokkivaraus
         {
             InitializeComponent();
         }
-        public void populateDGV()
-        {
-            string query = "SELECT * FROM mokki";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-            adapter.Fill(table);
-            dgwMokkivalinta.DataSource = table;
-        }
         private void btnVaraaM_Click(object sender, EventArgs e)
         {
             Tiedot.Saapumispäivä = dtpSaapumis.Value;
             Tiedot.Poistumispäivä = dtpPoistumis.Value;
             Tiedot.mokkiID = (int)dgwMokinid.CurrentRow.Cells[0].Value;
-            populateDGV();
             frmVaraus lasku = new frmVaraus();
             lasku.Show();
             this.Hide();
@@ -62,7 +53,6 @@ namespace Mokkivaraus
                 MessageBox.Show("connection failed" + ex);
             }
             Tiedot.Palvelut = new List<string>();
-            populateDGV();
         }
 
         private void btnAsiakkaisiin_Click(object sender, EventArgs e)
@@ -254,6 +244,69 @@ namespace Mokkivaraus
         private void dgwMokkivalinta_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnVapaat_Click(object sender, EventArgs e)
+        {
+            List<int> VarausID = new List<int>();
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }//muutetaan datetimepicker arvot string arvoiksi jotta niitä on helpompi liikutella tietokannassa
+            string Alkupv = dtpSaapumis.Value.ToString("yyyy-MM-dd");
+            string Loppupv = dtpPoistumis.Value.ToString("yyyy-MM-dd");
+            string Hae = "SELECT varaus_id FROM varaus WHERE (varattu_alkupvm BETWEEN ('" + Alkupv + "') AND ('" + Loppupv + "')) AND(varattu_loppupvm BETWEEN('" + Alkupv + "') AND('" + Loppupv + "')); ";
+            DataTable table = new DataTable();
+            MySqlDataAdapter adapter = new MySqlDataAdapter(Hae, connection);
+            adapter.Fill(table);
+            dgwVarauksenID.DataSource = table;
+            for(int i = 0; i<dgwVarauksenID.Rows.Count; i++)
+            {
+                string HaeMokkiID = "SELECT mokki_id FROM varaus WHERE varaus_id = '" + dgwVarauksenID.Rows[i].Cells[0].Value + "'";
+                MySqlCommand Mokit = new MySqlCommand(HaeMokkiID, connection);
+                connection.Open();
+                object test = Mokit.ExecuteScalar();
+                connection.Close();
+                if(test == null)
+                {
+
+                }
+                else
+                {
+                    connection.Open();
+                    VarausID.Add((int)Mokit.ExecuteScalar());
+                    connection.Close();
+                }
+            }
+            for(int j = 0; j < VarausID.Count; j++)
+            {
+                string HaeVapaatMokit = "SELECT * FROM mokki WHERE mokki_id != '" + VarausID[j] + "'";
+                DataTable table2 = new DataTable();
+                MySqlDataAdapter adapter2 = new MySqlDataAdapter(HaeVapaatMokit, connection);
+                adapter2.Fill(table2);
+                dgwMokkivalinta.DataSource = table2;
+            }
+            if (dgwVarauksenID.Rows.Count == 0)
+            {
+                string HaeVapaatMokit = "SELECT * FROM mokki;";
+                DataTable table2 = new DataTable();
+                MySqlDataAdapter adapter2 = new MySqlDataAdapter(HaeVapaatMokit, connection);
+                adapter2.Fill(table2);
+                dgwMokkivalinta.DataSource = table2;
+            }
+            //List<int> PalveluID = new List<int>();
+            //for (int i = 0; i < dgwMokkivalinta.Rows.Count; i++)
+            //{
+            //    VarausID.Add((int)dgwMokkivalinta.Rows[i].Cells[0].Value);
+            //}
+            //for (int i = 0; i < VarausID.Count; i++)
+            //{
+            //    string HaePalvelut = "SELECT palvelu_id FROM varauksen_palvelut WHERE varaus_id = '" + VarausID[i] + "';";
+            //    DataTable table2 = new DataTable();
+            //    MySqlDataAdapter adapter2 = new MySqlDataAdapter(HaePalvelut, connection);
+            //    adapter2.Fill(table2);
+            //    dgwPalveluID.DataSource = table2;
+            //}
         }
     }
 }
