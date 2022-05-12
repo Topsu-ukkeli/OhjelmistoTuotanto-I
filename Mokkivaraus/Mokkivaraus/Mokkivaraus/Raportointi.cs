@@ -19,6 +19,7 @@ namespace Mokkivaraus
         private static MySqlCommand cmd = null;
         private static DataTable dt;
         private static MySqlDataAdapter sda;
+        List<int> VarausID = new List<int>();
         public Raportointi()
         {
             InitializeComponent();
@@ -139,7 +140,6 @@ namespace Mokkivaraus
             MySqlDataAdapter adapter = new MySqlDataAdapter(Hae, connection);
             adapter.Fill(table);
             dgwMajoitus.DataSource = table;
-            List<int> VarausID = new List<int>();
             List<int> PalveluID = new List<int>();
             for(int i = 0; i< dgwMajoitus.Rows.Count; i++)
             {
@@ -157,6 +157,7 @@ namespace Mokkivaraus
 
         private void btnHaeAlue_Click(object sender, EventArgs e)
         {
+            List<int> Lukumaara = new List<int>();
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
@@ -168,48 +169,79 @@ namespace Mokkivaraus
             string AlueIDhaku = "SELECT alue_id FROM alue WHERE nimi = '" + cbAlueet.Text + "'";
             MySqlCommand AlueID = new MySqlCommand(AlueIDhaku, connection);
             connection.Open();
-            AlueenID = (int)AlueID.ExecuteScalar();
+            object test2 = AlueID.ExecuteScalar();
             connection.Close();
-            int count = dgwPalveluID.Rows.Count;
-            for(int i = 0; i<count;i++)
+            if (test2 == null)
             {
-                string PalvelunNimi = "SELECT nimi FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[i].Cells[0].Value + "';";
-                MySqlCommand Palvelut = new MySqlCommand(PalvelunNimi, connection);
-                connection.Open();
-                object test = Palvelut.ExecuteScalar();
-                connection.Close();
-                if (test == null)
-                {
 
-                }
-                else
-                {
-                    connection.Open();
-                    KaikkiTiedot.Add(Palvelut.ExecuteScalar().ToString());
-                    connection.Close();
-                }
             }
-            for (int j = 0; j < dgwPalveluID.Rows.Count; j++)
+            else
             {
-                string test = "SELECT hinta FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[j].Cells[0].Value + "';";
-                MySqlCommand Palvelut2 = new MySqlCommand(test, connection);
                 connection.Open();
-                object test2 = Palvelut2.ExecuteScalar();
+                AlueenID = (int)AlueID.ExecuteScalar();
                 connection.Close();
-                if (test2 == null)
+                int count = dgwPalveluID.Rows.Count;
+                for (int i = 0; i < count; i++)
                 {
-
-                }
-                else
-                {
+                    string PalvelunNimi = "SELECT nimi FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[i].Cells[0].Value + "';";
+                    MySqlCommand Palvelut = new MySqlCommand(PalvelunNimi, connection);
                     connection.Open();
-                    KaikkiTiedot2.Add(Palvelut2.ExecuteScalar().ToString());
+                    object test = Palvelut.ExecuteScalar();
                     connection.Close();
+                    if (test == null)
+                    {
+
+                    }
+                    else
+                    {
+                        connection.Open();
+                        KaikkiTiedot.Add(Palvelut.ExecuteScalar().ToString());
+                        connection.Close();
+                    }
                 }
-            }
-            for (int j = 0; j < KaikkiTiedot.Count; j++)
-            {
-                lbNimet.Items.Add(KaikkiTiedot[j] + "," + KaikkiTiedot2[j] + " €");
+                for (int j = 0; j < dgwPalveluID.Rows.Count; j++)
+                {
+                    string test = "SELECT hinta FROM palvelu WHERE alue_id = '" + AlueenID + "' AND palvelu_id = '" + (int)dgwPalveluID.Rows[j].Cells[0].Value + "';";
+                    MySqlCommand Palvelut2 = new MySqlCommand(test, connection);
+                    connection.Open();
+                    object test3 = Palvelut2.ExecuteScalar();
+                    connection.Close();
+                    if (test3 == null)
+                    {
+
+                    }
+                    else
+                    {
+                        connection.Open();
+                        KaikkiTiedot2.Add(Palvelut2.ExecuteScalar().ToString());
+                        connection.Close();
+                    }
+                }
+                for(int i = 0; i<VarausID.Count;i++)
+                {
+                    for (int j = 0; j < dgwPalveluID.Rows.Count; j++)
+                    {
+                        string HaeLKM = "SELECT lkm FROM varauksen_palvelut WHERE palvelu_id = '" + (int)dgwPalveluID.Rows[j].Cells[0].Value + "' AND varaus_id = '" + VarausID[i] + "';";
+                        MySqlCommand Lukumaara2 = new MySqlCommand(HaeLKM, connection);
+                        connection.Open();
+                        object test = Lukumaara2.ExecuteScalar();
+                        connection.Close();
+                        if (test == null)
+                        {
+
+                        }
+                        else
+                        {
+                            connection.Open();
+                            Lukumaara.Add((int)Lukumaara2.ExecuteScalar());
+                            connection.Close();
+                        }
+                    }
+                }
+                for (int j = 0; j < KaikkiTiedot.Count; j++)
+                {
+                    lbNimet.Items.Add(KaikkiTiedot[j] + " " + KaikkiTiedot2[j] + " €" + " Kappalaite = " + Lukumaara[j]);
+                }
             }
         }
     }
