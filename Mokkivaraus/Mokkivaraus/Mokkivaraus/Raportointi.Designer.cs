@@ -50,7 +50,7 @@
             // 
             this.dgwMajoitus.AllowUserToAddRows = false;
             this.dgwMajoitus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMajoitus.Location = new System.Drawing.Point(25, 11);
+            this.dgwMajoitus.Location = new System.Drawing.Point(7, 8);
             this.dgwMajoitus.Name = "dgwMajoitus";
             this.dgwMajoitus.Size = new System.Drawing.Size(739, 303);
             this.dgwMajoitus.TabIndex = 0;
@@ -112,7 +112,7 @@
             // 
             this.dgwPalveluID.AllowUserToAddRows = false;
             this.dgwPalveluID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPalveluID.Location = new System.Drawing.Point(708, 214);
+            this.dgwPalveluID.Location = new System.Drawing.Point(649, 201);
             this.dgwPalveluID.Name = "dgwPalveluID";
             this.dgwPalveluID.Size = new System.Drawing.Size(10, 10);
             this.dgwPalveluID.TabIndex = 7;

@@ -129,6 +129,7 @@ namespace Mokkivaraus
 
         private void btnHae_Click(object sender, EventArgs e)
         {//tarkistetaan onko yhteys jo avattu jos on suletaan se
+            dgwPalveluID.DataSource = null;
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
@@ -146,6 +147,7 @@ namespace Mokkivaraus
                 VarausID.Add((int)dgwMajoitus.Rows[i].Cells[0].Value);
             }
             DataTable table2 = new DataTable();
+            dgwPalveluID.DataSource = table2;
             for (int i = 0; i < VarausID.Count; i++)
             {
                 string HaePalvelut = "SELECT palvelu_id FROM varauksen_palvelut WHERE varaus_id = '" + VarausID[i] + "';";
