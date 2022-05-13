@@ -58,6 +58,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.dtpSaapumis = new System.Windows.Forms.DateTimePicker();
+            this.dtpLahto = new System.Windows.Forms.DateTimePicker();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVaraus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausMokki)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausPalvelut)).BeginInit();
@@ -67,15 +72,18 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvVaraus
             // 
             this.dgvVaraus.AllowUserToAddRows = false;
+            this.dgvVaraus.AllowUserToDeleteRows = false;
             this.dgvVaraus.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvVaraus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVaraus.Location = new System.Drawing.Point(238, 30);
             this.dgvVaraus.Name = "dgvVaraus";
+            this.dgvVaraus.ReadOnly = true;
             this.dgvVaraus.Size = new System.Drawing.Size(996, 71);
             this.dgvVaraus.TabIndex = 1;
             // 
@@ -110,7 +118,7 @@
             this.btnVahvista.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnVahvista.Enabled = false;
             this.btnVahvista.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVahvista.Location = new System.Drawing.Point(1020, 617);
+            this.btnVahvista.Location = new System.Drawing.Point(1020, 612);
             this.btnVahvista.Name = "btnVahvista";
             this.btnVahvista.Size = new System.Drawing.Size(214, 117);
             this.btnVahvista.TabIndex = 5;
@@ -122,7 +130,7 @@
             // 
             this.btnPalaa.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPalaa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPalaa.Location = new System.Drawing.Point(12, 617);
+            this.btnPalaa.Location = new System.Drawing.Point(22, 612);
             this.btnPalaa.Name = "btnPalaa";
             this.btnPalaa.Size = new System.Drawing.Size(214, 117);
             this.btnPalaa.TabIndex = 6;
@@ -245,20 +253,24 @@
             // dgvVarausMokki
             // 
             this.dgvVarausMokki.AllowUserToAddRows = false;
+            this.dgvVarausMokki.AllowUserToDeleteRows = false;
             this.dgvVarausMokki.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvVarausMokki.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVarausMokki.Location = new System.Drawing.Point(238, 107);
             this.dgvVarausMokki.Name = "dgvVarausMokki";
+            this.dgvVarausMokki.ReadOnly = true;
             this.dgvVarausMokki.Size = new System.Drawing.Size(996, 71);
             this.dgvVarausMokki.TabIndex = 17;
             // 
             // dgvVarausPalvelut
             // 
             this.dgvVarausPalvelut.AllowUserToAddRows = false;
+            this.dgvVarausPalvelut.AllowUserToDeleteRows = false;
             this.dgvVarausPalvelut.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvVarausPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVarausPalvelut.Location = new System.Drawing.Point(238, 184);
             this.dgvVarausPalvelut.Name = "dgvVarausPalvelut";
+            this.dgvVarausPalvelut.ReadOnly = true;
             this.dgvVarausPalvelut.Size = new System.Drawing.Size(996, 120);
             this.dgvVarausPalvelut.TabIndex = 18;
             // 
@@ -351,9 +363,9 @@
             this.panel1.Controls.Add(this.lblSposlasku);
             this.panel1.Controls.Add(this.cbVahvistasposti);
             this.panel1.Controls.Add(this.cbSpostilasku);
-            this.panel1.Location = new System.Drawing.Point(827, 310);
+            this.panel1.Location = new System.Drawing.Point(819, 310);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(415, 301);
+            this.panel1.Size = new System.Drawing.Size(415, 276);
             this.panel1.TabIndex = 27;
             // 
             // panel2
@@ -393,6 +405,64 @@
             this.panel5.Size = new System.Drawing.Size(343, 91);
             this.panel5.TabIndex = 31;
             // 
+            // dtpSaapumis
+            // 
+            this.dtpSaapumis.CustomFormat = "yyyy-MM-dd";
+            this.dtpSaapumis.Enabled = false;
+            this.dtpSaapumis.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpSaapumis.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSaapumis.Location = new System.Drawing.Point(91, 3);
+            this.dtpSaapumis.Name = "dtpSaapumis";
+            this.dtpSaapumis.Size = new System.Drawing.Size(119, 29);
+            this.dtpSaapumis.TabIndex = 32;
+            this.dtpSaapumis.Value = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
+            // 
+            // dtpLahto
+            // 
+            this.dtpLahto.CustomFormat = "yyyy-MM-dd";
+            this.dtpLahto.Enabled = false;
+            this.dtpLahto.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpLahto.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpLahto.Location = new System.Drawing.Point(91, 38);
+            this.dtpLahto.Name = "dtpLahto";
+            this.dtpLahto.Size = new System.Drawing.Size(119, 29);
+            this.dtpLahto.TabIndex = 33;
+            this.dtpLahto.Value = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel6.Controls.Add(this.dtpSaapumis);
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.dtpLahto);
+            this.panel6.Location = new System.Drawing.Point(22, 407);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(284, 73);
+            this.panel6.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(31, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 25);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Tulo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(19, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 25);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Lähtö";
+            // 
             // frmVaraus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -411,6 +481,7 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel6);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVaraus";
             this.Text = "Yhteenveto";
@@ -429,6 +500,8 @@
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -464,5 +537,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DateTimePicker dtpSaapumis;
+        private System.Windows.Forms.DateTimePicker dtpLahto;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

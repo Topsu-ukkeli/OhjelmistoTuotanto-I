@@ -32,7 +32,6 @@ namespace Mokkivaraus
             adapter.Fill(table);
             dgvLaskut.DataSource = table;
         }
-
         private void LaskuHallinta_Load(object sender, EventArgs e)
         {
             try
@@ -108,7 +107,6 @@ namespace Mokkivaraus
             tbMaksaja.Text = "";
             tbSumma.Text = "";
         }
-
         private void btnPaivita_Click(object sender, EventArgs e)
         {
             double sum, alv;
