@@ -111,7 +111,7 @@ namespace Mokkivaraus
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Sähköpostin lähetys epäonnistui \n Virhekoodilla: "+ex);
             }
         }
         private void sendConfirm(string to)//tilausvahvistuksen lähetys spostiin
@@ -130,7 +130,7 @@ namespace Mokkivaraus
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Sähköpostin lähetys epäonnistui \n Virhekoodilla: " + ex);
             }
         }
         private void confirmed() //Varauksen syöttö tietokantaan sekä vahvistus viestin kokoaminen
