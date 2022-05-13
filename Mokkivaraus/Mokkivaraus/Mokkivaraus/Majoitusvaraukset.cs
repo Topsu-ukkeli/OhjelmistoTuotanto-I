@@ -223,10 +223,8 @@ namespace Mokkivaraus
             string poistapalvelu = "DELETE FROM varauksen_palvelut WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
             ExecuteMyQuery(poistapalvelu);
             string poista = "DELETE varaus FROM varaus WHERE varaus_id = '" + Hallinta.MajoitusVarausID + "'";
-            DataTable table = new DataTable();
-            MySqlDataAdapter adapter = new MySqlDataAdapter(poista, connection);
-            adapter.Fill(table);
-            dgwMajoitusvaraus.DataSource = table;
+            ExecuteMyQuery(poista);
+            populateDGV();
         }
         
     }
