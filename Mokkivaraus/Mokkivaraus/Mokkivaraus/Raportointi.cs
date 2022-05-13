@@ -145,18 +145,19 @@ namespace Mokkivaraus
             {
                 VarausID.Add((int)dgwMajoitus.Rows[i].Cells[0].Value);
             }
+            DataTable table2 = new DataTable();
             for (int i = 0; i < VarausID.Count; i++)
             {
                 string HaePalvelut = "SELECT palvelu_id FROM varauksen_palvelut WHERE varaus_id = '" + VarausID[i] + "';";
-                DataTable table2 = new DataTable();
                 MySqlDataAdapter adapter2 = new MySqlDataAdapter(HaePalvelut, connection);
                 adapter2.Fill(table2);
-                dgwPalveluID.DataSource = table2;
             }
+            dgwPalveluID.DataSource = table2;
         }
 
         private void btnHaeAlue_Click(object sender, EventArgs e)
         {//Haetaan alueet alueen nimen mukaan ja lisätään ne listaan jotta voidaan lisätä ne listboxiin
+            
             List<int> Lukumaara = new List<int>();
             if (connection.State == ConnectionState.Open)
             {

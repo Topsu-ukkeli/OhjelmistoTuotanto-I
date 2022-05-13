@@ -43,13 +43,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgwMajoitus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPalveluID)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwMajoitus
             // 
             this.dgwMajoitus.AllowUserToAddRows = false;
             this.dgwMajoitus.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwMajoitus.Location = new System.Drawing.Point(24, 82);
+            this.dgwMajoitus.Location = new System.Drawing.Point(25, 11);
             this.dgwMajoitus.Name = "dgwMajoitus";
             this.dgwMajoitus.Size = new System.Drawing.Size(739, 303);
             this.dgwMajoitus.TabIndex = 0;
@@ -111,7 +112,7 @@
             // 
             this.dgwPalveluID.AllowUserToAddRows = false;
             this.dgwPalveluID.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPalveluID.Location = new System.Drawing.Point(668, 214);
+            this.dgwPalveluID.Location = new System.Drawing.Point(708, 214);
             this.dgwPalveluID.Name = "dgwPalveluID";
             this.dgwPalveluID.Size = new System.Drawing.Size(10, 10);
             this.dgwPalveluID.TabIndex = 7;
@@ -131,7 +132,7 @@
             this.lblHinnat.AutoSize = true;
             this.lblHinnat.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.lblHinnat.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHinnat.Location = new System.Drawing.Point(796, 396);
+            this.lblHinnat.Location = new System.Drawing.Point(774, 321);
             this.lblHinnat.Name = "lblHinnat";
             this.lblHinnat.Size = new System.Drawing.Size(124, 25);
             this.lblHinnat.TabIndex = 25;
@@ -162,6 +163,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.dgwMajoitus);
+            this.panel1.Controls.Add(this.dgwPalveluID);
+            this.panel1.Controls.Add(this.lblHinnat);
             this.panel1.Location = new System.Drawing.Point(17, 75);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1187, 453);
@@ -175,15 +179,12 @@
             this.ClientSize = new System.Drawing.Size(1218, 643);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lblHinnat);
             this.Controls.Add(this.lbNimet);
             this.Controls.Add(this.cbAlueet);
             this.Controls.Add(this.btnHaeAlue);
             this.Controls.Add(this.btnHae);
             this.Controls.Add(this.dtpLoppupv);
             this.Controls.Add(this.dtpAlkupv);
-            this.Controls.Add(this.dgwMajoitus);
-            this.Controls.Add(this.dgwPalveluID);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Raportointi";
@@ -191,6 +192,8 @@
             this.Load += new System.EventHandler(this.Raportointi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwMajoitus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPalveluID)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
